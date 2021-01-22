@@ -1,22 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
 
 	<div class="row">
 
-		<div class="col-lg-3">
-
-			<h1 class="my-4">Shop Name</h1>
-			<div class="list-group">
-				<a href="#" class="list-group-item">Category 1</a> <a href="#"
-					class="list-group-item">Category 2</a> <a href="#"
-					class="list-group-item">Category 3</a>
-			</div>
-
-		</div>
 		<!-- /.col-lg-3 -->
 
-		<div class="col-lg-9">
 
 			<div id="carouselExampleIndicators" class="carousel slide my-4"
 				data-ride="carousel">
@@ -52,7 +42,8 @@
 			</div>
 
 			<div class="row">
-
+				<c:forEach var="n" items="${product}">
+				<!-- el 표기법(n.getID()) -->
 				<div class="col-lg-4 col-md-6 mb-4">
 					<div class="card h-100">
 						<a href="#"><img class="card-img-top"
@@ -62,15 +53,16 @@
 								<a href="#">Item One</a>
 							</h4>
 							<h5>$24.99</h5>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Amet numquam aspernatur!</p>
+							<p class="card-text">${n.discription}</p>
 						</div>
 						<div class="card-footer">
+						<!-- &#9733은 채워진별 &#9734는 빈별 -->
 							<small class="text-muted">&#9733; &#9733; &#9733; &#9733;
 								&#9734;</small>
 						</div>
 					</div>
 				</div>
+				</c:forEach>
 
 				<div class="col-lg-4 col-md-6 mb-4">
 					<div class="card h-100">
@@ -172,7 +164,6 @@
 			</div>
 			<!-- /.row -->
 
-		</div>
 		<!-- /.col-lg-9 -->
 
 	</div>
