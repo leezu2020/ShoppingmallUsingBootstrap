@@ -15,5 +15,9 @@
     <put-attribute name="body" value="/WEB-INF/views/customer/event/{1}.jsp" />
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
   </definition>
-
+  <definition name="login.*" template="/WEB-INF/views/login/inc/layout.jsp">
+    <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/views/login/{1}.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+  </definition> 
 </tiles-definitions>

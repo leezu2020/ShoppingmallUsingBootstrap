@@ -30,12 +30,12 @@
         <div class="col-lg-6">
             <form:form role="form" modelAttribute="userRegReq" action="/login/userReg" method="post">
                 <div class="form-group input-group">
-                    <span class="input-group-addon"><i class="fa fa-check"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-check">*</i></span>
                     <form:input type="text" class="form-control" placeholder="ID" path="userID"/>
                     <form:errors path="userID"/>
                 </div>
                 <div class="form-group input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-envelope">*</i></span>
                     <form:input type="text" class="form-control" placeholder="Email" path="userEmail"/>
                     <form:errors path="userEmail"/>
                 </div>
@@ -45,12 +45,12 @@
                     <form:errors path="userName"/>
                 </div>
                 <div class="form-group input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-lock">*</i></span>
                     <form:password class="form-control" placeholder="Password" path="userPassword"/>
                     <form:errors path="userPassword"/>
                 </div>
                 <div class="form-group input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-lock">*</i></span>
                     <form:password class="form-control" placeholder="Password Check" path="checkPassword"/>
                     <form:errors path="checkPassword"/>
                 </div>

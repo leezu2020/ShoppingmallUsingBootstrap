@@ -43,7 +43,6 @@ public class UserRegValidator implements Validator{
 				errors.rejectValue("userEmail", "bad", "올바르지 않는 형식입니다.");
 			}
 		}
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "required", "이름을 입력해주세요.");
 		ValidationUtils.rejectIfEmpty(errors, "userPassword", "required", "비밀번호를 입력해주세요.");
 		ValidationUtils.rejectIfEmpty(errors, "checkPassword", "required", "비밀번호 확인을 해주세요.");
 		if(!regReq.getUserPassword().isEmpty()) {

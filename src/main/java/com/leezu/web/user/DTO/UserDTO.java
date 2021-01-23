@@ -6,15 +6,8 @@ public class UserDTO {
 	private String userPassword;
 	private String userName;
 	private String userEmail;
-	
-
-	public UserDTO(String userID, String userPassword, String userName, String userEmail) {
-		super();
-		this.userID = userID;
-		this.userPassword = userPassword;
-		this.userName = userName;
-		this.userEmail = userEmail;
-	}
+	private char autohrity;
+	private char emailChecked;
 	
 	public String getUserID() {
 		return userID;
@@ -40,13 +33,34 @@ public class UserDTO {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-
-	@Override
-	public String toString() {
-		return "UserDTO [userID=" + userID + ", userPassword=" + userPassword + ", userName=" + userName
-				+ ", userEmail=" + userEmail + "]";
+	public char getAutohrity() {
+		return autohrity;
 	}
-
+	public void setAutohrity(char autohrity) {
+		this.autohrity = autohrity;
+	}
+	public char getEmailChecked() {
+		return emailChecked;
+	}
+	public void setEmailChecked(char emailChecked) {
+		this.emailChecked = emailChecked;
+	}
 	
+	public boolean matchPassword(String pw) {
+		return this.userPassword.equals(pw);
+	}
+	
+	public UserDTO(String userID, String userPassword, String userName, String userEmail, char autohrity,
+			char emailChecked) {
+		super();
+		this.userID = userID;
+		this.userPassword = userPassword;
+		this.userName = userName;
+		this.userEmail = userEmail;
+		this.autohrity = autohrity;
+		this.emailChecked = emailChecked;
+	}
+	
+
 	
 }

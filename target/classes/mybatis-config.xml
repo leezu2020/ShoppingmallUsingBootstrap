@@ -5,5 +5,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="DTO.UserReg" type="com.leezu.web.user.DTO.UserRegReq"/>
+		<typeAlias alias="DTO.UserDTO" type="com.leezu.web.user.DTO.UserDTO"/>
 	</typeAliases>
 </configuration>
