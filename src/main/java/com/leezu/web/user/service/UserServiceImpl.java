@@ -1,5 +1,7 @@
 package com.leezu.web.user.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -37,6 +39,13 @@ public class UserServiceImpl implements IUserService{
 			throw new IDPasswordNotMatchingException();
 		}
 		return new AuthInfo(user.getUserID(), user.getUserName(), user.getAutohrity());
+	}
+
+	// 회원 조회
+	@Override
+	public List<UserDTO> userList() throws Exception {
+
+		return userDAO.userList();
 	}
 
 }

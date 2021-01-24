@@ -26,6 +26,7 @@
     
 </head>
 <div class="panel-body">
+    	*는 필수 정보입니다.
     <div class="row">
         <div class="col-lg-6">
             <form:form role="form" modelAttribute="userRegReq" action="/login/userReg" method="post">

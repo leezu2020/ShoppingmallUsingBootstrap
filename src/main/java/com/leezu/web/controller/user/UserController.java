@@ -66,8 +66,8 @@ public class UserController {
 		}
 		
 		try {
-			AuthInfo authoInfo = userService.UserLogin(loginVal);
-			session.setAttribute("authInfo", authoInfo);
+			AuthInfo authInfo = userService.UserLogin(loginVal);
+			session.setAttribute("authInfo", authInfo);
 			
 			Cookie rememberCookie = new Cookie("REMEMBER", loginVal.getUserID());
 			rememberCookie.setPath("/");
@@ -85,19 +85,8 @@ public class UserController {
 		
 		return "login.successLogin";
 	}
-	/*
-	 * @PostMapping("userLogin") public String userlogin(UserDTO dto,
-	 * HttpServletRequest req, RedirectAttributes rattr) throws Exception {
-	 * HttpSession session = req.getSession(); UserDTO login =
-	 * userService.UserLogin(dto);
-	 * 
-	 * if(login == null) { session.setAttribute("member", null);
-	 * rattr.addFlashAttribute("msg", false); } else {
-	 * session.setAttribute("member", login); }
-	 * 
-	 * return "redirect:/"; }
-	 */
 	
+	// 로그아웃
 	@GetMapping("userLogout")
 	public String userlogout(HttpSession session) throws Exception{
 		
