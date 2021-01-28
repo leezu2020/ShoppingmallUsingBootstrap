@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.leezu.web.controller.user.UserLoginValidator;
+import com.leezu.web.controller.login.UserLoginValidator;
 import com.leezu.web.exception.IDPasswordNotMatchingException;
 import com.leezu.web.user.DAO.UserDAOImpl;
 import com.leezu.web.user.DTO.AuthInfo;

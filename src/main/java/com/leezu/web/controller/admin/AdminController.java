@@ -19,7 +19,22 @@ public class AdminController {
 	@GetMapping("userList")
 	public String userList(Model model) throws Exception {
 		model.addAttribute("userList", userService.userList());
-		
+		System.out.println("userList 조회");
 		return "admin.userList";
+	}
+	
+	@GetMapping("productList")
+	public String productList() throws Exception {
+		return "admin.productList";
+	}
+	
+	@GetMapping("eventList")
+	public String eventList() throws Exception {
+		return "admin.eventList";
+	}
+	
+	@GetMapping("noticeList")
+	public String noticeList() throws Exception {
+		return "admin.noticeList";
 	}
 }

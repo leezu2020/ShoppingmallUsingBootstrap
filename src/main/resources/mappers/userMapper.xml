@@ -13,7 +13,8 @@
 				#{userName},
 				#{userEmail},
 				'0',
-				'1')
+				'1',
+				SYSTIMESTAMP)
 	</insert>
 	
 	<!-- 로그인 -->
@@ -34,6 +35,7 @@
 	<select id="userList" resultType="DTO.UserDTO">
 		select *
 		from test_user
+		where AUTHORITY = '0'
 		order by USERNAME
 	</select>
 </mapper>

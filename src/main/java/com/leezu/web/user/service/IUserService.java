@@ -2,7 +2,7 @@ package com.leezu.web.user.service;
 
 import java.util.List;
 
-import com.leezu.web.controller.user.UserLoginValidator;
+import com.leezu.web.controller.login.UserLoginValidator;
 import com.leezu.web.user.DTO.AuthInfo;
 import com.leezu.web.user.DTO.UserDTO;
 import com.leezu.web.user.DTO.UserRegReq;

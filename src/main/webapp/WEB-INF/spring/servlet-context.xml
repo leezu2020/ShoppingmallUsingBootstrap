@@ -29,6 +29,13 @@
     	<property name="suffix" value=".jsp"></property>
     	<property name="order" value="2" />
     </bean>
+    
+    <mvc:interceptors>
+       <mvc:interceptor>
+           <mvc:mapping path="/admin/**"/>
+           <bean class="com.leezu.web.interceptor.LoginInterceptor"/>
+       </mvc:interceptor>
+    </mvc:interceptors>
 	
     <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
     <mvc:annotation-driven> <!-- 맵핑하는작업 -->

@@ -1,4 +1,4 @@
-package com.leezu.web.controller.user;
+package com.leezu.web.controller.login;
 
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
@@ -21,7 +21,7 @@ import com.leezu.web.user.service.IUserService;
 
 @Controller
 @RequestMapping("/login/")
-public class UserController {
+public class LoginController {
 
 	@Inject
 	private IUserService userService;
@@ -91,6 +91,6 @@ public class UserController {
 	public String userlogout(HttpSession session) throws Exception{
 		
 		session.invalidate();
-		return "redirect:/";
+		return "login.successLogout";
 	}
 }

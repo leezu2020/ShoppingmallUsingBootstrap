@@ -1,4 +1,4 @@
-package com.leezu.web.controller.user;
+package com.leezu.web.controller.login;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

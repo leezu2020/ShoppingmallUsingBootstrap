@@ -1,5 +1,7 @@
 package com.leezu.web.user.DTO;
 
+import oracle.sql.TIMESTAMP;
+
 public class UserDTO {
 	
 	private String userID;
@@ -8,6 +10,7 @@ public class UserDTO {
 	private String userEmail;
 	private char autohrity;
 	private char emailChecked;
+	private TIMESTAMP regDate;
 	
 	public String getUserID() {
 		return userID;
@@ -50,8 +53,12 @@ public class UserDTO {
 		return this.userPassword.equals(pw);
 	}
 	
+	public TIMESTAMP getRegDate() {
+		return regDate;
+	}
+	
 	public UserDTO(String userID, String userPassword, String userName, String userEmail, char autohrity,
-			char emailChecked) {
+			char emailChecked, TIMESTAMP regDate) {
 		super();
 		this.userID = userID;
 		this.userPassword = userPassword;
@@ -59,8 +66,9 @@ public class UserDTO {
 		this.userEmail = userEmail;
 		this.autohrity = autohrity;
 		this.emailChecked = emailChecked;
+		this.regDate = regDate;
 	}
-	
+
 
 	
 }
