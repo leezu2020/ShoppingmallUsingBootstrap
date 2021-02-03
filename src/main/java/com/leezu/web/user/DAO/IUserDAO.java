@@ -2,8 +2,8 @@ package com.leezu.web.user.DAO;
 
 import java.util.List;
 
-import com.leezu.web.user.DTO.UserDTO;
-import com.leezu.web.user.DTO.UserRegReq;
+import com.leezu.web.user.entity.User;
+import com.leezu.web.user.entity.UserRegReq;
 
 public interface IUserDAO {
 	
@@ -11,8 +11,8 @@ public interface IUserDAO {
 	public void userReg(UserRegReq userRegReq) throws Exception;
 	
 	//로그인
-	public UserDTO userLogin(UserDTO dto) throws Exception;
+	public User userLogin(User dto) throws Exception;
 	
-	//회원조회
-	public List<UserDTO> userList() throws Exception;
+	//회원 리스트 조회
+	public List<User> userList() throws Exception;
 }

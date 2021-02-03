@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.leezu.web.exception.IDNoExist;
 import com.leezu.web.exception.IDPasswordNotMatchingException;
-import com.leezu.web.user.DTO.AuthInfo;
-import com.leezu.web.user.DTO.UserRegReq;
+import com.leezu.web.user.entity.AuthInfo;
+import com.leezu.web.user.entity.UserRegReq;
 import com.leezu.web.user.service.IUserService;
 
 @Controller
@@ -79,7 +80,10 @@ public class LoginController {
 			}
 			response.addCookie(rememberCookie);
 		} catch(IDPasswordNotMatchingException e) {
-			bindingResult.rejectValue("userPassword", "notMatch", "등록되지 않은 회원이거나, 비밀번호가 틀립니다.");
+			bindingResult.rejectValue("userPassword", "notMatch", "비밀번호가 틀립니다.");
+			return "login.userLogin";
+		} catch(IDNoExist e) {
+			bindingResult.rejectValue("userID", "noExist", "등록되지 않은 회원입니다.");
 			return "login.userLogin";
 		}
 		

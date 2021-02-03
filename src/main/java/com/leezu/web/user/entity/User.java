@@ -1,16 +1,18 @@
-package com.leezu.web.user.DTO;
+package com.leezu.web.user.entity;
 
-import oracle.sql.TIMESTAMP;
+import java.util.Date;
 
-public class UserDTO {
+public class User {
 	
 	private String userID;
 	private String userPassword;
 	private String userName;
 	private String userEmail;
-	private char autohrity;
-	private char emailChecked;
-	private TIMESTAMP regDate;
+	private int authority;
+	private boolean emailChecked;
+	private Date regDate;
+	
+
 	
 	public String getUserID() {
 		return userID;
@@ -36,39 +38,41 @@ public class UserDTO {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public char getAutohrity() {
-		return autohrity;
+	public int getAuthority() {
+		return authority;
 	}
-	public void setAutohrity(char autohrity) {
-		this.autohrity = autohrity;
+	public void setAuthority(int authority) {
+		this.authority = authority;
 	}
-	public char getEmailChecked() {
+	public boolean isEmailChecked() {
 		return emailChecked;
 	}
-	public void setEmailChecked(char emailChecked) {
+
+	public void setEmailChecked(boolean emailChecked) {
 		this.emailChecked = emailChecked;
 	}
-	
-	public boolean matchPassword(String pw) {
-		return this.userPassword.equals(pw);
-	}
-	
-	public TIMESTAMP getRegDate() {
+
+	public Date getRegDate() {
 		return regDate;
 	}
-	
-	public UserDTO(String userID, String userPassword, String userName, String userEmail, char autohrity,
-			char emailChecked, TIMESTAMP regDate) {
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+
+	public User(String userID, String userPassword, String userName, String userEmail, int authority,
+			boolean emailChecked, Date regDate) {
 		super();
 		this.userID = userID;
 		this.userPassword = userPassword;
 		this.userName = userName;
 		this.userEmail = userEmail;
-		this.autohrity = autohrity;
+		this.authority = authority;
 		this.emailChecked = emailChecked;
 		this.regDate = regDate;
 	}
-
-
+	public boolean matchPassword(String pw) {
+		return this.userPassword.equals(pw);
+	}
 	
 }

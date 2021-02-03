@@ -1,4 +1,4 @@
-package com.leezu.web.user.DTO;
+package com.leezu.web.user.entity;
 
 public class UserRegReq {
 	

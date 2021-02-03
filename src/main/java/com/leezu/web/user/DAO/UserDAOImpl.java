@@ -7,8 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.leezu.web.user.DTO.UserDTO;
-import com.leezu.web.user.DTO.UserRegReq;
+import com.leezu.web.user.entity.User;
+import com.leezu.web.user.entity.UserRegReq;
 
 @Repository
 public class UserDAOImpl implements IUserDAO{
@@ -32,19 +32,19 @@ public class UserDAOImpl implements IUserDAO{
 	
 	// 로그인
 	@Override
-	public UserDTO userLogin(UserDTO dto) throws Exception {
+	public User userLogin(User dto) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace + ".userLogin", dto);
 	}
 	
 	// 아이디로 확인
-	public UserDTO selectByID(String id) {
+	public User selectByID(String id) {
 		return sqlSession.selectOne(namespace + ".selectByID", id);
 	}
 
 	// 회원 조회
 	@Override
-	public List<UserDTO> userList() throws Exception {
+	public List<User> userList() throws Exception {
 		return sqlSession.selectList(namespace + ".userList");
 	}
 	

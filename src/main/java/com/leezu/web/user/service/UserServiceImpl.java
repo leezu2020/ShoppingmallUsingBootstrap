@@ -7,11 +7,12 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.leezu.web.controller.login.UserLoginValidator;
+import com.leezu.web.exception.IDNoExist;
 import com.leezu.web.exception.IDPasswordNotMatchingException;
 import com.leezu.web.user.DAO.UserDAOImpl;
-import com.leezu.web.user.DTO.AuthInfo;
-import com.leezu.web.user.DTO.UserDTO;
-import com.leezu.web.user.DTO.UserRegReq;
+import com.leezu.web.user.entity.AuthInfo;
+import com.leezu.web.user.entity.User;
+import com.leezu.web.user.entity.UserRegReq;
 
 @Service
 public class UserServiceImpl implements IUserService{
@@ -31,19 +32,19 @@ public class UserServiceImpl implements IUserService{
 	// 로그인
 	@Override
 	public AuthInfo UserLogin(UserLoginValidator loginVal) throws Exception {
-		UserDTO user = userDAO.selectByID(loginVal.getUserID());
+		User user = userDAO.selectByID(loginVal.getUserID());
 		if(user == null) {
-			throw new IDPasswordNotMatchingException();
+			throw new IDNoExist();
 		}
 		if(!user.matchPassword(loginVal.getUserPassword())){
 			throw new IDPasswordNotMatchingException();
 		}
-		return new AuthInfo(user.getUserID(), user.getUserName(), user.getAutohrity());
+		return new AuthInfo(user.getUserID(), user.getUserName(), user.getAuthority());
 	}
 
 	// 회원 조회
 	@Override
-	public List<UserDTO> userList() throws Exception {
+	public List<User> userList() throws Exception {
 
 		return userDAO.userList();
 	}

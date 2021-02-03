@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Shop Homepage - Start Bootstrap Template</title>
+<title>유저 목록 조회</title>
 
 <!-- Bootstrap core CSS -->
 <link
@@ -21,33 +21,6 @@
 	rel="stylesheet">
 
 </head>
-
-<!-- 	검색기능 미구현
-				<div class="breadcrumb">
-				<h3 class="hidden">경로</h3>
-				<ul>
-					<li>home</li>
-					<li>고객센터</li>
-					<li>공지사항</li>
-				</ul>
-			</div>
-			
-			<div class="search-form margin-top first align-right">
-				<h3 class="hidden">공지사항 검색폼</h3>
-				<form class="table-form">
-					<fieldset>
-						<legend class="hidden">검색 필드</legend>
-						<label class="hidden">검색분류</label>
-						<select name="f">
-							<option  value="title">아이디</option>
-							<option  value="writerId">이름</option>
-						</select> 
-						<label class="hidden">검색어</label>
-						<input type="text" name="q" value=""/>
-						<input class="btn btn-search" type="submit" value="검색" />
-					</fieldset>
-				</form>
-			</div> -->
 
 <div class="notice margin-top">
 	<h3 class="hidden">회원 목록</h3>
@@ -68,13 +41,19 @@
 				<tr>
 					<td class="checkBox">
 						<input type="checkBox" name="userBox" class="userBox" data-userID="${user.userID}" />
+						<script>
+							$(".userBox").click(function(){
+								var confirm = confirm("정말 삭제하시겠습니까?");
+								
+							})
+						</script>
 					</td>
 					<td>${user.userID}</td>
 					<td>${user.userName}</td>
 					<td>${user.userEmail}</td>
 					<td><c:choose>
-							<c:when test="${user.emailChecked eq '1'.charAt(0)}">이메일 인증 완료</c:when>
-							<c:otherwise>이메일 미인증 </c:otherwise>
+							<c:when test="${user.emailChecked eq true}">이메일 인증 완료</c:when>
+							<c:otherwise>이메일 미인증</c:otherwise>
 						</c:choose></td>
 					<td>${user.regDate}</td>
 				</tr>
@@ -82,4 +61,12 @@
 
 		</tbody>
 	</table>
+	
+	<button type="button" class="selectDeleteBtn" style="float:right;">선택 삭제</button>
+		<script>
+			$(".selectDeleteBtn").click(function(){
+				var confirm = confirm("정말 삭제하시겠습니까?");
+				
+			})
+		</script>
 </div>

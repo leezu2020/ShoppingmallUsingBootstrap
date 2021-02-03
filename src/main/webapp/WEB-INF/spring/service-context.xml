@@ -16,9 +16,9 @@
    <context:component-scan base-package="com.leezu.web.user" />
     
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-    	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-    	<property name="url" value="jdbc:oracle:thin:@localhost:1521/xepdb1" />
-    	<property name="username" value="sys as sysdba" />
+    	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+    	<property name="url" value="jdbc:mysql://localhost:3306/shop?serverTimezone=Asia/Seoul" />
+    	<property name="username" value="shop" />
     	<property name="password" value="1234" />
     </bean>
     

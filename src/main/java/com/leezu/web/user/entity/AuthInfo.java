@@ -1,15 +1,15 @@
-package com.leezu.web.user.DTO;
+package com.leezu.web.user.entity;
 
 // 회원정보 세션 유지 기능
 public class AuthInfo {
 	private String userID;
 	private String userName;
-	private char authority;
+	private int authority;
 	
-	public AuthInfo(String userID, String userName, char authority) {
+	public AuthInfo(String userID, String userName, int i) {
 		this.userID = userID;
 		this.userName = userName;
-		this.authority = authority;
+		this.authority = i;
 	}
 	public String getUserID() {
 		return userID;
@@ -23,7 +23,7 @@ public class AuthInfo {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public char getAuthority() {
+	public int getAuthority() {
 		return authority;
 	}
 	public void setAuthority(char authority) {

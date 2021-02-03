@@ -8,7 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.leezu.web.user.DTO.AuthInfo;
+import com.leezu.web.user.entity.AuthInfo;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter{
 
@@ -23,7 +23,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
 		
 		
-		if(user == null || user.getAuthority() != '1') {
+		if(user == null || user.getAuthority() != 1) {
 			response.sendRedirect("/");
 			return false;
 		}

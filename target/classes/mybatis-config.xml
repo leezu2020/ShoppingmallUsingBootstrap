@@ -4,7 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="DTO.UserReg" type="com.leezu.web.user.DTO.UserRegReq"/>
-		<typeAlias alias="DTO.UserDTO" type="com.leezu.web.user.DTO.UserDTO"/>
+		<typeAlias alias="UserReg" type="com.leezu.web.user.entity.UserRegReq"/>
+		<typeAlias alias="User" type="com.leezu.web.user.entity.User"/>
+		<typeAlias alias="Notice" type="com.leezu.web.notice.entity.Notice"/>
 	</typeAliases>
 </configuration>

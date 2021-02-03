@@ -7,7 +7,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.leezu.web.user.DTO.UserRegReq;
+import com.leezu.web.user.entity.UserRegReq;
 
 public class UserRegValidator implements Validator{
 
