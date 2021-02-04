@@ -11,7 +11,7 @@ import com.leezu.web.user.entity.User;
 import com.leezu.web.user.entity.UserRegReq;
 
 @Repository
-public class UserDAOImpl implements IUserDAO{
+public class UserDAOImp implements IUserDAO{
 
 	// SqlSession 객체를 스프링에서 생성해서 주입시켜준다.IoC
 	// try catch문, finally문, 객체를 close할 필요가 사라짐

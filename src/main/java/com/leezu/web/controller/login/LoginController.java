@@ -32,7 +32,7 @@ public class LoginController {
 		System.out.println("회원가입신호");
 		return "login.userReg";
 	}
-	
+	// 회원가입
 	@PostMapping("userReg")
 	public String userReg(UserRegReq userRegReq, Errors errors) throws Exception {
 		new UserRegValidator().validate(userRegReq, errors);

@@ -36,6 +36,12 @@
            <bean class="com.leezu.web.interceptor.LoginInterceptor"/>
        </mvc:interceptor>
     </mvc:interceptors>
+    
+    <bean id="multipartResolver"
+    	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	<!-- setting maximum upload size : 300mb -->
+    	<property name="maxUploadSize" value="314572800" />	
+    </bean>
 	
     <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
     <mvc:annotation-driven> <!-- 맵핑하는작업 -->

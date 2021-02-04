@@ -8,4 +8,6 @@ public interface INoticeDAO {
 
 	// 게시판 목록 출력
 	public List<Notice> getList() throws Exception;
+	
+	public Notice getNotice(int noticeID) throws Exception;
 }

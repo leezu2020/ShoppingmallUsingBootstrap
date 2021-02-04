@@ -19,4 +19,9 @@ public class NoticeController {
 		return "customer.noticeList";
 	}
 	
+	@RequestMapping("noticeDetail")
+	public String noticedetail(Model model) throws Exception{
+		model.addAttribute("notice", noticeService.getNotice(1));
+		return "customer.noticeDetail";
+	}
 }

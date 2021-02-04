@@ -21,5 +21,10 @@ public class NoticeDAOImp implements INoticeDAO{
 	public List<Notice> getList() throws Exception{
 		return sqlSession.selectList(namespace + ".noticeList");
 	}
+
+	public Notice getNotice(int noticeID) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".noticeById", noticeID);
+	}
 	
 }

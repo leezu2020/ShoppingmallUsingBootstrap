@@ -16,8 +16,14 @@ public class NoticeServiceImp implements INoticeService {
 	
 	@Override
 	public List<Notice> getList() throws Exception {
-		System.out.println("공지사항 목록 가져오기");
+		System.out.println("게시판 목록 가져오기");
 		return noticeDAO.getList();
+	}
+
+	@Override
+	public Notice getNotice(int noticeID) throws Exception {
+		System.out.println("게시판 글 가져오기");
+		return noticeDAO.getNotice(noticeID);
 	}
 
 }

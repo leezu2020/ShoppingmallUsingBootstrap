@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<title>게시판</title>
 <div class="notice margin-top">
-	<h3 class="hidden">공지사항 목록</h3>
+	<h3 class="hidden">게시판 목록</h3>
 	<table class="table">
 		<thead>
 			<tr>
@@ -19,7 +20,7 @@
 		<c:forEach var="n" items="${noticeList}">
 			<tr>
 				<td>${n.noticeID}</td>
-				<td class="title indent text-align-left"><a href="detail.html">${n.title}</a></td>
+				<td class="title indent text-align-left"><a href="noticeDetail">${n.title}</a></td>
 				<td>${n.writerID}</td>
 				<td>
 					${n.regDate}		
