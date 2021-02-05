@@ -4,7 +4,6 @@
     <main>
         <h2 class="main title">상품 조회</h2>
 	            <div class="margin-top first">
-	                <h3 class="hidden">상품 입력</h3>
 	                <table class="table">
 	                    <tbody>
 	                        <tr>
@@ -21,7 +20,12 @@
 	                        </tr>
 	                        <tr>
 	                            <th>상품 이미지</th>
-	                            <td colspan="3" class="text-align-left text-indent"> </td>
+	                            <td colspan="3" class="text-align-left text-indent">
+	                            <img class="card-img-top"
+								src="${pageContext.request.contextPath}/resources/images/${product.imageUrl}"
+								onerror="this.src='http://placehold.it/700x400'"
+								alt="${n.name}">
+								</td>
 	                        </tr>
 	                        <tr>
 	                            <th>사이즈</th>
