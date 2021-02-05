@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
 
 <meta charset="utf-8">
@@ -55,7 +56,7 @@
 							<c:when test="${user.emailChecked eq true}">이메일 인증 완료</c:when>
 							<c:otherwise>이메일 미인증</c:otherwise>
 						</c:choose></td>
-					<td>${user.regDate}</td>
+					<td><fmt:formatDate value="${user.regDate}" pattern="yyyy-MM-dd" /></td>
 				</tr>
 			</c:forEach>
 

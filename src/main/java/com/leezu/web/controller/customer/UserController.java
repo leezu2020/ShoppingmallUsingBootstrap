@@ -10,6 +10,6 @@ public class UserController {
 	@RequestMapping("userInfo")
 	public String userInfo() {
 		
-		return "user.userInfo";
+		return "customer.user.userInfo";
 	}
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
 
 <meta charset="utf-8">
@@ -44,7 +45,7 @@
 					<td>${prod.price}</td>
 					<td>${prod.description}</td>
 					<td>${prod.size}</td>
-					<td>${prod.regDate}</td>
+					<td><fmt:formatDate value="${prod.regDate}" pattern="yyyy-MM-dd" /></td>
 					<td>${prod.like}</td>
 				</tr>
 			</c:forEach>

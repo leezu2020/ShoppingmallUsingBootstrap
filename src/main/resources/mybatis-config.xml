@@ -9,5 +9,6 @@
 		<typeAlias alias="Product" type="com.leezu.web.product.entity.Product"/>
 		<typeAlias alias="preProduct" type="com.leezu.web.product.entity.preProduct"/>
 		<typeAlias alias="Notice" type="com.leezu.web.notice.entity.Notice"/>
+		<typeAlias alias="preNotice" type="com.leezu.web.notice.entity.preNotice"/>
 	</typeAliases>
 </configuration>

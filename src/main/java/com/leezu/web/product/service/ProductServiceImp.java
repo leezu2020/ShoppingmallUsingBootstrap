@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.leezu.web.product.dao.ProductDAOImp;
 import com.leezu.web.product.entity.Product;
+import com.leezu.web.product.entity.preProduct;
 
 @Service
 public class ProductServiceImp implements IProductService{
@@ -20,8 +21,13 @@ public class ProductServiceImp implements IProductService{
 	}
 
 	@Override
-	public void regProduct(String name, int intprice, String description, String size, String fileName) {
+	public void regProduct(preProduct product) {
 		// TODO Auto-generated method stub
-		productDAO.regProduct(name, intprice, description, size, fileName);
+		productDAO.regProduct(product);
+	}
+
+	@Override
+	public Product get(int id) {
+		return productDAO.get(id);
 	}
 }

@@ -44,8 +44,10 @@
 				<!-- el 표기법(n.getID()) -->
 				<div class="col-lg-4 col-md-6 mb-4">
 					<div class="card h-100">
-						<a href="#"><img class="card-img-top"
-							src="${pageContext.request.contextPath}/resources/images/${n.imageUrl}" alt=""></a>
+						<a href="/customer/productDetail?id=${n.productID}"><img class="card-img-top"
+							src="${pageContext.request.contextPath}/resources/images/${n.imageUrl}"
+							onerror="this.src='http://placehold.it/700x400'"
+							alt="${n.name}"></a>
 						<div class="card-body">
 							<h4 class="card-title">
 								<a href="#">${n.name}</a>

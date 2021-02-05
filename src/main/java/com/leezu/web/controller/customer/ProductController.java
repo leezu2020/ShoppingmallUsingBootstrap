@@ -1,4 +1,4 @@
-package com.leezu.web.controller.product;
+package com.leezu.web.controller.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,14 +8,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.leezu.web.product.service.IProductService;
 
 @Controller
+@RequestMapping("/customer/")
 public class ProductController {
 
 	@Autowired
 	private IProductService productService;
 	
 	@RequestMapping("productlist")
-	public String noticelist(Model model) throws Exception{
+	public String productlist(Model model) throws Exception{
 		model.addAttribute("productList", productService.getList());
-		return "customer.productList";
-	}	
+		return "customer.product.productList";
+	}
+	
+	@RequestMapping("productDetail")
+	public String productDetail(Model model, String id) {
+		int ID = Integer.parseInt(id);
+		System.out.println(ID);
+		model.addAttribute("product", productService.get(ID));
+		return "customer.product.productDetail";
+	}
 }
