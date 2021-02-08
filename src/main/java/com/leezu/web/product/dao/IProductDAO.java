@@ -1,4 +1,4 @@
-package com.leezu.web.product.dao;
+package com.leezu.web.product.DAO;
 
 import java.util.List;
 

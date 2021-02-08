@@ -39,7 +39,7 @@
 											</li>
 											<li class="nav-item"><a class="nav-link" href="/login/userLogout">로그아웃</a></li>
 											<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
-											<li class="nav-item"><a class="nav-link" href="/admin/userList">관리자 페이지</a></li>
+											<li class="nav-item"><a class="nav-link" href="/admin/userList?page=1">관리자 페이지</a></li>
 										</ul>
 										
 									</div>

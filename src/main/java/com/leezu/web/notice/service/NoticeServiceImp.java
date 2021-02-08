@@ -20,6 +20,12 @@ public class NoticeServiceImp implements INoticeService {
 		System.out.println("공지사항 목록 가져오기");
 		return noticeDAO.getList();
 	}
+	
+	@Override
+	public int getNoticeNum() {
+		System.out.println("공지사항 수 가져오기");
+		return noticeDAO.getNoticeNum();
+	}
 
 	@Override
 	public Notice getNotice(int noticeID) throws Exception {

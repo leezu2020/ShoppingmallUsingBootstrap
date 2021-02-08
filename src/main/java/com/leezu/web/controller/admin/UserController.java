@@ -6,20 +6,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.leezu.web.paging.DAO.PagingDAO;
 import com.leezu.web.user.service.IUserService;
 
-@Controller
+@Controller("adminUserController")
 @RequestMapping("/admin/")
-public class AdminController {
+public class UserController {
 	
 	@Inject
 	private IUserService userService;
 	
 
 	@GetMapping("userList")
-	public String userList(Model model) throws Exception {
-		model.addAttribute("userList", userService.userList());
+	public String userList(Model model, PagingDAO paging,
+			@RequestParam(defaultValue = "1")int nowPage,
+			@RequestParam(defaultValue = "5")int cntPerPage) throws Exception {
+		
+		int userNum = userService.getUserNum();
+		
+		paging = new PagingDAO(userNum, nowPage, cntPerPage);
+		
+		model.addAttribute("userList", userService.userList(paging));
+		model.addAttribute("page", paging);
 		System.out.println("userList 조회");
 		return "admin.user.userList";
 	}

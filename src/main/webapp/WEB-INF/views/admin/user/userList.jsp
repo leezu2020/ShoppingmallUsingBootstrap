@@ -42,12 +42,6 @@
 				<tr>
 					<td class="checkBox">
 						<input type="checkBox" name="userBox" class="userBox" data-userID="${user.userID}" />
-						<script>
-							$(".userBox").click(function(){
-								var confirm = confirm("정말 삭제하시겠습니까?");
-								
-							})
-						</script>
 					</td>
 					<td>${user.userID}</td>
 					<td>${user.userName}</td>
@@ -64,10 +58,23 @@
 	</table>
 	
 	<button type="button" class="selectDeleteBtn" style="float:right;">선택 삭제</button>
-		<script>
-			$(".selectDeleteBtn").click(function(){
-				var confirm = confirm("정말 삭제하시겠습니까?");
-				
-			})
-		</script>
+	
+	<div style="display: block; text-align: center;">		
+		<c:if test="${page.startPage != 1 }">
+			<a href="/admin/userList?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}">이전</a>
+		</c:if>
+		<c:forEach begin="${page.startPage }" end="${page.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == page.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != page.nowPage }">
+					<a href="/admin/userList?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${page.endPage != page.lastPage}">
+			<a href="/admin/userList?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}">다음</a>
+		</c:if>
+	</div>
 </div>

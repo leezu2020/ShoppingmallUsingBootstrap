@@ -32,6 +32,14 @@ public class ProductController {
 		System.out.println("productList 조회");
 		return "admin.product.productList";
 	}
+	
+	@RequestMapping("productDetail")
+	public String productDetail(Model model, String id) {
+		int ID = Integer.parseInt(id);
+		System.out.println(ID);
+		model.addAttribute("product", prodService.get(ID));
+		return "admin.product.productDetail";
+	}
 
 	@GetMapping("regProduct")
 	public String regProduct() {

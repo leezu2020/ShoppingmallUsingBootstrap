@@ -33,5 +33,9 @@ public class NoticeDAOImp implements INoticeDAO{
 		// TODO Auto-generated method stub
 		sqlSession.selectOne(namespace + ".regNotice", notice);
 	}
+	public int getNoticeNum() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".getNoticeNum");
+	}
 	
 }

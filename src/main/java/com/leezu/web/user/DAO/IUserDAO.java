@@ -2,6 +2,7 @@ package com.leezu.web.user.DAO;
 
 import java.util.List;
 
+import com.leezu.web.paging.DAO.PagingDAO;
 import com.leezu.web.user.entity.User;
 import com.leezu.web.user.entity.UserRegReq;
 
@@ -14,5 +15,11 @@ public interface IUserDAO {
 	public User userLogin(User dto) throws Exception;
 	
 	//회원 리스트 조회
-	public List<User> userList() throws Exception;
+	List<User> userList(PagingDAO paging) throws Exception;
+	
+	//회원 수 조회
+	public int getUserNum();
+	
+	public User selectByID(String id);
+
 }

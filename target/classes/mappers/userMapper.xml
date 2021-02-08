@@ -32,16 +32,37 @@
 	</select>
 	
 	<!-- 회원 조회 -->
-	<select id="userList" resultType="User">
+	<select id="userList" parameterType="Paging" resultType="User">
 		select *
 		from user
 		where AUTHORITY = 0
-		order by USERNAME
+		order by regDate DESC
+		limit #{offset}, #{cntPerPage}
+	</select>
+	
+	<!-- 회원 수 조회 -->
+	<select id="getUserNum" resultType="int">
+		select count(*)
+		from user
 	</select>
 	
 	<!-- 공지사항 목록 조회 -->
 	<select id="noticeList" resultType="Notice">
 		select *
+		from notice
+		order by noticeID DESC
+	</select>
+	
+	<!-- 상품 목록 조회 -->
+	<select id="productList" resultType="Product">
+		select *
+		from product
+		order by productID DESC
+	</select>
+	
+	<!-- 공지사항 개수 출력 -->
+	<select id="getNoticeNum" resultType="int">
+		select count(*)
 		from notice
 	</select>
 	
@@ -61,11 +82,7 @@
 					#{writerID} )
 	</select>
 	
-	<!-- 상품 목록 조회 -->
-	<select id="productList" resultType="Product">
-		select *
-		from product
-	</select>
+
 	
 	<!-- 상품 등록 -->
 	<select id="regProduct" parameterType="preProduct">

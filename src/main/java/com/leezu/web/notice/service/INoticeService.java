@@ -15,4 +15,7 @@ public interface INoticeService {
 
 	// 공지사항 등록
 	public void regNotice(preNotice notice) throws Exception;
+
+	// 공지사항 개수 가져오기
+	public int getNoticeNum();
 }

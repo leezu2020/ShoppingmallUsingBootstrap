@@ -83,7 +83,7 @@ public class LoginController {
 			bindingResult.rejectValue("userPassword", "notMatch", "비밀번호가 틀립니다.");
 			return "login.userLogin";
 		} catch(IDNoExist e) {
-			bindingResult.rejectValue("userID", "noExist", "등록되지 않은 회원입니다.");
+			bindingResult.rejectValue("userPassword", "noExist", "등록되지 않은 회원입니다.");
 			return "login.userLogin";
 		}
 		

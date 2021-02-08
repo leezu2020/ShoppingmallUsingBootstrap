@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.leezu.web.paging.DAO.PagingDAO;
 import com.leezu.web.user.entity.User;
 import com.leezu.web.user.entity.UserRegReq;
 
@@ -44,8 +45,13 @@ public class UserDAOImp implements IUserDAO{
 
 	// 회원 조회
 	@Override
-	public List<User> userList() throws Exception {
-		return sqlSession.selectList(namespace + ".userList");
+	public List<User> userList(PagingDAO paging) throws Exception {
+		return sqlSession.selectList(namespace + ".userList", paging);
+	}
+
+	@Override
+	public int getUserNum() {
+		return sqlSession.selectOne(namespace + ".getUserNum");
 	}
 	
 }

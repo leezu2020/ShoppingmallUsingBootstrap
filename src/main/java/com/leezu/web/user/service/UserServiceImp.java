@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.leezu.web.controller.login.UserLoginValidator;
 import com.leezu.web.exception.IDNoExist;
 import com.leezu.web.exception.IDPasswordNotMatchingException;
+import com.leezu.web.paging.DAO.PagingDAO;
 import com.leezu.web.user.DAO.UserDAOImp;
 import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.User;
@@ -44,9 +45,24 @@ public class UserServiceImp implements IUserService{
 
 	// 회원 조회
 	@Override
-	public List<User> userList() throws Exception {
-
-		return userDAO.userList();
+	public List<User> userList(PagingDAO paging) throws Exception {
+		// TODO Auto-generated method stub
+		return userDAO.userList(paging);
 	}
+
+
+	// 회원 수 조회
+	@Override
+	public int getUserNum() {
+		return userDAO.getUserNum();
+	}
+	
+	@Override
+	public User selectByID(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }
