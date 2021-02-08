@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.leezu.web.notice.entity.Notice;
 import com.leezu.web.notice.entity.preNotice;
+import com.leezu.web.paging.DAO.PagingDAO;
 
 @Repository
 public class NoticeDAOImp implements INoticeDAO{
@@ -20,8 +21,8 @@ public class NoticeDAOImp implements INoticeDAO{
 	
 	// 게시판 목록 출력
 	@Override
-	public List<Notice> getList() throws Exception{
-		return sqlSession.selectList(namespace + ".noticeList");
+	public List<Notice> getList(PagingDAO paging) throws Exception{
+		return sqlSession.selectList(namespace + ".noticeList", paging);
 	}
 	@Override
 	public Notice getNotice(int noticeID) {

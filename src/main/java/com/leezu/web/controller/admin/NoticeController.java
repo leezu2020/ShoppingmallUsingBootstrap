@@ -6,9 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.leezu.web.notice.entity.preNotice;
 import com.leezu.web.notice.service.INoticeService;
+import com.leezu.web.paging.DAO.PagingDAO;
 
 @Controller("adminNoticeController")
 @RequestMapping("/admin/")
@@ -17,9 +19,18 @@ public class NoticeController {
 	@Autowired
 	private INoticeService noticeService;
 	
-	@RequestMapping("noticeList")
-	public String noticeList(Model model) throws Exception {
-		model.addAttribute("noticeList", noticeService.getList());
+	@GetMapping("noticeList")
+	public String noticeList(Model model, PagingDAO paging,
+			@RequestParam(defaultValue = "1")int nowPage,
+			@RequestParam(defaultValue = "5")int cntPerPage) throws Exception {
+		
+		
+		int userNum = noticeService.getNoticeNum();
+		
+		paging = new PagingDAO(userNum, nowPage, cntPerPage);
+		
+		model.addAttribute("noticeList", noticeService.getList(paging));
+		model.addAttribute("page", paging);
 		return "admin.notice.noticeList";
 	}
 	

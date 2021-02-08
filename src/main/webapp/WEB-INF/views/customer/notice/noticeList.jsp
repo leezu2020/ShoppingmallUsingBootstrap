@@ -37,4 +37,22 @@
 		
 		</tbody>
 	</table>
+	<div style="display: block; text-align: center;">		
+		<c:if test="${page.startPage != 1 }">
+			<a href="/customer/noticeList?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}">이전</a>
+		</c:if>
+		<c:forEach begin="${page.startPage }" end="${page.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == page.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != page.nowPage }">
+					<a href="/customer/noticeList?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${page.endPage != page.lastPage}">
+			<a href="/customer/noticeList?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}">다음</a>
+		</c:if>
+	</div>
 </div>
