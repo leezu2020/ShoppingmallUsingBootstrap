@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <title>공지사항</title>
 <div class="notice margin-top">
@@ -22,8 +23,17 @@
 		<c:forEach var="n" items="${noticeList}">
 			<tr>
 				<td>${n.noticeID}</td>
-				<td class="title indent text-align-left"><a href="noticeDetail">${n.title}</a></td>
-				<td>${n.content}</td>
+				<td class="title indent text-align-left"><a href="/customer/noticeDetail?id=${n.noticeID}">${n.title}</a></td>
+				<td>
+					<c:choose>
+			           <c:when test="${fn:length(n.content) > 30}">
+			            <c:out value="${fn:substring(n.content,0,29)}"/>....
+			           </c:when>
+			           <c:otherwise>
+			           	 <c:out value="${n.content}"/>
+			           </c:otherwise> 
+				    </c:choose>
+				</td>
 				<td>${n.writerID}</td>
 				<td>
 					<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" />		

@@ -40,6 +40,12 @@ public class NoticeServiceImp implements INoticeService {
 		noticeDAO.regNotice(notice);
 	}
 
+	@Override
+	public void modNotice(Notice notice) {
+		System.out.println("공지사항 수정");
+		noticeDAO.modNotice(notice);
+	}
+
 
 
 }

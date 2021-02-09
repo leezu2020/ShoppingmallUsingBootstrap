@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.leezu.web.notice.entity.Notice;
 import com.leezu.web.notice.entity.preNotice;
 import com.leezu.web.notice.service.INoticeService;
 import com.leezu.web.paging.DAO.PagingDAO;
@@ -19,6 +20,7 @@ public class NoticeController {
 	@Autowired
 	private INoticeService noticeService;
 	
+	// 공지사항 목록 출력
 	@GetMapping("noticeList")
 	public String noticeList(Model model, PagingDAO paging,
 			@RequestParam(defaultValue = "1")int nowPage,
@@ -34,6 +36,14 @@ public class NoticeController {
 		return "admin.notice.noticeList";
 	}
 	
+	// 공지사항 세부 조회
+	@RequestMapping("noticeDetail")
+	public String noticedetail(Model model, int id) throws Exception{
+		model.addAttribute("notice", noticeService.getNotice(id));
+		return "admin.notice.noticeDetail";
+	}
+	
+	// 공지사항 등록
 	@GetMapping("regNotice")
 	public String regNotice() {
 		return "admin.notice.regNotice";
@@ -43,5 +53,19 @@ public class NoticeController {
 	public String regNotice(preNotice notice) throws Exception {
 		noticeService.regNotice(notice);
 		return "redirect:noticeList";
+	}
+	
+	// 공지사항 수정
+	@GetMapping("modNotice")
+	public String modNotice(Model model, int id) throws Exception {
+		model.addAttribute("notice", noticeService.getNotice(id));
+		return "admin.notice.modNotice";
+	}
+	
+	@PostMapping("modNotice")
+	public String modNotice(Notice notice) {
+		System.out.println("modnotice");
+		noticeService.modNotice(notice);
+		return "redirect:noticeDetail?id="+notice.getNoticeID();
 	}
 }

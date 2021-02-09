@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib  prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <title>공지사항</title>
@@ -25,7 +25,7 @@
 		<c:forEach var="n" items="${noticeList}">
 			<tr>
 				<td>${n.noticeID}</td>
-				<td class="title indent text-align-left"><a href="noticeDetail">${n.title}</a></td>
+				<td class="title indent text-align-left"><a href="/admin/noticeDetail?id=${n.noticeID}">${n.title}</a></td>
 				<td>
 					<c:choose>
 			           <c:when test="${fn:length(n.content) > 30}">

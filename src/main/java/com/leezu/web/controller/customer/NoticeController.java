@@ -32,8 +32,8 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("noticeDetail")
-	public String noticedetail(Model model) throws Exception{
-		model.addAttribute("notice", noticeService.getNotice(1));
+	public String noticedetail(Model model, int id) throws Exception{
+		model.addAttribute("notice", noticeService.getNotice(id));
 		return "customer.notice.noticeDetail";
 	}
 	

@@ -34,9 +34,14 @@ public class NoticeDAOImp implements INoticeDAO{
 		// TODO Auto-generated method stub
 		sqlSession.selectOne(namespace + ".regNotice", notice);
 	}
+	@Override
 	public int getNoticeNum() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace + ".getNoticeNum");
+	}
+	@Override
+	public void modNotice(Notice notice) {
+		sqlSession.selectOne(namespace + ".modNotice", notice);
 	}
 	
 }

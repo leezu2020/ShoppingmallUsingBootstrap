@@ -32,6 +32,12 @@
 				</table>
 			</div>
 		
+	<button type="button" class="selectDeleteBtn" style="float:right;" onclick = "location.href = '/admin/modNotice?id=${notice.noticeID}'">수정하기</button>			
+		
+		
+		
+		
+		
 			<div class="margin-top text-align-center">
 				<a class="btn btn-list" href="noticelist">목록</a>
 			</div>

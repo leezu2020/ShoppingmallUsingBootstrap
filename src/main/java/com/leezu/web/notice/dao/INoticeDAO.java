@@ -20,4 +20,7 @@ public interface INoticeDAO {
 	// 공지사항 등록
 	void regNotice(preNotice notice);
 
+	// 공지사항 수정
+	void modNotice(Notice notice);
+
 }
