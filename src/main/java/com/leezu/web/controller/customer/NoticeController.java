@@ -33,7 +33,11 @@ public class NoticeController {
 	
 	@RequestMapping("noticeDetail")
 	public String noticedetail(Model model, int id) throws Exception{
+		// 세부 내용 가져오기
 		model.addAttribute("notice", noticeService.getNotice(id));
+		// 이전글 다음글 Notice 가져오기
+		model.addAttribute("pre", noticeService.getPre(id));
+		model.addAttribute("next", noticeService.getNext(id));
 		return "customer.notice.noticeDetail";
 	}
 	

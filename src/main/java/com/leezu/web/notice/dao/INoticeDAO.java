@@ -18,9 +18,12 @@ public interface INoticeDAO {
 	public int getNoticeNum();
 	
 	// 공지사항 등록
-	void regNotice(preNotice notice);
+	public void regNotice(preNotice notice);
 
 	// 공지사항 수정
-	void modNotice(Notice notice);
+	public void modNotice(Notice notice);
 
+	// 공지사항 이전글 다음글 가져오기
+	public Notice getPre(int id);
+	public Notice getNext(int id);
 }

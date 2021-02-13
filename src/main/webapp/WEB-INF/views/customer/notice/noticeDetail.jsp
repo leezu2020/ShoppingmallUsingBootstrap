@@ -33,7 +33,7 @@
 			</div>
 		
 			<div class="margin-top text-align-center">
-				<a class="btn btn-list" href="noticelist">목록</a>
+				<a class="btn btn-list" href="/admin/noticeList">목록</a>
 			</div>
 			
 			<div class="margin-top">
@@ -42,12 +42,12 @@
 						
 						<tr>
 							<th>다음글</th>
-							<td colspan="3"  class="text-align-left text-indent">다음 글 구현</td>
+							<td colspan="3"  class="text-align-left text-indent"><a class="text-blue text-strong" href="/customer/noticeDetail?id=${next.noticeID}">${next.title}</a></td>
 						</tr>
 						
 						<tr>
 							<th>이전글</th>
-							<td colspan="3"  class="text-align-left text-indent"><a class="text-blue text-strong" href="">이전 글 구현</a></td>
+							<td colspan="3"  class="text-align-left text-indent"><a class="text-blue text-strong" href="/customer/noticeDetail?id=${pre.noticeID}">${pre.title}</a></td>
 						</tr>
 						
 						

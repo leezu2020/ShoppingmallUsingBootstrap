@@ -22,4 +22,8 @@ public interface INoticeService {
 
 	// 공지사항 수정하기
 	public void modNotice(Notice notice);
+
+	// 공지사항 이전, 다음 제목 가져오기
+	public Notice getPre(int id);
+	public Notice getNext(int id);
 }

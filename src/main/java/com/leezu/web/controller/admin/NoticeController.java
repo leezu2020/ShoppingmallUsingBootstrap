@@ -40,6 +40,9 @@ public class NoticeController {
 	@RequestMapping("noticeDetail")
 	public String noticedetail(Model model, int id) throws Exception{
 		model.addAttribute("notice", noticeService.getNotice(id));
+		
+		model.addAttribute("pre", noticeService.getPre(id));
+		model.addAttribute("next", noticeService.getNext(id));
 		return "admin.notice.noticeDetail";
 	}
 	

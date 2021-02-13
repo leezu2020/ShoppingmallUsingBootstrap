@@ -60,7 +60,7 @@ public class UserServiceImp implements IUserService{
 	@Override
 	public User selectByID(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDAO.selectByID(id);
 	}
 
 

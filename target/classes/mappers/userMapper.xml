@@ -85,6 +85,18 @@
 				modDate = current_timestamp
 			where noticeID = #{noticeID}
 	</select>
+	
+	<!-- 공지사항 이전글 다음글 출력 -->
+	<select id="getNext" parameterType="int" resultType="Notice">
+		select *
+			from notice
+				<![CDATA[where noticeID = (select MIN(noticeID) from notice where noticeID > #{noticeID})]]>
+	</select>
+	<select id="getPre" parameterType="int" resultType="Notice">
+		select *
+			from notice
+				<![CDATA[where noticeID = (select MAX(noticeID) from notice where noticeID < #{noticeID})]]>
+	</select>
 
 <!-- 상품 -->	
 	<!-- 상품 목록 조회 -->

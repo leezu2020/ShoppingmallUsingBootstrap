@@ -46,6 +46,16 @@ public class NoticeServiceImp implements INoticeService {
 		noticeDAO.modNotice(notice);
 	}
 
+	@Override
+	public Notice getPre(int id) {
+		return noticeDAO.getPre(id);
+	}
+
+	@Override
+	public Notice getNext(int id) {
+		return noticeDAO.getNext(id);
+	}
+
 
 
 }
