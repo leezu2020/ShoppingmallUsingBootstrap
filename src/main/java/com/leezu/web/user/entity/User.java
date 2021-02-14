@@ -71,6 +71,9 @@ public class User {
 		this.emailChecked = emailChecked;
 		this.regDate = regDate;
 	}
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
 	public boolean matchPassword(String pw) {
 		return this.userPassword.equals(pw);
 	}

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<form:form role="form" modelAttribute="notice" action="/admin/modNotice?id=${notice.noticeID}" method="post">
+<form:form role="form" modelAttribute="notice" action="/admin/modNotice" method="post">
 <input type="hidden" name="noticeID" value="${notice.noticeID}"/>
 	<main>
 		<h2 class="main title">게시판</h2>
@@ -44,7 +44,7 @@
 				</table>
 			</div>
 		
-		<button type="submit" class="btn btn-default">저장</button>			
+		<button type="submit">저장</button>			
 	</main>		
 </form:form>
 		

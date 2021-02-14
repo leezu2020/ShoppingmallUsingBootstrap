@@ -1,5 +1,6 @@
 package com.leezu.web.user.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.leezu.web.paging.DAO.PagingDAO;
@@ -22,4 +23,6 @@ public interface IUserDAO {
 	
 	public User selectByID(String id);
 
+	// 회원 정보 수정
+	public void modUser(HashMap<String, Object> map);
 }

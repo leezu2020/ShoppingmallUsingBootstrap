@@ -38,4 +38,6 @@
 	                    </tbody>
 	                </table>
 	            </div>
+	            
+	            <button type="button" class="ModerateUserBtn" style="float:right;" onclick = "location.href = '/customer/user/modUser'">정보 수정</button>		
     </main>

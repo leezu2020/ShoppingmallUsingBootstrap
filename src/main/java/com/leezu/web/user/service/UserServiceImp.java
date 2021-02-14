@@ -1,5 +1,6 @@
 package com.leezu.web.user.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -61,6 +62,13 @@ public class UserServiceImp implements IUserService{
 	public User selectByID(String id) {
 		// TODO Auto-generated method stub
 		return userDAO.selectByID(id);
+	}
+
+	// 회원 정보 수정
+	@Override
+	public void modUser(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		userDAO.modUser(map);
 	}
 
 

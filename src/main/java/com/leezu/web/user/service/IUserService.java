@@ -1,5 +1,6 @@
 package com.leezu.web.user.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.leezu.web.controller.login.UserLoginValidator;
@@ -23,4 +24,7 @@ public interface IUserService {
 	public int getUserNum();
 	
 	public User selectByID(String id);
+
+	// 회원 정보 수정
+	public void modUser(HashMap<String, Object> map);
 }

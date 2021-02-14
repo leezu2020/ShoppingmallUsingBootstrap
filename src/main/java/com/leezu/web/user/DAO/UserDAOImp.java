@@ -1,5 +1,6 @@
 package com.leezu.web.user.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -52,6 +53,13 @@ public class UserDAOImp implements IUserDAO{
 	@Override
 	public int getUserNum() {
 		return sqlSession.selectOne(namespace + ".getUserNum");
+	}
+
+	// 회원 정보 수정
+	@Override
+	public void modUser(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace + ".modUser", map);
 	}
 	
 }
