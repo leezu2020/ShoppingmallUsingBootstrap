@@ -143,8 +143,23 @@
 	
 	<!-- 장바구니 목록 -->
 	<select id="basketList" resultType="Basket">
-		select *
-		from basket
-		where userID = #{userID}
+		select 
+			b.basketID as basketID,
+			b.userID as userID,
+			p.productID as productID,
+			u.userName as userName,
+			p.Name as productName,
+			p.price as productPrice,
+			b.count as count,
+			(price * count) as total,
+			b.regDate as regDate,
+			b.modDate as modDate
+		from 
+			basket b, user u, product p
+		where b.userID = #{userID}
+			and p.productID = b.productID
+			and u.userID = b.userID
+		order by
+			b.basketID
 	</select>
 </mapper>

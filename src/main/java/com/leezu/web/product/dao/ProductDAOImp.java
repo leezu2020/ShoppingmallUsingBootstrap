@@ -26,6 +26,7 @@ public class ProductDAOImp implements IProductDAO{
 	public void regProduct(preProduct product) {
 		sqlSession.selectOne(namespace + ".regProduct", product);
 	}
+	@Override
 	public Product get(int id) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace + ".getProduct", id);

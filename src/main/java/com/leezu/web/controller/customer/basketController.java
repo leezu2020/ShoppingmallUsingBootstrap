@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.leezu.web.basket.entity.Basket;
 import com.leezu.web.basket.service.IBasketService;
+import com.leezu.web.product.service.IProductService;
 import com.leezu.web.user.entity.AuthInfo;
 
 @Controller
@@ -20,6 +21,9 @@ public class basketController {
 
 	@Autowired
 	private IBasketService basketService;
+	
+	@Autowired
+	private IProductService productService;
 	
 	@RequestMapping("basketList")
 	public String basketList(Model model, HttpSession session) {
@@ -44,12 +48,10 @@ public class basketController {
 		int ea = Integer.parseInt(cnt);
 		prebasket.setCount(ea);
 		
-		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("basket", prebasket);
 		
 		basketService.addBasket(map);
-		
-		return "customer.user.basket.basketList";
+		return "redirect:basketList";
 	}
 }
