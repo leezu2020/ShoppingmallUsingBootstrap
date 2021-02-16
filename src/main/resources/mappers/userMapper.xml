@@ -140,4 +140,11 @@
 					#{basket.productID},
 					#{basket.count})
 	</select>
+	
+	<!-- 장바구니 목록 -->
+	<select id="basketList" resultType="Basket">
+		select *
+		from basket
+		where userID = #{userID}
+	</select>
 </mapper>

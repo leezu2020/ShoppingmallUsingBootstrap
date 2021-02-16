@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,7 +22,11 @@ public class basketController {
 	private IBasketService basketService;
 	
 	@RequestMapping("basketList")
-	public String basketList() {
+	public String basketList(Model model, HttpSession session) {
+		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
+		
+		
+		model.addAttribute("basketList", basketService.basketList(user.getUserID()));
 		return "customer.user.basket.basketList";
 	}
 	

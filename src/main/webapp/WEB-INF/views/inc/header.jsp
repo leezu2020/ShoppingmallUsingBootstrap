@@ -53,7 +53,7 @@
 											<li class="nav-item"><a class="nav-link"
 												href="/login/userLogout">로그아웃</a></li>
 											<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
-											<li class="nav-item"><a class="nav-link" href="/customer/user/userInfo">내
+											<li class="nav-item"><a class="nav-link" href="/customer/userInfo">내
 													정보</a></li>
 										</ul>
 									</div>

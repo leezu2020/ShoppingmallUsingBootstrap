@@ -1,6 +1,9 @@
 package com.leezu.web.basket.dao;
 
 import java.util.HashMap;
+import java.util.List;
+
+import com.leezu.web.basket.entity.Basket;
 
 public interface IBasketDAO {
 	
@@ -8,5 +11,5 @@ public interface IBasketDAO {
 	public void addBasket(HashMap<String, Object> map);
 	
 	// 장바구니 조회
-	
+	public List<Basket> basketList(String userID);
 }

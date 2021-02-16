@@ -7,8 +7,8 @@ public class Basket {
 	private String userID;
 	private int productID;
 	private int count;
-	private Date create_time;;
-	private Date update_time;
+	private Date regDate;
+	private Date modDate;
 	
 	public Basket() {
 		// TODO Auto-generated constructor stub
@@ -38,26 +38,31 @@ public class Basket {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public Date getCreate_time() {
-		return create_time;
+
+	public Date getRegDate() {
+		return regDate;
 	}
-	public void setCreate_time(Date create_time) {
-		this.create_time = create_time;
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
-	public Date getUpdate_time() {
-		return update_time;
+
+	public Date getModDate() {
+		return modDate;
 	}
-	public void setUpdate_time(Date update_time) {
-		this.update_time = update_time;
+
+	public void setModDate(Date modDate) {
+		this.modDate = modDate;
 	}
-	public Basket(int basketID, String userID, int productID, int count, Date create_time, Date update_time) {
+
+	public Basket(int basketID, String userID, int productID, int count, Date regDate, Date modDate) {
 		super();
 		this.basketID = basketID;
 		this.userID = userID;
 		this.productID = productID;
 		this.count = count;
-		this.create_time = create_time;
-		this.update_time = update_time;
+		this.regDate = regDate;
+		this.modDate = modDate;
 	}
 	
 	
