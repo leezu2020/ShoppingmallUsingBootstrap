@@ -14,10 +14,6 @@
     <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
   </definition>
   
-  <definition name="event.*" extends="web.page.common">
-     <put-attribute name="body" value="/WEB-INF/views/customer/event/{1}.jsp" />
-  </definition>
-  
   <definition name="login.*" template="/WEB-INF/views/login/inc/layout.jsp">
     <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
     <put-attribute name="body" value="/WEB-INF/views/login/{1}.jsp" />
@@ -25,9 +21,9 @@
   </definition>
   
   <!-- 로그인한 사용자 -->
-  <definition name="customer.user.*" extends="web.page.common">
+  <definition name="customer.user.*.*" extends="web.page.common">
   	<put-attribute name="aside" value="/WEB-INF/views/customer/user/inc/aside.jsp" />
-    <put-attribute name="body" value="/WEB-INF/views/customer/user/{1}.jsp" />
+    <put-attribute name="body" value="/WEB-INF/views/customer/user/{1}/{2}.jsp" />
   </definition>    
   
   <definition name="customer.*.*" extends="web.page.common">

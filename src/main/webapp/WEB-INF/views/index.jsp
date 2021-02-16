@@ -16,15 +16,15 @@
 				</ol>
 				<div class="carousel-inner" role="listbox">
 					<div class="carousel-item active">
-						<a href="event1"><img class="d-block img-fluid" src="http://placehold.it/900x350"
+						<a href="/customer/eventDetail?id=1"><img class="d-block img-fluid" src="http://placehold.it/900x350"
 							alt="First slide"></a>
 					</div>
 					<div class="carousel-item">
-						<a href="event2"><img class="d-block img-fluid" src="http://placehold.it/900x350"
+						<a href="/customer/eventDetail?id=2"><img class="d-block img-fluid" src="http://placehold.it/900x350"
 							alt="Second slide"></a>
 					</div>
 					<div class="carousel-item">
-						<a href="event3"><img class="d-block img-fluid" src="http://placehold.it/900x350"
+						<a href="/customer/eventDetail?id=3"><img class="d-block img-fluid" src="http://placehold.it/900x350"
 							alt="Third slide"></a>
 					</div>
 				</div>

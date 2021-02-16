@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3> 이벤트 3번째 페이지</h3>
+	<h2>장바구니 리스트</h2>
 </body>
 </html>

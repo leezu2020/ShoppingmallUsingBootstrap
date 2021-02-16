@@ -32,6 +32,16 @@
                             </td>
                         </tr>
                         <tr class="content">
+                        	<th>재고</th>
+                            <td colspan="4">
+                            <td>수량</td>
+							<td>
+								<button type="button" onclick="fnCalCount('p',this);">+</button>
+								<input type="text" name="ea" value="1" readonly="readonly" style="text-align: center;" />
+								<button type="button" onclick="fnCalCount('m', this);">-</button>
+							</td>
+                        </tr>
+                        <tr class="content">
                         	<th>설명</th>
                             <td colspan="4"><textarea class="content" name="description"></textarea></td>
                         </tr>
@@ -45,3 +55,17 @@
         </form>
 
     </main>
+    
+<script>
+function fnCalCount(type, ths) {
+	var $input = $(ths).parents("td").find("input[name='ea']");
+	var tCount = Number($input.val());
+
+	if (type == 'p') {
+		$input.val(Number(tCount) + 1);
+	} else {
+		if (tCount > 1)
+			$input.val(Number(tCount) - 1);
+	}
+}
+</script>

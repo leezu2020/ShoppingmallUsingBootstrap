@@ -14,7 +14,7 @@ public class ProductController {
 	@Autowired
 	private IProductService productService;
 	
-	@RequestMapping("productlist")
+	@RequestMapping("productList")
 	public String productlist(Model model) throws Exception{
 		model.addAttribute("productList", productService.getList());
 		return "customer.product.productList";
@@ -23,7 +23,7 @@ public class ProductController {
 	@RequestMapping("productDetail")
 	public String productDetail(Model model, String id) {
 		int ID = Integer.parseInt(id);
-		System.out.println(ID);
+		System.out.println("product ID : " + ID);
 		model.addAttribute("product", productService.get(ID));
 		return "customer.product.productDetail";
 	}

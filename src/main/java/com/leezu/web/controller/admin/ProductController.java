@@ -47,7 +47,7 @@ public class ProductController {
 	}
 	
 	@PostMapping("regProduct")
-	public String regProduct(String name, String price, String description, String size, MultipartFile file){
+	public String regProduct(String name, String price, String description, String size, MultipartFile file, String ea){
 		
 		String fileName = file.getOriginalFilename();
 		long fileSize = file.getSize();
@@ -66,8 +66,9 @@ public class ProductController {
 			e.printStackTrace();
 		}
 		int intprice = Integer.parseInt(price);
+		int intea = Integer.parseInt(ea);
 		
-		preProduct product = new preProduct(name, intprice, description, size, fileName); 
+		preProduct product = new preProduct(name, intprice, description, size, fileName, intea); 
 		
 		prodService.regProduct(product);
 		

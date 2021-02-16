@@ -116,12 +116,13 @@
 	
 	<!-- 상품 등록 -->
 	<select id="regProduct" parameterType="preProduct">
-		insert into product(name, price, description, size, imageUrl)
+		insert into product(name, price, description, size, imageUrl, ea)
 			values(	#{name},
 					#{price},
 					#{description},
 					#{size},
-					#{imageUrl})
+					#{imageUrl},
+					#{ea})
 	</select>
 	
 	<!-- 상품 아이디로 조회 -->
@@ -129,5 +130,14 @@
 		select *
 		from product
 		where productID = #{id}
+	</select>
+	
+<!-- 장바구니 -->	
+	<!-- 장바구니 등록 -->
+	<select id="addBasket" parameterType="hashmap">
+		insert into basket(userID, productID, count)
+			values( #{basket.userID},
+					#{basket.productID},
+					#{basket.count})
 	</select>
 </mapper>

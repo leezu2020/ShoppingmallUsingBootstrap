@@ -16,7 +16,7 @@ import com.leezu.web.user.entity.User;
 import com.leezu.web.user.service.IUserService;
 
 @Controller
-@RequestMapping("/customer/user/")
+@RequestMapping("/customer/")
 public class UserController {
 
 	@Autowired
@@ -29,7 +29,7 @@ public class UserController {
 		User userInfo = userService.selectByID(user.getUserID());
 		
 		model.addAttribute("user", userInfo);
-		return "customer.user.userInfo";
+		return "customer.user.info.userInfo";
 	}
 	
 	@GetMapping("modUser")
@@ -41,7 +41,7 @@ public class UserController {
 		model.addAttribute("userInfo", userInfo);		
 		
 		System.out.println("modUser GetMapping");
-		return "customer.user.modUser";
+		return "customer.user.info.modUser";
 	}
 	
 	@PostMapping("modUser")

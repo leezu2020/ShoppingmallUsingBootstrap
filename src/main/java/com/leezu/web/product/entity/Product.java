@@ -12,6 +12,7 @@ public class Product {
 	private String imageUrl;
 	private Date regDate;
 	private int like;
+	private int ea;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
@@ -65,8 +66,17 @@ public class Product {
 	public void setLike(int like) {
 		this.like = like;
 	}
+
+	public int getEa() {
+		return ea;
+	}
+
+	public void setEa(int ea) {
+		this.ea = ea;
+	}
+
 	public Product(int productID, String name, int price, String description, String size, String imageUrl,
-			Date regDate, int like) {
+			Date regDate, int like, int ea) {
 		super();
 		this.productID = productID;
 		this.name = name;
@@ -76,13 +86,14 @@ public class Product {
 		this.imageUrl = imageUrl;
 		this.regDate = regDate;
 		this.like = like;
+		this.ea = ea;
 	}
 
 	@Override
 	public String toString() {
 		return "Product [productID=" + productID + ", name=" + name + ", price=" + price + ", description="
 				+ description + ", size=" + size + ", imageUrl=" + imageUrl + ", regDate=" + regDate + ", like=" + like
-				+ "]";
+				+ ", ea=" + ea + "]";
 	}
 	
 	
