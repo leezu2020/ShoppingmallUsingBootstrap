@@ -12,4 +12,10 @@ public interface IBasketService {
 	
 	// 장바구니 조회
 	public List<Basket> basketList(String userID);
+	
+	// 장바구니 목록 확인
+	public int getBasketCount(HashMap<String, String> check);
+
+	// 장바구니 갱신
+	public void modBasket(HashMap<String, Object> map);
 }

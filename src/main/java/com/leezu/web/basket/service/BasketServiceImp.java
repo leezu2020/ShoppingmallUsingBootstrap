@@ -25,6 +25,18 @@ public class BasketServiceImp implements IBasketService{
 		System.out.println("장바구니 리스트");
 		return basketDAO.basketList(userID);
 	}
+
+	@Override
+	public int getBasketCount(HashMap<String, String> check) {
+		System.out.println("장바구니 확인");
+		return basketDAO.getBasketCount(check);
+	}
+
+	@Override
+	public void modBasket(HashMap<String, Object> map) {
+		System.out.println("장바구니 갱신");
+		basketDAO.modBasket(map);
+	}
 	
 	
 }

@@ -29,4 +29,16 @@ public class BasketDAOImp implements IBasketDAO{
 		
 		return sqlSession.selectList(namespace + ".basketList", userID);
 	}
+	
+	@Override
+	public int getBasketCount(HashMap<String, String> check) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".getBasketCount", check);
+	}
+
+	@Override
+	public void modBasket(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.selectOne(namespace + ".modBasket", map);
+	}
 }

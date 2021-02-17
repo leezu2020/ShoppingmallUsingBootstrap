@@ -162,4 +162,21 @@
 		order by
 			b.basketID
 	</select>
+	
+	<!-- 장바구니 확인 -->
+	<select id="getBasketCount" resultType="int">
+		select count
+			from basket
+			where userID = #{userID}
+				and productID = #{productID}
+	</select>
+	
+	<!-- 장바구니 갱신 -->
+	<select id="modBasket" parameterType="hashmap">
+		update basket
+			set count = count + #{basket.count},
+				modDate = current_timestamp
+			where userID = #{basket.userID}
+				and productID = #{basket.productID}
+	</select>
 </mapper>

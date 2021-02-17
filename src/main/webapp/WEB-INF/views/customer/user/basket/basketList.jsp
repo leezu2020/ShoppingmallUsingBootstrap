@@ -21,9 +21,9 @@
 			<c:forEach var="b" items="${basketList}">
 				<tr>
 					<td align="center">${b.productName}</td>
-					<td align="right"><fmt:formatNumber value="${b.productPrice}" pattern="###,###,###"/></td>
+					<td align="right"><fmt:formatNumber value="${b.productPrice}" pattern="###,###,###"/> 원</td>
 					<td align="center">${b.count}</td>
-					<td align="right"><fmt:formatNumber value="${b.total}" pattern="###,###,###"/></td>
+					<td align="right"><fmt:formatNumber value="${b.total}" pattern="###,###,###"/> 원</td>
 					<td align="center">
 						<fmt:formatDate value="${b.regDate}" pattern="yy-MM-dd" /> / 
 						<fmt:formatDate value="${b.modDate}" pattern="yy-MM-dd" />		
@@ -35,9 +35,8 @@
 			<tr>
 				<td></td>
 				<td></td>
-				<td></td>
-				<td>총 금액</td>
-				<td></td>
+				<td><b>총 금액</b></td>
+				<td align="right"><b><fmt:formatNumber value="${sum}" pattern="###,###,###"/> 원</b></td>
 			</tr>
 		</tfoot>
 	</table>
