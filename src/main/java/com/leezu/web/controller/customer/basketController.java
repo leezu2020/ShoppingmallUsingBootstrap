@@ -39,7 +39,7 @@ public class basketController {
 	}
 	
 	@PostMapping("addBasket")
-	public String addBasket(HttpSession session, String cnt, String productID) {
+	public String addBasket(HttpSession session, int cnt, String productID) {
 		System.out.println("cnt : " + cnt + " productID : " + productID);
 		
 		// 로그인 정보와 입력받은 수량, 상품id 저장 
@@ -50,8 +50,7 @@ public class basketController {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
 		prebasket.setUserID(user.getUserID());
 		
-		int ea = Integer.parseInt(cnt);
-		prebasket.setCount(ea);
+		prebasket.setCount(cnt);
 		
 		
 		// 장바구니에 이미 등록된 상품인지 확인
@@ -59,12 +58,12 @@ public class basketController {
 		check.put("productID", productID);
 		check.put("userID", user.getUserID());
 		
-		int existcount = basketService.getBasketCount(check);
-		if( existcount > 0) {
+		Integer existcount = basketService.getBasketCount(check);
+		if( existcount != null) {
 			System.out.println("장바구니에 이미 등록되어 있는 상품입니다.");
 			
 			// 등록되었다면 갯수가 재고 수량을 넘었는지 확인
-			if(ea + existcount > productService.get(productid).getEa()) {
+			if(cnt + existcount > productService.get(productid).getEa()) {
 				System.out.println("재고수량을 초과했습니다.");
 				return "redirect:productDetail?id="+productID;
 			}

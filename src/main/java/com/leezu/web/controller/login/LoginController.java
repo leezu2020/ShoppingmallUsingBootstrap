@@ -19,6 +19,8 @@ import com.leezu.web.exception.IDPasswordNotMatchingException;
 import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.UserRegReq;
 import com.leezu.web.user.service.IUserService;
+import com.leezu.web.validator.UserLoginValidator;
+import com.leezu.web.validator.UserRegValidator;
 
 @Controller
 @RequestMapping("/login/")

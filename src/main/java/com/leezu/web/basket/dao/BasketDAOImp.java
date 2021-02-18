@@ -31,7 +31,7 @@ public class BasketDAOImp implements IBasketDAO{
 	}
 	
 	@Override
-	public int getBasketCount(HashMap<String, String> check) {
+	public Integer getBasketCount(HashMap<String, String> check) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace + ".getBasketCount", check);
 	}
@@ -40,5 +40,11 @@ public class BasketDAOImp implements IBasketDAO{
 	public void modBasket(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		sqlSession.selectOne(namespace + ".modBasket", map);
+	}
+
+	@Override
+	public int getBasketNum(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".getBasketNum", id);
 	}
 }

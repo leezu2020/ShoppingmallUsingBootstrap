@@ -17,7 +17,7 @@
                         <tr>
                             <th>가격</th>
                             <td class="text-align-left text-indent text-strong text-orange" colspan="3">
-                                <input type="text" name="price" />
+                                <input type="number" name="price" min="1" max="2147483647"/>
                             </td>
                         </tr>
                         <tr>

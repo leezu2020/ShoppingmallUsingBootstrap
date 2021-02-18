@@ -13,4 +13,6 @@ public interface IProductDAO {
 	public void regProduct(preProduct product) throws Exception;
 	
 	public Product get(int id);
+	
+	public int getProductNum();
 }

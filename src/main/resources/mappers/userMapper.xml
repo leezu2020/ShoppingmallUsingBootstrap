@@ -114,6 +114,12 @@
 		order by productID DESC
 	</select>
 	
+	<!-- 상품 갯수 -->
+	<select id="getProductNum" resultType="int">
+		select count(*)
+		from product
+	</select>
+	
 	<!-- 상품 등록 -->
 	<select id="regProduct" parameterType="preProduct">
 		insert into product(name, price, description, size, imageUrl, ea)
@@ -160,17 +166,23 @@
 			and p.productID = b.productID
 			and u.userID = b.userID
 		order by
-			b.basketID
+			modDate DESC
 	</select>
 	
 	<!-- 장바구니 확인 -->
-	<select id="getBasketCount" resultType="int">
-		select count
+	<select id="getBasketCount" resultType="Integer">
+		select count as ea
 			from basket
 			where userID = #{userID}
 				and productID = #{productID}
 	</select>
 	
+	<!-- 장바구니 갯수 -->
+	<select id="getBasketNum" resultType="int">
+		select count(*)
+			from basket
+			where userID = #{userID}
+	</select>
 	<!-- 장바구니 갱신 -->
 	<select id="modBasket" parameterType="hashmap">
 		update basket

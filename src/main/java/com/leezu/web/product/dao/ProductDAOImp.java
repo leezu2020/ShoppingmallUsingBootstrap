@@ -31,5 +31,10 @@ public class ProductDAOImp implements IProductDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace + ".getProduct", id);
 	}
+	@Override
+	public int getProductNum() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".getProductNum");
+	}
 		
 }

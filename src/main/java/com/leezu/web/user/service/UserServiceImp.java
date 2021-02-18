@@ -7,7 +7,6 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.leezu.web.controller.login.UserLoginValidator;
 import com.leezu.web.exception.IDNoExist;
 import com.leezu.web.exception.IDPasswordNotMatchingException;
 import com.leezu.web.paging.DAO.PagingDAO;
@@ -15,6 +14,7 @@ import com.leezu.web.user.DAO.UserDAOImp;
 import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.User;
 import com.leezu.web.user.entity.UserRegReq;
+import com.leezu.web.validator.UserLoginValidator;
 
 @Service
 public class UserServiceImp implements IUserService{

@@ -3,11 +3,11 @@ package com.leezu.web.user.service;
 import java.util.HashMap;
 import java.util.List;
 
-import com.leezu.web.controller.login.UserLoginValidator;
 import com.leezu.web.paging.DAO.PagingDAO;
 import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.User;
 import com.leezu.web.user.entity.UserRegReq;
+import com.leezu.web.validator.UserLoginValidator;
 
 public interface IUserService {
 	

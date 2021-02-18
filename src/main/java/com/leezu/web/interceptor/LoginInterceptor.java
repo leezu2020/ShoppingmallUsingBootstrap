@@ -4,16 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.leezu.web.user.entity.AuthInfo;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter{
-
-	protected Log log = LogFactory.getLog(LoginInterceptor.class);
-
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

@@ -20,7 +20,7 @@
 		<tbody>
 			<c:forEach var="b" items="${basketList}">
 				<tr>
-					<td align="center">${b.productName}</td>
+					<td align="center" onClick="location.href='/customer/productDetail?id=${b.productID}'">${b.productName}</td>
 					<td align="right"><fmt:formatNumber value="${b.productPrice}" pattern="###,###,###"/> 원</td>
 					<td align="center">${b.count}</td>
 					<td align="right"><fmt:formatNumber value="${b.total}" pattern="###,###,###"/> 원</td>

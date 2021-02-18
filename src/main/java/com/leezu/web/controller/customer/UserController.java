@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.leezu.web.basket.service.IBasketService;
 import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.User;
 import com.leezu.web.user.service.IUserService;
@@ -21,6 +22,8 @@ public class UserController {
 
 	@Autowired
 	private IUserService userService;
+	@Autowired
+	private IBasketService basketService;
 	
 	@RequestMapping("userInfo")
 	public String userInfo(HttpSession session, Model model) {
@@ -28,6 +31,8 @@ public class UserController {
 		
 		User userInfo = userService.selectByID(user.getUserID());
 		
+		session.setAttribute("basketNum", basketService.getBasketNum(userInfo.getUserID()));
+		session.setAttribute("orderNum", 0);
 		model.addAttribute("user", userInfo);
 		return "customer.user.info.userInfo";
 	}

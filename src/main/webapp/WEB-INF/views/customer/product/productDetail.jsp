@@ -9,9 +9,7 @@
 				<table class="basket">
 					<tr style="text-align: center;">
 						<td colspan="3" align="right">
-							<button type="button" onclick="fnCalCount('p',this);">+</button>
-							<input type="text" name="cnt" value="1" readonly="readonly" style="text-align: center;" />
-							<button type="button" onclick="fnCalCount('m', this);">-</button>
+							<input type="number" name="cnt" value="1" style="text-align: center;" min="1" max="${product.ea}"/>
 						</td>
 						<td>
 							<input type="hidden" name="productID" value="${product.productID}">
@@ -63,21 +61,3 @@
 		</table>
 	</div>
 </main>
-
-
-<script>
-	function fnCalCount(type, ths) {
-		var $input = $(ths).parents("td").find("input[name='cnt']");
-		var tCount = Number($input.val());
-		var tEqCount = "<c:out value='${product.ea}'/>";
-
-		if (type == 'p') {
-			if (tCount < tEqCount)
-				$input.val(Number(tCount) + 1);
-
-		} else {
-			if (tCount > 1)
-				$input.val(Number(tCount) - 1);
-		}
-	}
-</script>

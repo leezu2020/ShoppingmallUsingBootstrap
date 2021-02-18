@@ -1,5 +1,7 @@
 package com.leezu.web.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +21,12 @@ public class HomeController{
 	private INoticeService noticeService;
 	
 	@GetMapping("")
-	public String index(Model model) throws Exception {
+	public String index(Model model, HttpSession session) throws Exception {
 		System.out.println("index 매핑");
 		model.addAttribute("productList", productService.getList());
-		model.addAttribute("noticeNum", noticeService.getNoticeNum());
+		session.setAttribute("noticeNum", noticeService.getNoticeNum());
+		session.setAttribute("eventNum", 3);
+		session.setAttribute("productNum", productService.getProductNum());
 		return "root.index";
 	}
 }

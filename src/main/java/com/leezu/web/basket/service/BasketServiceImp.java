@@ -27,7 +27,7 @@ public class BasketServiceImp implements IBasketService{
 	}
 
 	@Override
-	public int getBasketCount(HashMap<String, String> check) {
+	public Integer getBasketCount(HashMap<String, String> check) {
 		System.out.println("장바구니 확인");
 		return basketDAO.getBasketCount(check);
 	}
@@ -37,6 +37,10 @@ public class BasketServiceImp implements IBasketService{
 		System.out.println("장바구니 갱신");
 		basketDAO.modBasket(map);
 	}
-	
-	
+
+	@Override
+	public int getBasketNum(String id) {
+		// TODO Auto-generated method stub
+		return basketDAO.getBasketNum(id);
+	}
 }

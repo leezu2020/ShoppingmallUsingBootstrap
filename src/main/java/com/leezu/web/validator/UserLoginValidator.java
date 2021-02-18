@@ -1,4 +1,4 @@
-package com.leezu.web.controller.login;
+package com.leezu.web.validator;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;

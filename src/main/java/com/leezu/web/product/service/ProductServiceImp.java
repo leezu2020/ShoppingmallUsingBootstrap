@@ -30,4 +30,9 @@ public class ProductServiceImp implements IProductService{
 	public Product get(int id) {
 		return productDAO.get(id);
 	}
+
+	@Override
+	public int getProductNum() {
+		return productDAO.getProductNum();
+	}
 }

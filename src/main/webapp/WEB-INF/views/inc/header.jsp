@@ -44,20 +44,20 @@
 										
 									</div>
 								</c:when>
-								<c:otherwise>
-									<div class="collapse navbar-collapse" id="navbarResponsive">
-										<ul class="navbar-nav ml-auto">
-											<li class="nav-item"><a class="nav-link">${authInfo.userName}님, 환영합니다.</a><span
-												class="sr-only">(current)</span>
-											</li>
-											<li class="nav-item"><a class="nav-link"
-												href="/login/userLogout">로그아웃</a></li>
-											<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
-											<li class="nav-item"><a class="nav-link" href="/customer/userInfo">내
-													정보</a></li>
-										</ul>
-									</div>
-								</c:otherwise>
+									<c:when test="${authInfo.authority eq 0}">
+										<div class="collapse navbar-collapse" id="navbarResponsive">
+											<ul class="navbar-nav ml-auto">
+												<li class="nav-item"><a class="nav-link">${authInfo.userName}님, 환영합니다.</a><span
+													class="sr-only">(current)</span>
+												</li>
+												<li class="nav-item"><a class="nav-link"
+													href="/login/userLogout">로그아웃</a></li>
+												<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
+												<li class="nav-item"><a class="nav-link" href="/customer/userInfo">내
+														정보</a></li>
+											</ul>
+										</div>
+									</c:when>
 
 							</c:choose>
 						</c:otherwise>
