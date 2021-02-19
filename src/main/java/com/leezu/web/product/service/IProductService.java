@@ -16,4 +16,7 @@ public interface IProductService {
 	// 상품 갯수
 	public int getProductNum();
 
+	// 상품 삭제
+	public void delProductById(int id);
+
 }

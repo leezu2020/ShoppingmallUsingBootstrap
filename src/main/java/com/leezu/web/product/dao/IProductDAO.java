@@ -15,4 +15,6 @@ public interface IProductDAO {
 	public Product get(int id);
 	
 	public int getProductNum();
+	
+	public void delProductById(int id);
 }

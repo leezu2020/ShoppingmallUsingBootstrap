@@ -62,4 +62,10 @@ public class NoticeServiceImp implements INoticeService {
 		noticeDAO.delNoticeById(id);
 	}
 
+	@Override
+	public List<String> getPrivateNotice(String userID) {
+		// TODO Auto-generated method stub
+		return noticeDAO.getPrivateNotice(userID);
+	}
+
 }

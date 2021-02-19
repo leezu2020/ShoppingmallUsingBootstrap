@@ -1,6 +1,7 @@
 package com.leezu.web.controller.customer;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.leezu.web.basket.entity.Basket;
 import com.leezu.web.basket.service.IBasketService;
+import com.leezu.web.notice.service.INoticeService;
 import com.leezu.web.product.service.IProductService;
 import com.leezu.web.user.entity.AuthInfo;
 
@@ -25,6 +27,9 @@ public class basketController {
 	@Autowired
 	private IProductService productService;
 	
+	@Autowired
+	private INoticeService noticeService;
+	
 	@RequestMapping("basketList")
 	public String basketList(Model model, HttpSession session) {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
@@ -35,6 +40,11 @@ public class basketController {
 		
 		model.addAttribute("basketList", basketService.basketList(user.getUserID()));
 		model.addAttribute("sum", sum);
+		
+		String userID = user.getUserID();
+		List<String> notices = noticeService.getPrivateNotice(userID);
+		model.addAttribute("noticeList", notices);
+		
 		return "customer.user.basket.basketList";
 	}
 	

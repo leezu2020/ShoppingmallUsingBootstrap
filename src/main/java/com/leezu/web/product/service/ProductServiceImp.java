@@ -35,4 +35,9 @@ public class ProductServiceImp implements IProductService{
 	public int getProductNum() {
 		return productDAO.getProductNum();
 	}
+
+	@Override
+	public void delProductById(int id) {
+		productDAO.delProductById(id);
+	}
 }

@@ -14,9 +14,12 @@ public class ProductController {
 	@Autowired
 	private IProductService productService;
 	
+	
 	@RequestMapping("productList")
-	public String productlist(Model model) throws Exception{
+	public String productlist( Model model) throws Exception{
 		model.addAttribute("productList", productService.getList());
+		
+
 		return "customer.product.productList";
 	}
 	

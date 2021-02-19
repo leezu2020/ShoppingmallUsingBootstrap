@@ -57,5 +57,10 @@ public class NoticeDAOImp implements INoticeDAO{
 	public void delNoticeById(int id) {
 		sqlSession.selectOne(namespace + ".delNoticeById", id);
 		
+	}
+	@Override
+	public List<String> getPrivateNotice(String userID) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace + ".getPrivateNotice", userID);
 	}	
 }

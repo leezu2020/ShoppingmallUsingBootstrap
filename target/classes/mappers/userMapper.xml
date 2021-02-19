@@ -112,6 +112,12 @@
 			from notice
 				<![CDATA[where noticeID = (select MAX(noticeID) from notice where noticeID < #{noticeID})]]>
 	</select>
+<!-- 개인 공지사항 -->
+	<select id="getPrivateNotice" resultType="hashmap">
+		select content
+			from privateNotice
+			where userID = #{userID}
+	</select>
 
 <!-- 상품 -->	
 	<!-- 상품 목록 조회 -->
@@ -136,6 +142,22 @@
 					#{size},
 					#{imageUrl},
 					#{ea})
+	</select>
+	
+	<!-- 상품 삭제 -->
+	<select id="delProductById" parameterType="int">
+		delete
+			from product
+			where productID = #{id}
+	</select>
+	<!-- 상품 삭제시 유저에게 기록 -->
+	<select id="alertDelProduct">
+		insert into privateNotice (userID, content)
+			select b.userID as userID,
+				p.name as content
+				from basket b, product p
+				where b.productID = #{id}
+					and p.productID = #{id}
 	</select>
 	
 	<!-- 상품 아이디로 조회 -->
@@ -197,5 +219,11 @@
 				modDate = current_timestamp
 			where userID = #{basket.userID}
 				and productID = #{basket.productID}
+	</select>
+	<!-- 장바구니 삭제_관리자 -->
+	<select id="delBasketByAdmin">
+		delete 
+			from basket
+			where productID = #{id}
 	</select>
 </mapper>

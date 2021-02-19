@@ -2,8 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<title>장바구니</title>
+<h3 class="hidden">장바구니 변동사항</h3>
+<c:forEach var="n" items="${noticeList}">
+	<h5>상품 ${n.content}이 재고 및 기타이유로 삭제되었습니다.<fmt:formatNumber value="${n.regDate}" pattern="yy-mm-dd"/></h5>
+</c:forEach>
+
 <div class="notice margin-top">
 	<h3 class="hidden">장바구니 목록</h3>
 	<table class="table">
@@ -40,5 +43,4 @@
 			</tr>
 		</tfoot>
 	</table>
-
 </div>

@@ -74,4 +74,12 @@ public class ProductController {
 		
 		return "redirect:productList";
 	}
+	
+	@GetMapping("delProduct")
+	public String delProduct(int id) {
+		
+		prodService.delProductById(id);
+		
+		return "redirect:productList";
+	}
 }

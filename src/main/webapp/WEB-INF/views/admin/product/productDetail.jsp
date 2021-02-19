@@ -43,4 +43,7 @@
 	                    </tbody>
 	                </table>
 	            </div>
+	            
+            <button type="button" class="delProduct" style="float:right;" onclick = "location.href = '/admin/delProduct?id=${product.productID}'">삭제하기</button>	
+			<button type="button" class="modProduct" style="float:right;" onclick = "location.href = '/admin/modProduct?id=${product.productID}'">수정하기</button>	
     </main>

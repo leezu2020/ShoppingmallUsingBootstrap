@@ -27,6 +27,7 @@
 	<table class="table">
 		<thead>
 			<tr>
+				<th class="expand">선택</th>
 				<th class="expand">상품명</th>
 				<th class="w100">가격</th>
 				<th class="w130">설명</th>
@@ -39,6 +40,9 @@
 
 			<c:forEach var="prod" items="${productList}">
 				<tr>
+					<td class="checkBox">
+						<input type="checkBox" name="noticeChecked" value="${prod.productID}" />
+					</td>
 					<td><a href="/admin/productDetail?id=${prod.productID}">${prod.name}</a></td>
 					<td>${prod.price}</td>
 					<td>${prod.description}</td>

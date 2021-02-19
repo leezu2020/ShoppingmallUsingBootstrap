@@ -29,4 +29,7 @@ public interface INoticeDAO {
 	
 	// 공지사항 삭제
 	public void delNoticeById(int id);
+	
+	// 개인 공지사항 가져오기
+	public List<String> getPrivateNotice(String userID);
 }
