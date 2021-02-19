@@ -3,8 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <h3 class="hidden">장바구니 변동사항</h3>
+<c:choose>
+	<c:when test="${empty noticeList || noticeList eq null}">
+		<h5>변동 사항이 없습니다.</h5>
+	</c:when>
+</c:choose>
 <c:forEach var="n" items="${noticeList}">
-	<h5>상품 ${n.content}이 재고 및 기타이유로 삭제되었습니다.<fmt:formatNumber value="${n.regDate}" pattern="yy-mm-dd"/></h5>
+	<h5>상품 <b>"${n.content}"</b> 가 재고 및 기타이유로 삭제되었습니다.<fmt:formatNumber value="${n.regDate}" pattern="yy-mm-dd"/></h5>
 </c:forEach>
 
 <div class="notice margin-top">

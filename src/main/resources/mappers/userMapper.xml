@@ -118,7 +118,16 @@
 			from privateNotice
 			where userID = #{userID}
 	</select>
-
+	
+	<!-- 상품 삭제시 유저에게 기록 -->
+	<select id="alertDelProduct">
+		insert into privateNotice (userID, content)
+			select b.userID as userID,
+				p.name as content
+				from basket b, product p
+				where b.productID = #{id}
+					and p.productID = #{id}
+	</select>
 <!-- 상품 -->	
 	<!-- 상품 목록 조회 -->
 	<select id="productList" resultType="Product">
@@ -150,15 +159,7 @@
 			from product
 			where productID = #{id}
 	</select>
-	<!-- 상품 삭제시 유저에게 기록 -->
-	<select id="alertDelProduct">
-		insert into privateNotice (userID, content)
-			select b.userID as userID,
-				p.name as content
-				from basket b, product p
-				where b.productID = #{id}
-					and p.productID = #{id}
-	</select>
+
 	
 	<!-- 상품 아이디로 조회 -->
 	<select id="getProduct" parameterType="int" resultType="Product">
@@ -220,6 +221,7 @@
 			where userID = #{basket.userID}
 				and productID = #{basket.productID}
 	</select>
+	
 	<!-- 장바구니 삭제_관리자 -->
 	<select id="delBasketByAdmin">
 		delete 

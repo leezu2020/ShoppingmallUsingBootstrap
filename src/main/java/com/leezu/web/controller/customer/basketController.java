@@ -33,7 +33,7 @@ public class basketController {
 	@RequestMapping("basketList")
 	public String basketList(Model model, HttpSession session) {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
-		int sum = 0;
+		double sum = 0;
 		for(Basket b : basketService.basketList(user.getUserID())) {
 			sum += b.getTotal();
 		}
@@ -41,6 +41,7 @@ public class basketController {
 		model.addAttribute("basketList", basketService.basketList(user.getUserID()));
 		model.addAttribute("sum", sum);
 		
+		// 개인 공지사항 가져오기
 		String userID = user.getUserID();
 		List<String> notices = noticeService.getPrivateNotice(userID);
 		model.addAttribute("noticeList", notices);

@@ -10,7 +10,7 @@ public class Basket {
 	private String productName;
 	private int productPrice;
 	private int count;
-	private int total;
+	private double total;
 	private Date regDate;
 	private Date modDate;
 	
@@ -74,11 +74,11 @@ public class Basket {
 		this.count = count;
 	}
 
-	public int getTotal() {
+	public double getTotal() {
 		return total;
 	}
 
-	public void setTotal(int total) {
+	public void setTotal(double total) {
 		this.total = total;
 	}
 
@@ -99,7 +99,7 @@ public class Basket {
 	}
 
 	public Basket(int basketID, String userID, int productID, String userName, String productName, int productPrice,
-			int count, int total, Date regDate, Date modDate) {
+			int count, double total, Date regDate, Date modDate) {
 		super();
 		this.basketID = basketID;
 		this.userID = userID;
