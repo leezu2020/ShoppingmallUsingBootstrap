@@ -28,7 +28,7 @@
 				<td class="checkBox">
 					<input type="checkBox" name="noticeChecked" value="${n.noticeID}" />
 				</td>
-				<td>${n.noticeID}</td>
+				<td>${n.num}</td>
 				<td class="title indent text-align-left"><a href="/admin/noticeDetail?id=${n.noticeID}">${n.title}</a></td>
 				<td>
 					<c:choose>

@@ -44,7 +44,8 @@
 	<select id="modUser" parameterType="hashmap">
 		update user
 			set userName = #{modUser.userName},
-				userEmail = #{modUser.userEmail}
+				userEmail = #{modUser.userEmail},
+				modDate = current_timestamp
 			where userID = #{modUser.userID}
 	</select>
 	
@@ -56,10 +57,10 @@
 
 <!-- 공지사항 -->	
 	<!-- 공지사항 목록 조회 -->
-	<select id="noticeList" parameterType="Paging" resultType="Notice">
-		select *
-		from notice
-		order by noticeID DESC
+	<select id="noticeList" parameterType="Paging" resultType="NoticeView">
+		select @num:=@num+1 as num, n.*
+		from (select * from notice order by noticeID) n, (select @num:=0) tmp
+		order by num desc
 		limit #{offset}, #{cntPerPage}
 	</select>	
 	

@@ -22,7 +22,7 @@
 				
 		<c:forEach var="n" items="${noticeList}">
 			<tr>
-				<td>${n.noticeID}</td>
+				<td>${n.num}</td>
 				<td class="title indent text-align-left"><a href="/customer/noticeDetail?id=${n.noticeID}">${n.title}</a></td>
 				<td>
 					<c:choose>

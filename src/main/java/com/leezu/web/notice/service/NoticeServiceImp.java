@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.leezu.web.notice.dao.NoticeDAOImp;
 import com.leezu.web.notice.entity.Notice;
+import com.leezu.web.notice.entity.NoticeView;
 import com.leezu.web.notice.entity.preNotice;
 import com.leezu.web.paging.DAO.PagingDAO;
 
@@ -17,7 +18,7 @@ public class NoticeServiceImp implements INoticeService {
 	private NoticeDAOImp noticeDAO;
 	
 	@Override
-	public List<Notice> getList(PagingDAO paging) throws Exception {
+	public List<NoticeView> getList(PagingDAO paging) throws Exception {
 		System.out.println("공지사항 목록 가져오기");
 		return noticeDAO.getList(paging);
 	}

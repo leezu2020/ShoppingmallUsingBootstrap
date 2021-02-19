@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.leezu.web.notice.entity.Notice;
+import com.leezu.web.notice.entity.NoticeView;
 import com.leezu.web.notice.entity.preNotice;
 import com.leezu.web.paging.DAO.PagingDAO;
 
@@ -21,7 +22,7 @@ public class NoticeDAOImp implements INoticeDAO{
 	
 	// 게시판 목록 출력
 	@Override
-	public List<Notice> getList(PagingDAO paging) throws Exception{
+	public List<NoticeView> getList(PagingDAO paging) throws Exception{
 		return sqlSession.selectList(namespace + ".noticeList", paging);
 	}
 	@Override
