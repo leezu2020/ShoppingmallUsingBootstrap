@@ -56,6 +56,10 @@ public class NoticeServiceImp implements INoticeService {
 		return noticeDAO.getNext(id);
 	}
 
-
+	@Override
+	public void delNoticeById(int id) {
+		// TODO Auto-generated method stub
+		noticeDAO.delNoticeById(id);
+	}
 
 }

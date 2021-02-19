@@ -32,7 +32,8 @@
 				</table>
 			</div>
 		
-	<button type="button" class="selectDeleteBtn" style="float:right;" onclick = "location.href = '/admin/modNotice?id=${notice.noticeID}'">수정하기</button>			
+	<button type="button" class="delNotice" style="float:right;" onclick = "location.href = '/admin/delNotice?id=${notice.noticeID}'">삭제하기</button>	
+	<button type="button" class="modNotice" style="float:right;" onclick = "location.href = '/admin/modNotice?id=${notice.noticeID}'">수정하기</button>			
 		
 		
 		

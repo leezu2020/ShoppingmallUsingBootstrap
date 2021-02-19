@@ -26,4 +26,7 @@ public interface INoticeDAO {
 	// 공지사항 이전글 다음글 가져오기
 	public Notice getPre(int id);
 	public Notice getNext(int id);
+	
+	// 공지사항 삭제
+	public void delNoticeById(int id);
 }

@@ -76,4 +76,12 @@ public class NoticeController {
 		noticeService.modNotice(notice);
 		return "redirect:noticeDetail?id="+notice.getNoticeID();
 	}
+	
+	// 공지사항 삭제
+	@GetMapping("delNotice")
+	public String delNotice(int id) {
+		System.out.println("delnotice");
+		noticeService.delNoticeById(id);
+		return "redirect:noticeList";
+	}
 }

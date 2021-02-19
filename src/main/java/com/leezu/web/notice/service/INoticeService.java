@@ -26,4 +26,7 @@ public interface INoticeService {
 	// 공지사항 이전, 다음 제목 가져오기
 	public Notice getPre(int id);
 	public Notice getNext(int id);
+
+	// 공지사항 삭제
+	public void delNoticeById(int id);
 }

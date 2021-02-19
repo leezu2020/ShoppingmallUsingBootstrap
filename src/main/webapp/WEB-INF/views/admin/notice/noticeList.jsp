@@ -12,24 +12,28 @@
 	<table class="table">
 		<thead>
 			<tr>
+				<th class="expand">선택</th>
 				<th class="w60">번호</th>
-				<th class="expand">제목</th>
-				<th class="exapnd">내용</th>
+				<th class="w100">제목</th>
+				<th class="w250">내용</th>
 				<th class="w100">작성자</th>
-				<th class="w100">작성일</th>
-				<th class="w100">수정일</th>
+				<th class="expand">작성일</th>
+				<th class="expand">수정일</th>
 			</tr>
 		</thead>
 		<tbody>
 				
 		<c:forEach var="n" items="${noticeList}">
 			<tr>
+				<td class="checkBox">
+					<input type="checkBox" name="noticeChecked" value="${n.noticeID}" />
+				</td>
 				<td>${n.noticeID}</td>
 				<td class="title indent text-align-left"><a href="/admin/noticeDetail?id=${n.noticeID}">${n.title}</a></td>
 				<td>
 					<c:choose>
-			           <c:when test="${fn:length(n.content) > 30}">
-			            <c:out value="${fn:substring(n.content,0,29)}"/>....
+			           <c:when test="${fn:length(n.content) > 15}">
+			            <c:out value="${fn:substring(n.content,0,14)}"/>....
 			           </c:when>
 			           <c:otherwise>
 			           	 <c:out value="${n.content}"/>
@@ -38,17 +42,16 @@
 				</td>
 				<td>${n.writerID}</td>
 				<td>
-					<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" />		
+					<fmt:formatDate value="${n.regDate}" pattern="yy-MM-dd" />		
 				</td>
 				<td>
-					<fmt:formatDate value="${n.modDate}" pattern="yyyy-MM-dd" />
+					<fmt:formatDate value="${n.modDate}" pattern="yy-MM-dd" />
 				</td>
 			</tr>
 		</c:forEach>	
-
-		
 		</tbody>
 	</table>
+	<input type="submit" value="선택 삭제">
 	
 	<div style="display: block; text-align: center;">		
 		<c:if test="${page.startPage != 1 }">
