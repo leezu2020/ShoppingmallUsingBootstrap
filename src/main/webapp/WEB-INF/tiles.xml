@@ -22,7 +22,6 @@
   
   <!-- 로그인한 사용자 -->
   <definition name="customer.user.*.*" extends="web.page.common">
-  	<put-attribute name="aside" value="/WEB-INF/views/customer/user/inc/aside.jsp" />
     <put-attribute name="body" value="/WEB-INF/views/customer/user/{1}/{2}.jsp" />
   </definition>    
   
@@ -32,7 +31,6 @@
   
   <!-- 관리자 페이지 -->
   <definition name="admin.*.*" extends="web.page.common">
-    <put-attribute name="aside" value="/WEB-INF/views/admin/inc/aside.jsp" />
     <put-attribute name="body" value="/WEB-INF/views/admin/{1}/{2}.jsp" />
   </definition>
   

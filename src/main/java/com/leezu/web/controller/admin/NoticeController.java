@@ -1,5 +1,7 @@
 package com.leezu.web.controller.admin;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,9 +81,17 @@ public class NoticeController {
 	
 	// 공지사항 삭제
 	@GetMapping("delNotice")
-	public String delNotice(int id) {
+	public String delNotice(@RequestParam(required = false)Integer id,
+			@RequestParam(required = false)List<Integer> noticeChecked) {
 		System.out.println("delnotice");
-		noticeService.delNoticeById(id);
+		if(id != null)
+			noticeService.delNoticeById(id);
+		
+		if(noticeChecked != null) {
+			for(Integer noticeId : noticeChecked) {
+				noticeService.delNoticeById(noticeId);
+			}
+		}
 		return "redirect:noticeList";
 	}
 }
