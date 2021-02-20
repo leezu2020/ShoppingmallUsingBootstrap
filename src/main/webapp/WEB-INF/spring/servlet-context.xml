@@ -33,7 +33,11 @@
     <mvc:interceptors>
        <mvc:interceptor>
            <mvc:mapping path="/admin/**"/>
-           <bean class="com.leezu.web.interceptor.LoginInterceptor"/>
+           <bean class="com.leezu.web.interceptor.AdminInterceptor"/>
+       </mvc:interceptor>
+       <mvc:interceptor>
+           <mvc:mapping path="/customer/user/**"/>
+           <bean class="com.leezu.web.interceptor.UserInterceptor"/>
        </mvc:interceptor>
     </mvc:interceptors>
     

@@ -18,7 +18,7 @@ import com.leezu.web.product.service.IProductService;
 import com.leezu.web.user.entity.AuthInfo;
 
 @Controller
-@RequestMapping("/customer/")
+@RequestMapping("/customer/user/")
 public class basketController {
 
 	@Autowired
@@ -33,6 +33,8 @@ public class basketController {
 	@RequestMapping("basketList")
 	public String basketList(Model model, HttpSession session) {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
+		
+
 		double sum = 0;
 		for(Basket b : basketService.basketList(user.getUserID())) {
 			sum += b.getTotal();
@@ -47,6 +49,7 @@ public class basketController {
 		model.addAttribute("noticeList", notices);
 		
 		return "customer.user.basket.basketList";
+		
 	}
 	
 	@PostMapping("addBasket")
@@ -57,6 +60,7 @@ public class basketController {
 		Basket prebasket = new Basket();
 		int productid = Integer.parseInt(productID);
 		prebasket.setProductID(productid);
+		
 		
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
 		prebasket.setUserID(user.getUserID());

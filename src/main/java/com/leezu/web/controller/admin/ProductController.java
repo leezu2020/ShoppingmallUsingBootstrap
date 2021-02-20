@@ -1,6 +1,7 @@
 package com.leezu.web.controller.admin;
 
 import java.io.File;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.leezu.web.product.entity.preProduct;
@@ -76,9 +78,17 @@ public class ProductController {
 	}
 	
 	@GetMapping("delProduct")
-	public String delProduct(int id) {
+	public String delProduct(@RequestParam(required=false)Integer id,
+			@RequestParam(required=false)List<Integer> productChecked) {
 		
-		prodService.delProductById(id);
+		if(id != null)
+			prodService.delProductById(id);
+		
+		if(productChecked != null) {
+			for(Integer productId : productChecked) {
+				prodService.delProductById(productId);
+			}
+		}
 		
 		return "redirect:productList";
 	}

@@ -17,7 +17,7 @@ import com.leezu.web.user.entity.User;
 import com.leezu.web.user.service.IUserService;
 
 @Controller
-@RequestMapping("/customer/")
+@RequestMapping("/customer/user/")
 public class UserController {
 
 	@Autowired

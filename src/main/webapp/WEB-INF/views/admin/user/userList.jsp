@@ -28,7 +28,6 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th class="expand">선택</th>
 				<th class="w60">아이디</th>
 				<th class="expand">이름</th>
 				<th class="w100">이메일</th>
@@ -40,9 +39,6 @@
 
 			<c:forEach var="user" items="${userList}">
 				<tr>
-					<td class="checkBox">
-						<input type="checkBox" name="userBox" class="userBox" data-userID="${user.userID}" />
-					</td>
 					<td>${user.userID}</td>
 					<td>${user.userName}</td>
 					<td>${user.userEmail}</td>
@@ -57,7 +53,6 @@
 		</tbody>
 	</table>
 	
-	<button type="button" class="selectDeleteBtn" style="float:right;">선택 삭제</button>
 	
 	<div style="display: block; text-align: center;">		
 		<c:if test="${page.startPage != 1 }">

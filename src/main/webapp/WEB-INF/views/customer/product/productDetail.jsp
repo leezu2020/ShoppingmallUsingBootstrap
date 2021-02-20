@@ -5,7 +5,7 @@
 	<h2 class="main title">상품 조회</h2>
 	<c:choose>
 		<c:when test="${authInfo.authority eq 0}">
-			<form action = "/customer/addBasket" method = "post">
+			<form action = "/customer/user/addBasket" method = "post">
 				<table class="basket">
 					<tr style="text-align: center;">
 						<td colspan="3" align="right">
