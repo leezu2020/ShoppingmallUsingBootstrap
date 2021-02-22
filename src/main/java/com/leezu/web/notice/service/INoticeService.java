@@ -19,7 +19,7 @@ public interface INoticeService {
 	public void regNotice(preNotice notice) throws Exception;
 
 	// 공지사항 개수 가져오기
-	public int getNoticeNum();
+	public int getNoticeNum(String condition, String keyword);
 
 	// 공지사항 수정하기
 	public void modNotice(Notice notice);

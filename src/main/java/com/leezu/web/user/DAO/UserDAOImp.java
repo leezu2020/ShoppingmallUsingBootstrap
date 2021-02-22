@@ -51,8 +51,11 @@ public class UserDAOImp implements IUserDAO{
 	}
 
 	@Override
-	public int getUserNum() {
-		return sqlSession.selectOne(namespace + ".getUserNum");
+	public int getUserNum(String condition, String keyword) {
+		HashMap<String, String> key = new HashMap<String, String>();
+		key.put("condition", condition);
+		key.put("keyword", keyword);
+		return sqlSession.selectOne(namespace + ".getUserNum", key);
 	}
 
 	// 회원 정보 수정

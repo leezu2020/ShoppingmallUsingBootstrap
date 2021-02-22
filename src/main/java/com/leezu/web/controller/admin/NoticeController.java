@@ -28,14 +28,18 @@ public class NoticeController {
 	// 공지사항 목록 출력
 	@GetMapping("noticeList")
 	public String noticeList(Model model, PagingDAO paging,
+			
+			@RequestParam(defaultValue = "") String keyword,
+			@RequestParam(defaultValue = "") String condition,
+			
 			@RequestParam(defaultValue = "1")int nowPage,
 			@RequestParam(defaultValue = "5")int cntPerPage) throws Exception {
 		
-		
-		int userNum = noticeService.getNoticeNum();
-		
-		paging = new PagingDAO(userNum, nowPage, cntPerPage);
-		
+
+		int noticeNum = noticeService.getNoticeNum(condition, keyword);
+
+		paging = new PagingDAO(noticeNum, nowPage, cntPerPage, condition, keyword);
+
 		model.addAttribute("noticeList", noticeService.getList(paging));
 		model.addAttribute("page", paging);
 		return "admin.notice.noticeList";
@@ -60,7 +64,7 @@ public class NoticeController {
 	@PostMapping("regNotice")
 	public String regNotice(preNotice notice, HttpSession session, RedirectAttributes rttr) throws Exception {
 		noticeService.regNotice(notice);
-		session.setAttribute("noticeNum", noticeService.getNoticeNum());
+		session.setAttribute("noticeNum", noticeService.getNoticeNum("", ""));
 		rttr.addFlashAttribute("result", "noticeRegSuccess");
 		return "redirect:noticeList";
 	}

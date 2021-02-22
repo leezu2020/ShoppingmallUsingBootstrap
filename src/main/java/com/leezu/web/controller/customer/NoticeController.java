@@ -18,15 +18,21 @@ public class NoticeController {
 	
 	@RequestMapping("noticeList")
 	public String noticeList(Model model, PagingDAO paging,
+			
+			@RequestParam(defaultValue = "") String keyword,
+			@RequestParam(defaultValue = "") String condition,
+			
 			@RequestParam(defaultValue = "1")int nowPage,
 			@RequestParam(defaultValue = "5")int cntPerPage) throws Exception {
 		
 		
-		int userNum = noticeService.getNoticeNum();
-		
-		paging = new PagingDAO(userNum, nowPage, cntPerPage);
-		
+		System.out.println("갯수");
+		int noticeNum = noticeService.getNoticeNum(condition, keyword);
+		System.out.println("페이징");
+		paging = new PagingDAO(noticeNum, nowPage, cntPerPage, condition, keyword);
+		System.out.println("공지사항 어트리뷰트");
 		model.addAttribute("noticeList", noticeService.getList(paging));
+		System.out.println("페이지 어트리뷰트");
 		model.addAttribute("page", paging);
 		return "customer.notice.noticeList";
 	}

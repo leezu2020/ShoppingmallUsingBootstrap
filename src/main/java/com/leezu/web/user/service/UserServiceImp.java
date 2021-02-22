@@ -54,8 +54,8 @@ public class UserServiceImp implements IUserService{
 
 	// 회원 수 조회
 	@Override
-	public int getUserNum() {
-		return userDAO.getUserNum();
+	public int getUserNum(String condition, String keyword) {
+		return userDAO.getUserNum(condition, keyword);
 	}
 	
 	@Override
@@ -70,7 +70,5 @@ public class UserServiceImp implements IUserService{
 		// TODO Auto-generated method stub
 		userDAO.modUser(map);
 	}
-
-
 
 }

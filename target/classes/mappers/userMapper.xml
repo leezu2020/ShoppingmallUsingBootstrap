@@ -35,10 +35,30 @@
 	<select id="userList" parameterType="Paging" resultType="User">
 		select *
 		from user
-		where AUTHORITY = 0
+		<include refid="searchUser" />
 		order by regDate DESC
 		limit #{offset}, #{cntPerPage}
 	</select>
+	
+	<sql id="searchUser">
+	<choose>
+		<when test="condition != null">
+			<if test="condition == 'id'">
+				where userID like concat('%',#{keyword},'%')
+			</if>
+			<if test="condition == 'name'">
+				where userName like concat('%',#{keyword},'%')
+			</if>
+			<if test="condition == 'idname'">
+				where userID like concat('%',#{keyword},'%')
+				or userName like concat('%',#{keyword},'%')
+			</if>
+		</when>
+		<otherwise>
+			
+		</otherwise>
+	</choose>
+	</sql>
 
 	<!-- 회원 정보 수정 -->
 	<select id="modUser" parameterType="hashmap">
@@ -53,6 +73,7 @@
 	<select id="getUserNum" resultType="int">
 		select count(*)
 		from user
+		<include refid="searchUser" />
 	</select>
 
 <!-- 공지사항 -->	
@@ -60,6 +81,7 @@
 	<select id="noticeList" parameterType="Paging" resultType="NoticeView">
 		select @num:=@num+1 as num, n.*
 		from (select * from notice order by noticeID) n, (select @num:=0) tmp
+		<include refid="searchNotice" />
 		order by num desc
 		limit #{offset}, #{cntPerPage}
 	</select>	
@@ -68,7 +90,27 @@
 	<select id="getNoticeNum" resultType="int">
 		select count(*)
 		from notice
+		<include refid="searchNotice" />
 	</select>
+	
+	<sql id="searchNotice">
+		<choose>
+			<when test="condition != ''">
+				<choose>
+					<when test="condition == 'all'">
+						where title like concat('%',#{keyword},'%')
+						or content like concat('%',#{keyword},'%')
+					</when>
+					<otherwise>
+						where ${condition} like concat('%',#{keyword},'%')
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				
+			</otherwise>
+		</choose>
+	</sql>
 	
 	<!-- 공지사항 세부 조회 -->
 	<select id="noticeById" parameterType="int" resultType="Notice">

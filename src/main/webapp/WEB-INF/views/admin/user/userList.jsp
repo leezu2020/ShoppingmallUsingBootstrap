@@ -56,7 +56,7 @@
 	
 	<div style="display: block; text-align: center;">		
 		<c:if test="${page.startPage != 1 }">
-			<a href="/admin/userList?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}">이전</a>
+			<a href="/admin/userList?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}&condition=${page.condition}&keyword=${page.keyword}">이전</a>
 		</c:if>
 		<c:forEach begin="${page.startPage }" end="${page.endPage }" var="p">
 			<c:choose>
@@ -64,12 +64,25 @@
 					<b>${p }</b>
 				</c:when>
 				<c:when test="${p != page.nowPage }">
-					<a href="/admin/userList?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
+					<a href="/admin/userList?nowPage=${p }&cntPerPage=${page.cntPerPage}&condition=${page.condition}&keyword=${page.keyword}">${p }</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 		<c:if test="${page.endPage != page.lastPage}">
-			<a href="/admin/userList?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}">다음</a>
+			<a href="/admin/userList?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}&condition=${page.condition}&keyword=${page.keyword}">다음</a>
 		</c:if>
 	</div>
 </div>
+<!-- 유저 검색 기능 -->
+<form action="/admin/userList" method="get">
+	<div style="text-align: center;">
+		<label for="condition" >검색조건</label>
+		<select name="condition" id="condition">
+			<option value="id" <c:if test="${condition eq 'id'}">selected</c:if>>아이디</option>
+			<option value="name" <c:if test="${condition eq 'name'}">selected</c:if>>이름</option>
+			<option value="idname" <c:if test="${condition eq 'idname'}">selected</c:if>>아이디+이름</option>
+		</select>
+		<input type="text" name="keyword" id="keyword" placeholder="검색어" value="${keyword }"/>
+		<button type="submit">검색</button>
+	</div>
+</form>

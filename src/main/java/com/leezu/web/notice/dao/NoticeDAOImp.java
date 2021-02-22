@@ -1,5 +1,6 @@
 package com.leezu.web.notice.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -36,9 +37,11 @@ public class NoticeDAOImp implements INoticeDAO{
 		sqlSession.selectOne(namespace + ".regNotice", notice);
 	}
 	@Override
-	public int getNoticeNum() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne(namespace + ".getNoticeNum");
+	public int getNoticeNum(String condition, String keyword) {
+		HashMap<String, String> key = new HashMap<String, String>();
+		key.put("condition", condition);
+		key.put("keyword", keyword);
+		return sqlSession.selectOne(namespace + ".getNoticeNum", key);
 	}
 	@Override
 	public void modNotice(Notice notice) {

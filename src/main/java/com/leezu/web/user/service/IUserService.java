@@ -21,7 +21,7 @@ public interface IUserService {
 	public List<User> userList(PagingDAO paging) throws Exception;
 
 	// 회원 수 조회
-	public int getUserNum();
+	public int getUserNum(String condition, String keyword);
 	
 	public User selectByID(String id);
 

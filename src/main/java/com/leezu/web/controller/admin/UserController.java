@@ -21,12 +21,26 @@ public class UserController {
 
 	@GetMapping("userList")
 	public String userList(Model model, PagingDAO paging,
+			
+			@RequestParam(defaultValue = "") String keyword,
+			@RequestParam(defaultValue = "") String condition,
+			
 			@RequestParam(defaultValue = "1")int nowPage,
 			@RequestParam(defaultValue = "5")int cntPerPage) throws Exception {
 		
-		int userNum = userService.getUserNum();
+		/*
+		 * // 키워드에 한글이 포함될 가능성이 있기 때문에 미리 인코딩 String encodedKeyword = null; try {
+		 * encodedKeyword = URLEncoder.encode(keyword, "utf-8");
+		 * System.out.println("encodedKeyword는" + encodedKeyword); }
+		 * catch(UnsupportedEncodingException e) { e.printStackTrace(); }
+		 */
 		
-		paging = new PagingDAO(userNum, nowPage, cntPerPage);
+		
+		
+		int userNum = userService.getUserNum(condition, keyword);		
+		System.out.println("검색된 유저 수 : " + userNum);
+		
+		paging = new PagingDAO(userNum, nowPage, cntPerPage, condition, keyword);
 		
 		model.addAttribute("userList", userService.userList(paging));
 		model.addAttribute("page", paging);

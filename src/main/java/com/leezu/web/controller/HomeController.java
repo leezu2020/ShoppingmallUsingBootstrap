@@ -24,7 +24,7 @@ public class HomeController{
 	public String index(Model model, HttpSession session) throws Exception {
 		System.out.println("index 매핑");
 		model.addAttribute("productList", productService.getList());
-		session.setAttribute("noticeNum", noticeService.getNoticeNum());
+		session.setAttribute("noticeNum", noticeService.getNoticeNum("",""));
 		session.setAttribute("eventNum", 3);
 		session.setAttribute("productNum", productService.getProductNum());
 		return "root.index";

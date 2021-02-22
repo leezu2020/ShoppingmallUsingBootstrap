@@ -16,7 +16,7 @@ public interface INoticeDAO {
 	public Notice getNotice(int noticeID) throws Exception;
 
 	// 공지사항 개수 출력
-	public int getNoticeNum();
+	public int getNoticeNum(String condition, String keyword);
 	
 	// 공지사항 등록
 	public void regNotice(preNotice notice);

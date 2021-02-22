@@ -19,10 +19,11 @@ public interface IUserDAO {
 	List<User> userList(PagingDAO paging) throws Exception;
 	
 	//회원 수 조회
-	public int getUserNum();
+	public int getUserNum(String condition, String keyword);
 	
 	public User selectByID(String id);
 
 	// 회원 정보 수정
 	public void modUser(HashMap<String, Object> map);
+
 }
