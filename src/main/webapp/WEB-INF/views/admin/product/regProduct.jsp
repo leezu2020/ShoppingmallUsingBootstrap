@@ -17,7 +17,7 @@
                         <tr>
                             <th>가격</th>
                             <td class="text-align-left text-indent text-strong text-orange" colspan="3">
-                                <input type="number" name="price" min="1" max="2147483647"/>
+                                <input type="number" name="price" min="1" max="2147483647"/> <b>원</b>
                             </td>
                         </tr>
                         <tr>
@@ -27,18 +27,19 @@
                         </tr>
                         <tr>
                             <th>사이즈</th>
-                            <td class="text-align-left text-indent text-strong text-orange" colspan="3">
-                                <input type="text" name="size" />
-                            </td>
+                            <td>
+	                           <select name="size" id="size">
+									<option value="s" selected>S</option>
+									<option value="m" >M</option>
+									<option value="l" >L</option>
+									<option value="xl" >XL</option>
+								</select>
+							</td>
                         </tr>
                         <tr class="content">
                         	<th>재고</th>
-                            <td colspan="4">
-                            <td>수량</td>
 							<td>
-								<button type="button" onclick="fnCalCount('p',this);">+</button>
-								<input type="text" name="ea" value="1" readonly="readonly" style="text-align: center;" />
-								<button type="button" onclick="fnCalCount('m', this);">-</button>
+								<input type="number" name="ea" min="1" max="2147483647"/> <b>개</b>
 							</td>
                         </tr>
                         <tr class="content">
@@ -55,17 +56,3 @@
         </form>
 
     </main>
-    
-<script>
-function fnCalCount(type, ths) {
-	var $input = $(ths).parents("td").find("input[name='ea']");
-	var tCount = Number($input.val());
-
-	if (type == 'p') {
-		$input.val(Number(tCount) + 1);
-	} else {
-		if (tCount > 1)
-			$input.val(Number(tCount) - 1);
-	}
-}
-</script>

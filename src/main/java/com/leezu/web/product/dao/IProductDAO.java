@@ -7,9 +7,6 @@ import com.leezu.web.product.entity.preProduct;
 
 public interface IProductDAO {
 	
-	// 제품 목록 가져오기
-	public List<Product> getList() throws Exception;
-	
 	public void regProduct(preProduct product) throws Exception;
 	
 	public Product get(int id);
@@ -17,4 +14,8 @@ public interface IProductDAO {
 	public int getProductNum();
 	
 	public void delProductById(int id);
+	
+	public void modProduct(Product product);
+
+	public List<Product> getList(String keyword, String size, int minprice, int maxprice) throws Exception;
 }

@@ -20,12 +20,19 @@
 	                            </td>
 	                        </tr>
 	                        <tr>
+								<th>수량</th>
+								<td class="text-align-left text-indent text-strong text-orange" colspan="3">
+								${product.ea}
+								</td>
+							</tr>
+	                        <tr>
 	                            <th>상품 이미지</th>
 	                            <td colspan="3" class="text-align-left text-indent">
 	                            <img class="card-img-top"
 								src="${pageContext.request.contextPath}/resources/images/${product.imageUrl}"
 								onerror="this.src='http://placehold.it/700x400'"
-								alt="${n.name}">
+								alt="${n.name}"
+								style="width:300px">
 								</td>
 	                        </tr>
 	                        <tr>

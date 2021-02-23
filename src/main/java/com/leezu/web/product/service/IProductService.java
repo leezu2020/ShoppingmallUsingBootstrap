@@ -7,7 +7,7 @@ import com.leezu.web.product.entity.preProduct;
 
 public interface IProductService {
 	// 상품 목록 출력
-	public List<Product> getList() throws Exception;
+	public List<Product> getList(String keyword, String size, int minprice, int maxprice) throws Exception;
 
 	public void regProduct(preProduct product);
 
@@ -18,5 +18,8 @@ public interface IProductService {
 
 	// 상품 삭제
 	public void delProductById(int id);
+	
+	// 상품 수정
+	public void modProduct(Product product);
 
 }

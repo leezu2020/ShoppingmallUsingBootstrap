@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.leezu.web.product.entity.Product;
 import com.leezu.web.product.entity.preProduct;
 import com.leezu.web.product.service.IProductService;
 
@@ -29,8 +30,12 @@ public class ProductController {
 	private IProductService prodService;
 	
 	@RequestMapping("productList")
-	public String productList(Model model) throws Exception {
-		model.addAttribute("productList", prodService.getList());
+	public String productList(Model model,
+			@RequestParam(defaultValue = "all") String size,
+			@RequestParam(defaultValue = "") String keyword,
+			@RequestParam(defaultValue = "1") int minprice,
+			@RequestParam(defaultValue = "2147483647") int maxprice) throws Exception {
+		model.addAttribute("productList", prodService.getList(keyword, size, minprice, maxprice));
 		System.out.println("productList 조회");
 		return "admin.product.productList";
 	}
@@ -91,5 +96,38 @@ public class ProductController {
 		}
 		
 		return "redirect:productList";
+	}
+	
+	@GetMapping("modProduct")
+	public String modProduct(String id, Model model) {
+		
+		model.addAttribute("product", prodService.get(Integer.parseInt(id)));
+		
+		return "admin.product.modProduct";
+	}
+	
+	@PostMapping("modProduct")
+	public String modProduct(Product product, MultipartFile file) {
+		
+		String fileName = file.getOriginalFilename();
+		long fileSize = file.getSize();
+		System.out.printf("수정한 fileName : %s, fileSize : %d\n", fileName, fileSize);
+		
+		String webPath = "/resources/images";
+		String realPath = ctx.getRealPath(webPath);
+		System.out.printf("realPath : %s\n", realPath);
+		
+		try {
+			new File(realPath).mkdir();
+			realPath += File.separator + fileName;
+			File saveFile = new File(realPath);
+			file.transferTo(saveFile);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		product.setImageUrl(fileName);
+		prodService.modProduct(product);
+		
+		return "redirect:productDetail?id="+product.getProductID();
 	}
 }

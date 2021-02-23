@@ -1,5 +1,6 @@
 package com.leezu.web.product.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -19,8 +20,13 @@ public class ProductDAOImp implements IProductDAO{
 	private static final String namespace = "com.leezu.mapper.userMapper";
 	
 	@Override
-	public List<Product> getList() throws Exception {
-		return sqlSession.selectList(namespace + ".productList");
+	public List<Product> getList(String keyword, String size, int minprice, int maxprice) throws Exception {
+		HashMap<String, Object> condition = new HashMap<String, Object>();
+		condition.put("keyword", keyword);
+		condition.put("size", size);
+		condition.put("minprice", minprice);
+		condition.put("maxprice", maxprice);
+		return sqlSession.selectList(namespace + ".productList", condition);
 	}
 	@Override
 	public void regProduct(preProduct product) {
@@ -47,6 +53,9 @@ public class ProductDAOImp implements IProductDAO{
 		// 해당 상품 제거
 		System.out.println("해당 상품 제거");
 		sqlSession.selectOne(namespace + ".delProductById", id);
+	}
+	public void modProduct(Product product) {
+		sqlSession.selectOne(namespace + ".modProduct", product);
 	}
 		
 }

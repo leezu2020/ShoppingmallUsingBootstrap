@@ -15,12 +15,6 @@ public class ProductServiceImp implements IProductService{
 	private ProductDAOImp productDAO;
 
 	@Override
-	public List<Product> getList() throws Exception {
-		// TODO Auto-generated method stub
-		return productDAO.getList();
-	}
-
-	@Override
 	public void regProduct(preProduct product) {
 		// TODO Auto-generated method stub
 		productDAO.regProduct(product);
@@ -39,5 +33,16 @@ public class ProductServiceImp implements IProductService{
 	@Override
 	public void delProductById(int id) {
 		productDAO.delProductById(id);
+	}
+
+	@Override
+	public void modProduct(Product product) {
+		productDAO.modProduct(product);
+		
+	}
+
+	@Override
+	public List<Product> getList(String keyword, String size, int minprice, int maxprice) throws Exception {
+		return productDAO.getList(keyword, size, minprice, maxprice);
 	}
 }

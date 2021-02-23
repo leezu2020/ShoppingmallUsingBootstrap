@@ -176,8 +176,23 @@
 	<select id="productList" resultType="Product">
 		select *
 		from product
+		<include refid="searchProduct" />
 		order by productID DESC
 	</select>
+	
+	<sql id="searchProduct">
+		<choose>
+			<when test="size != 'all'">
+				where size like #{size}
+					and name like concat('%',#{keyword},'%')
+					and price between #{minprice} and #{maxprice}
+			</when>
+			<otherwise>
+				where name like concat('%',#{keyword},'%')
+					and price between #{minprice} and #{maxprice}
+			</otherwise>
+		</choose>
+	</sql>	
 	
 	<!-- 상품 갯수 -->
 	<select id="getProductNum" resultType="int">
@@ -209,6 +224,17 @@
 		select *
 		from product
 		where productID = #{id}
+	</select>
+	
+	<!-- 상품 변경 -->
+	<select id="modProduct" parameterType="Product">
+		update product
+			set price = #{price},
+				description = #{description},
+				size = #{size},
+				imageUrl = #{imageUrl},
+				ea = #{ea}
+			where productID = #{productID}
 	</select>
 	
 <!-- 장바구니 -->	
