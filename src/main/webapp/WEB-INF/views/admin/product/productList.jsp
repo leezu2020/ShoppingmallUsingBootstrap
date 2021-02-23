@@ -20,6 +20,25 @@
 	rel="stylesheet">
 
 </head>
+<!-- 상품 검색 기능 -->
+<form action="/admin/productList" method="get">
+	<div style="text-align: center; padding-top: 20px; padding-bottom: 30px">
+		<input type="text" name="keyword" id="keyword" style="text-align: center" placeholder="상품명" value="${keyword }"/>
+		<label for="size" ><b>사이즈</b></label>
+		<select name="size" id="size">
+			<option value="all" <c:if test="${size eq 'all'}">selected</c:if>>all</option>
+			<option value="s" <c:if test="${size eq 's'}">selected</c:if>>s</option>
+			<option value="m" <c:if test="${size eq 'm'}">selected</c:if>>m</option>
+			<option value="l" <c:if test="${size eq 'l'}">selected</c:if>>l</option>
+			<option value="xl" <c:if test="${size eq 'xl'}">selected</c:if>>xl</option>
+		</select>
+		<b>가격 범위</b>
+		<input type="number" min="1" max="2147483647" name="minprice"> <b>~</b>
+		<input type="number" min="1" max="2147483647" name="maxprice"> 원
+		
+		<button type="submit">검색</button>
+	</div>
+</form>
 
 <form action="/admin/delProduct" method="get">
 	<div class="notice margin-top">
