@@ -22,7 +22,8 @@ public class ProductController {
 			@RequestParam(defaultValue = "all") String size,
 			@RequestParam(defaultValue = "") String keyword,
 			@RequestParam(defaultValue = "1") int minprice,
-			@RequestParam(defaultValue = "2147483647") int maxprice) throws Exception{
+			@RequestParam(defaultValue = "2147483647") int maxprice,
+			@RequestParam(defaultValue = "array") String view) throws Exception{
 		
 		model.addAttribute("productList", productService.getList(keyword, size, minprice, maxprice));
 		System.out.println("keyword : " + keyword +
@@ -30,7 +31,11 @@ public class ProductController {
 				" minprice : " + minprice + 
 				" maxprice : " + maxprice + 
 				" 상품 리스트 검색 갯수" + productService.getList(keyword, size, minprice, maxprice).size());
-
+		model.addAttribute("size", size);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("minprice", minprice);
+		model.addAttribute("maxprice", maxprice);
+		model.addAttribute("view", view);
 		return "customer.product.productList";
 	}
 	

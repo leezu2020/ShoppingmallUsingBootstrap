@@ -16,13 +16,13 @@
 	                        <tr>
 	                            <th>가격</th>
 	                            <td class="text-align-left text-indent text-strong text-orange" colspan="3">
-	                               ${product.price}
+	                               ${product.price} <b>원</b>
 	                            </td>
 	                        </tr>
 	                        <tr>
 								<th>수량</th>
 								<td class="text-align-left text-indent text-strong text-orange" colspan="3">
-								${product.ea}
+								${product.ea} <b>개</b><
 								</td>
 							</tr>
 	                        <tr>
