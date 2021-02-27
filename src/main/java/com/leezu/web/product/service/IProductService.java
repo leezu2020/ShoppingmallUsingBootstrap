@@ -1,5 +1,6 @@
 package com.leezu.web.product.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.leezu.web.product.entity.Product;
@@ -21,5 +22,8 @@ public interface IProductService {
 	
 	// 상품 수정
 	public void modProduct(Product product);
+
+	// 상품 재고 수량 수정
+	public void modProductCnt(HashMap<String, Object> map);
 
 }

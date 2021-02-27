@@ -3,7 +3,7 @@
     <main>
         <h2 class="main title">공지사항 등록</h2>
 
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" action="/admin/regNotice">
             <div class="margin-top first">
                 <h3 class="hidden">공지사항 입력</h3>
                 <table class="table">
@@ -22,7 +22,7 @@
                         </tr>
                         <tr class="content">
                         	<th>내용</th>
-                            <td colspan="4"><textarea class="content" name="content"></textarea></td>
+                            <td colspan="4"><textarea class="content" name="content" cols="100" rows="20" required></textarea></td>
                         </tr>
                     </tbody>
                 </table>

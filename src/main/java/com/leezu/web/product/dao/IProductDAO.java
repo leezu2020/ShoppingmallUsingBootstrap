@@ -1,5 +1,6 @@
 package com.leezu.web.product.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.leezu.web.product.entity.Product;
@@ -18,4 +19,6 @@ public interface IProductDAO {
 	public void modProduct(Product product);
 
 	public List<Product> getList(String keyword, String size, int minprice, int maxprice) throws Exception;
+
+	public void modProductCnt(HashMap<String, Object> map);
 }

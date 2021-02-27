@@ -80,7 +80,7 @@ public class basketController {
 			// 등록되었다면 갯수가 재고 수량을 넘었는지 확인
 			if(cnt + existcount > productService.get(productid).getEa()) {
 				System.out.println("재고수량을 초과했습니다.");
-				return "redirect:productDetail?id="+productID;
+				return "redirect:/customer/productDetail?id="+productID;
 			}
 			else {
 				HashMap<String, Object> map = new HashMap<String, Object>();

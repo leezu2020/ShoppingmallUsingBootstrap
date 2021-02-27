@@ -21,4 +21,10 @@ public interface IBasketService {
 	
 	// 장바구니 갯수 확인
 	public int getBasketNum(String id);
+
+	// 장바구니 아이디로 조회
+	public List<Basket> getBasketByIds(int[] basketIDs);
+
+	// 장바구니 아이디로 삭제
+	public void delBasketById(Integer integer);
 }

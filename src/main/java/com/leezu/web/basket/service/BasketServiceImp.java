@@ -43,4 +43,16 @@ public class BasketServiceImp implements IBasketService{
 		// TODO Auto-generated method stub
 		return basketDAO.getBasketNum(id);
 	}
+
+	@Override
+	public List<Basket> getBasketByIds(int[] basketIDs) {
+		System.out.println("장바구니 아이디로 리스트 조회");
+		return basketDAO.getBasketByIds(basketIDs);
+	}
+
+	@Override
+	public void delBasketById(Integer id) {
+		// TODO Auto-generated method stub
+		basketDAO.delBasketById(id);
+	}
 }

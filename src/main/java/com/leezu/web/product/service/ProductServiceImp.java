@@ -1,5 +1,6 @@
 package com.leezu.web.product.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,11 @@ public class ProductServiceImp implements IProductService{
 	@Override
 	public List<Product> getList(String keyword, String size, int minprice, int maxprice) throws Exception {
 		return productDAO.getList(keyword, size, minprice, maxprice);
+	}
+
+	@Override
+	public void modProductCnt(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		productDAO.modProductCnt(map);
 	}
 }

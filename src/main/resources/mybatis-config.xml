@@ -13,5 +13,6 @@
 		<typeAlias alias="preNotice" type="com.leezu.web.notice.entity.preNotice"/>
 		<typeAlias alias="Paging" type="com.leezu.web.paging.DAO.PagingDAO"/>
 		<typeAlias alias="Basket" type="com.leezu.web.basket.entity.Basket"/>
+		<typeAlias alias="Order" type="com.leezu.web.order.entity.Order"/>
 	</typeAliases>
 </configuration>

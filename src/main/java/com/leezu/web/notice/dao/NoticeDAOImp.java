@@ -34,7 +34,7 @@ public class NoticeDAOImp implements INoticeDAO{
 	@Override
 	public void regNotice(preNotice notice) {
 		// TODO Auto-generated method stub
-		sqlSession.selectOne(namespace + ".regNotice", notice);
+		sqlSession.insert(namespace + ".regNotice", notice);
 	}
 	@Override
 	public int getNoticeNum(String condition, String keyword) {
@@ -45,7 +45,7 @@ public class NoticeDAOImp implements INoticeDAO{
 	}
 	@Override
 	public void modNotice(Notice notice) {
-		sqlSession.selectOne(namespace + ".modNotice", notice);
+		sqlSession.update(namespace + ".modNotice", notice);
 	}
 	@Override
 	public Notice getPre(int id) {
@@ -59,7 +59,7 @@ public class NoticeDAOImp implements INoticeDAO{
 	}
 	@Override
 	public void delNoticeById(int id) {
-		sqlSession.selectOne(namespace + ".delNoticeById", id);
+		sqlSession.delete(namespace + ".delNoticeById", id);
 		
 	}
 	@Override

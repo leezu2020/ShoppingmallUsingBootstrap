@@ -30,7 +30,7 @@ public class ProductDAOImp implements IProductDAO{
 	}
 	@Override
 	public void regProduct(preProduct product) {
-		sqlSession.selectOne(namespace + ".regProduct", product);
+		sqlSession.insert(namespace + ".regProduct", product);
 	}
 	@Override
 	public Product get(int id) {
@@ -46,16 +46,24 @@ public class ProductDAOImp implements IProductDAO{
 	public void delProductById(int id) {
 		// 해당 상품이 제거됐다고 사용자에게 글 추가
 		System.out.println("해당 상품 제거 사용자에게 글 추가");
-		sqlSession.selectList(namespace + ".alertDelProduct", id);
+		sqlSession.insert(namespace + ".alertDelProduct", id);
 		// 해당 상품이 포함된 장바구니 제거
 		System.out.println("해당 상품 포함된 장바구니 제거");
-		sqlSession.selectList(namespace + ".delBasketByAdmin", id);
+		sqlSession.delete(namespace + ".delBasketByAdmin", id);
 		// 해당 상품 제거
 		System.out.println("해당 상품 제거");
-		sqlSession.selectOne(namespace + ".delProductById", id);
+		sqlSession.delete(namespace + ".delProductById", id);
 	}
+	
+	@Override
 	public void modProduct(Product product) {
-		sqlSession.selectOne(namespace + ".modProduct", product);
+		sqlSession.update(namespace + ".modProduct", product);
+	}
+	
+	@Override
+	public void modProductCnt(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace + ".modProductCnt", map);
 	}
 		
 }
