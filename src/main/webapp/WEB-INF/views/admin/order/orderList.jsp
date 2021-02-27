@@ -8,8 +8,10 @@
 	<table class="table">
 		<thead>
 			<tr align="center">
-				<th class="w30">수량</th>
-				<th class="w100">금액</th>
+				<th class="w40">주문자</th>
+				<th class="w60" align="center">상품아이디</th>
+				<th class="w50">수량</th>
+				<th class="w30">금액</th>
 				<th class="w70">주문일 / 배송 예정일</th>
 			</tr>
 		</thead>
@@ -17,6 +19,8 @@
 		<tbody>
 			<c:forEach var="o" items="${orderList}">
 				<tr>
+					<td align="center">${o.userID}</td>
+					<td align="center">${o.productID}</td>
 					<td align="center">${o.count}</td>
 					<td align="right"><fmt:formatNumber value="${o.total}" pattern="###,###,###"/> 원</td>
 					<td align="center">

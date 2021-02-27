@@ -27,15 +27,7 @@ public class UserController {
 			
 			@RequestParam(defaultValue = "1")int nowPage,
 			@RequestParam(defaultValue = "5")int cntPerPage) throws Exception {
-		
-		/*
-		 * // 키워드에 한글이 포함될 가능성이 있기 때문에 미리 인코딩 String encodedKeyword = null; try {
-		 * encodedKeyword = URLEncoder.encode(keyword, "utf-8");
-		 * System.out.println("encodedKeyword는" + encodedKeyword); }
-		 * catch(UnsupportedEncodingException e) { e.printStackTrace(); }
-		 */
-		
-		
+
 		
 		int userNum = userService.getUserNum(condition, keyword);		
 		System.out.println("검색된 유저 수 : " + userNum);

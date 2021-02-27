@@ -33,5 +33,11 @@ public class OrderDAOImp implements IOrderDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace + ".getOrderList", userID);
 	}
+
+	@Override
+	public List<Order> getOrderAllList() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace + ".getOrderAllList");
+	}
 	
 }

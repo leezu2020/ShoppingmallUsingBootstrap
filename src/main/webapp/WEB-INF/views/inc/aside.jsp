@@ -30,6 +30,7 @@
 					<a href="/admin/noticeList" class="list-group-item">공지사항 관리 &nbsp<span class="badge badge-pill badge-dark">${noticeNum}</span></a>
 					<a href="/admin/eventList" class="list-group-item">이벤트 관리 &nbsp<span class="badge badge-pill badge-dark">${eventNum}</span></a>
 					<a href="/admin/productList"	class="list-group-item">전체 상품 관리 &nbsp<span class="badge badge-pill badge-dark">${productNum}</span></a>
+					<a href="/admin/orderList"	class="list-group-item">주문 관리 &nbsp<span class="badge badge-pill badge-dark">${orderNum}</span></a>
 				</div>
 		</c:when>
 	</c:choose>

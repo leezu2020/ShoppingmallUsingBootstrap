@@ -31,4 +31,10 @@ public class OrderServiceImp implements IOrderService{
 		// TODO Auto-generated method stub
 		return orderDAO.getOrderList(userID);
 	}
+
+	@Override
+	public List<Order> getOrderAllList() {
+		// TODO Auto-generated method stub
+		return orderDAO.getOrderAllList();
+	}
 }

@@ -10,5 +10,9 @@ public interface IOrderDAO {
 	
 	public int getCount();
 
+	// 사용자 아이디로 주문 목록 확인
 	public List<Order> getOrderList(String userID);
+
+	// 모든 주문 목록 확인
+	public List<Order> getOrderAllList();
 }

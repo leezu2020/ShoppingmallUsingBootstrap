@@ -350,4 +350,10 @@
 			from orderlist
 			where userID = #{userID}
 	</select>
+	
+	<select id="getOrderAllList" resultType="Order">
+		select *
+			from orderlist
+		order by orderID DESC
+	</select>
 </mapper>
