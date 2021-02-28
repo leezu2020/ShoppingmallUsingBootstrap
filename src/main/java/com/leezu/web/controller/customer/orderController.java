@@ -39,7 +39,15 @@ public class OrderController {
 	public String orderList(Model model, HttpSession session) {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
 		
-		model.addAttribute("orderList", orderService.getOrderList(user.getUserID()));
+		List<Order> orderList = orderService.getOrderList(user.getUserID());
+		
+		double totalPrice = 0;
+		for(Order o : orderList) {
+			totalPrice += o.getTotal();
+		}
+		
+		model.addAttribute("orderList", orderList);
+		model.addAttribute("totalPrice", totalPrice);
 		return "customer.user.order.orderList";
 	}
 	

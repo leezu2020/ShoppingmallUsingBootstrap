@@ -3,6 +3,10 @@ package com.leezu.web.order.entity;
 import java.util.Date;
 
 public class Order {
+	private String name;
+	private String userName;
+	private int price;
+	
 	private int id;
 	private String orderID;
 	private int productID;
@@ -20,6 +24,29 @@ public class Order {
 	}
 
 	
+	
+	// 주문 목록 출력을 위한 임시 저장
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
+
 	// 주문번호 
 	public int getId() {
 		return id;

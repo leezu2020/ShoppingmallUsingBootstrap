@@ -337,7 +337,7 @@
 
 		insert into orderlist (orderID, productID, userID, dueDate, zipcode, address, state, count, total)
 			values (#{orderID}, #{productID}, #{userID},
-				date_add(now(), interval 4 day), #{zipcode}, #{address}, '주문 준비중', #{count}, #{total})
+				date_add(now(), interval 4 day), #{zipcode}, #{address}, 'preOrder', #{count}, #{total})
 	</insert>
 	
 	<select id="getOrderCount" resultType="int">
@@ -346,14 +346,44 @@
 	</select>
 	
 	<select id="getOrderList" resultType="Order">
-		select *
-			from orderlist
-			where userID = #{userID}
+		select 
+			o.orderID as orderID,
+			p.name as name,
+			o.regDate as regDate,
+			o.dueDate as dueDate,
+			o.zipcode as zipcode,
+			o.address as address,
+			o.state as state,
+			p.price as price,
+			o.count as count,
+			o.total as total
+		from orderlist o, product p, user u
+		where o.userID = #{userID}
+			and p.productID = o.productID
 	</select>
 	
 	<select id="getOrderAllList" resultType="Order">
-		select *
-			from orderlist
+		select 
+			o.orderID as orderID,
+			p.name as name,
+			u.userName as userName,
+			o.regDate as regDate,
+			o.dueDate as dueDate,
+			o.zipcode as zipcode,
+			o.address as address,
+			o.state as state,
+			p.price as price,
+			o.count as count,
+			o.total as total
+		from orderlist o, product p, user u
+		where p.productID = o.productID
+			and u.userID = o.userID 
 		order by orderID DESC
+	</select>
+	
+	<select id="getOrderNum" resultType="int">
+		select count(*)
+			from orderlist
+			where userID = #{userID}
 	</select>
 </mapper>

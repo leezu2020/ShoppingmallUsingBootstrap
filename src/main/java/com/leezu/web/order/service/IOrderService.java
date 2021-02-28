@@ -13,4 +13,6 @@ public interface IOrderService {
 	public List<Order> getOrderList(String userID);
 	
 	public List<Order> getOrderAllList();
+
+	public int getOrderNum(String userID);
 }

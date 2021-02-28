@@ -1,11 +1,11 @@
 package com.leezu.web.controller.login;
 
-import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.leezu.web.basket.service.IBasketService;
 import com.leezu.web.exception.IDNoExist;
 import com.leezu.web.exception.IDPasswordNotMatchingException;
+import com.leezu.web.order.service.IOrderService;
 import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.UserRegReq;
 import com.leezu.web.user.service.IUserService;
@@ -26,8 +28,14 @@ import com.leezu.web.validator.UserRegValidator;
 @RequestMapping("/login/")
 public class LoginController {
 
-	@Inject
+	@Autowired
 	private IUserService userService;
+	
+	@Autowired
+	private IBasketService basketService;
+	
+	@Autowired
+	private IOrderService orderService;
 
 	@GetMapping("userReg")
 	public String userReg(UserRegReq userRegReq){
@@ -89,6 +97,13 @@ public class LoginController {
 			return "login.userLogin";
 		}
 		
+		AuthInfo userInfo = (AuthInfo) session.getAttribute("authInfo");
+		if(userInfo.getAuthority() == 0) {
+			session.setAttribute("basketNum", basketService.getBasketNum(userInfo.getUserID()));
+			session.setAttribute("orderNum", orderService.getOrderNum(userInfo.getUserID()));
+		} else if(userInfo.getAuthority() == 1) {
+			
+		}
 		return "login.successLogin";
 	}
 	

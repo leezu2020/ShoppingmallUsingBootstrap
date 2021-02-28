@@ -31,8 +31,6 @@ public class UserController {
 		
 		User userInfo = userService.selectByID(user.getUserID());
 		
-		session.setAttribute("basketNum", basketService.getBasketNum(userInfo.getUserID()));
-		session.setAttribute("orderNum", 0);
 		model.addAttribute("user", userInfo);
 		return "customer.user.info.userInfo";
 	}
