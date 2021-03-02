@@ -1,5 +1,6 @@
 package com.leezu.web.order.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,11 @@ public class OrderServiceImp implements IOrderService{
 	public int getOrderNum(String userID) {
 		// TODO Auto-generated method stub
 		return orderDAO.getOrderNum(userID);
+	}
+
+	@Override
+	public void modOrder(HashMap<String, String> map) {
+		// TODO Auto-generated method stub
+		orderDAO.modOrder(map);
 	}
 }

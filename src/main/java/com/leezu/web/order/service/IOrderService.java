@@ -1,5 +1,6 @@
 package com.leezu.web.order.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.leezu.web.order.entity.Order;
@@ -15,4 +16,6 @@ public interface IOrderService {
 	public List<Order> getOrderAllList();
 
 	public int getOrderNum(String userID);
+	
+	public void modOrder(HashMap<String, String> map);
 }

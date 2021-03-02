@@ -1,5 +1,6 @@
 package com.leezu.web.order.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.leezu.web.order.entity.Order;
@@ -18,4 +19,7 @@ public interface IOrderDAO {
 	
 	// 사용자의 주문 갯수 확인
 	public int getOrderNum(String userID);
+
+	// 주문 상태 변경
+	public void modOrder(HashMap<String, String> map);
 }

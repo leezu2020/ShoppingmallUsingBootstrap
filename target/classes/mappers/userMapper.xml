@@ -42,20 +42,26 @@
 	
 	<sql id="searchUser">
 	<choose>
-		<when test="condition != null">
+		<when test="condition != null or condition eq ''">
 			<if test="condition == 'id'">
 				where userID like concat('%',#{keyword},'%')
+					and authority = 0
 			</if>
 			<if test="condition == 'name'">
 				where userName like concat('%',#{keyword},'%')
+					and authority = 0
 			</if>
 			<if test="condition == 'idname'">
 				where userID like concat('%',#{keyword},'%')
-				or userName like concat('%',#{keyword},'%')
+					or userName like concat('%',#{keyword},'%')
+					and authority = 0
+			</if>
+			<if test="condition eq ''">
+				where authority = 0
 			</if>
 		</when>
 		<otherwise>
-			
+			where authority = 0
 		</otherwise>
 	</choose>
 	</sql>
@@ -337,7 +343,7 @@
 
 		insert into orderlist (orderID, productID, userID, dueDate, zipcode, address, state, count, total)
 			values (#{orderID}, #{productID}, #{userID},
-				date_add(now(), interval 4 day), #{zipcode}, #{address}, 'preOrder', #{count}, #{total})
+				date_add(now(), interval 4 day), #{zipcode}, #{address}, '주문 준비중', #{count}, #{total})
 	</insert>
 	
 	<select id="getOrderCount" resultType="int">
@@ -357,7 +363,7 @@
 			p.price as price,
 			o.count as count,
 			o.total as total
-		from orderlist o, product p, user u
+		from orderlist o, product p
 		where o.userID = #{userID}
 			and p.productID = o.productID
 	</select>
@@ -386,4 +392,10 @@
 			from orderlist
 			where userID = #{userID}
 	</select>
+	
+	<update id="modOrder" parameterType="hashmap">
+		update orderlist
+			set state = #{state}
+			where orderID = #{orderID}
+	</update>
 </mapper>

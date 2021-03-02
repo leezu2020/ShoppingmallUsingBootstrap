@@ -97,6 +97,7 @@ public class basketController {
 			map.put("basket", prebasket);
 			
 			basketService.addBasket(map);
+			session.setAttribute("basketNum", basketService.getBasketNum(user.getUserID()));
 			return "redirect:basketList";
 		}
 	}

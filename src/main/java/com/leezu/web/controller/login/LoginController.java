@@ -102,7 +102,9 @@ public class LoginController {
 			session.setAttribute("basketNum", basketService.getBasketNum(userInfo.getUserID()));
 			session.setAttribute("orderNum", orderService.getOrderNum(userInfo.getUserID()));
 		} else if(userInfo.getAuthority() == 1) {
-			
+
+			session.setAttribute("userNum", userService.getUserNum(null, null));
+			session.setAttribute("allOrderNum", orderService.getOrderAllList().size());
 		}
 		return "login.successLogin";
 	}

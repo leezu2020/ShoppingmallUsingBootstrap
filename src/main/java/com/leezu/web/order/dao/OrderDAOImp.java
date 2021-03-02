@@ -1,5 +1,6 @@
 package com.leezu.web.order.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -40,9 +41,16 @@ public class OrderDAOImp implements IOrderDAO{
 		return sqlSession.selectList(namespace + ".getOrderAllList");
 	}
 
+	@Override
 	public int getOrderNum(String userID) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace + ".getOrderNum", userID);
+	}
+
+	@Override
+	public void modOrder(HashMap<String, String> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace + ".modOrder", map);
 	}
 	
 }

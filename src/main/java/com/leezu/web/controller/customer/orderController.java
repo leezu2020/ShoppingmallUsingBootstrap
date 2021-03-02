@@ -40,7 +40,6 @@ public class OrderController {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
 		
 		List<Order> orderList = orderService.getOrderList(user.getUserID());
-		
 		double totalPrice = 0;
 		for(Order o : orderList) {
 			totalPrice += o.getTotal();
@@ -111,7 +110,8 @@ public class OrderController {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
 		
 		model.addAttribute("orderList", orderService.getOrderList(user.getUserID()));
-		
+		session.setAttribute("basketNum", basketService.getBasketNum(user.getUserID()));
+		session.setAttribute("orderNum", orderService.getOrderNum(user.getUserID()));
 		return "customer.user.order.orderList";
 	}
 }
