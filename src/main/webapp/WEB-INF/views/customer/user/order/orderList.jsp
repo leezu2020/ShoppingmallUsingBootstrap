@@ -28,6 +28,10 @@
 					</td>
 					<td align="center">${o.state}</td>
 				</tr>
+				<tr>
+					<td colspan="2" align="right"><b>주소</b></td>
+					<td align="center" colspan="3">${o.address}</td>
+				</tr>
 			</c:forEach>
 		</tbody>
 		<tfoot>

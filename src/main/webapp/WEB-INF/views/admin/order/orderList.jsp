@@ -10,11 +10,11 @@
 		<thead>
 			<tr align="center">
 				<th></th>
-				<th class="w40">주문자</th>
+				<th class="w50">주문자</th>
 				<th class="w60" align="center">상품명</th>
-				<th class="w50">수량</th>
+				<th class="w20">가격</th>
+				<th class="w10">수량</th>
 				<th class="w30">금액</th>
-				<th class="w70">주문일 / 배송 예정일</th>
 				<th class="w20">주문 상태 설정</th>
 			</tr>
 		</thead>
@@ -27,12 +27,10 @@
 					</td>
 					<td align="center">${o.userName}</td>
 					<td align="center">${o.name}</td>
+					<td align="right"><fmt:formatNumber value="${o.price}" pattern="###,###,###"/> 원</td>
 					<td align="center">${o.count}</td>
 					<td align="right"><fmt:formatNumber value="${o.total}" pattern="###,###,###"/> 원</td>
-					<td align="center">
-						<fmt:formatDate value="${o.regDate}" pattern="yy-MM-dd" /> / 
-						<fmt:formatDate value="${o.dueDate}" pattern="yy-MM-dd" />		
-					</td>
+					
 					<td align="center">
 						<select id="state${status.index}">
 							<option value="주문 준비중" <c:if test="${o.state eq '주문 준비중'}" > selected </c:if>>주문 준비중</option>
@@ -43,6 +41,13 @@
 							<option value="배송 완료" <c:if test="${o.state eq '배송 완료'}" > selected </c:if>>배송 완료</option>
 						</select>
 					</td>
+				</tr>
+				<tr>
+					<td align="right"><b>주소</b></td>
+					<td align="center" colspan="3">${o.address}</td>
+					<td colspan="2" align="center"><b>주문일 / 배송 예정일</b></td>
+					<td align="center" ><fmt:formatDate value="${o.regDate}" pattern="yy-MM-dd" /> / 
+						<fmt:formatDate value="${o.dueDate}" pattern="yy-MM-dd" /></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -73,8 +78,9 @@
 			
 			// 선택된 row의 인덱스
 			var index = tr.parent().children().index(tr);
-			// 선택된 select
-			var sel = document.getElementById("state" + index);
+			
+			// 선택된 select (tr을 추가되어 index에 2를 나눠야됨)
+			var sel = document.getElementById("state" + index / 2);
 			// 선택된 select의 값
 			var state = sel.options[sel.selectedIndex].value;
 			var s = document.createElement('input');
