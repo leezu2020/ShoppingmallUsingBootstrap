@@ -27,10 +27,10 @@
 		<table class="table">
 			<tbody>
 				<tr>
-					<td rowspan="6" align="center">
+					<td rowspan="7" align="center">
 					<img class="card-img-top"
 						src="${pageContext.request.contextPath}/resources/images/${product.imageUrl}"
-						onerror="this.src='http://placehold.it/700x400'" alt="${n.name}" style="width: 300px">
+						onerror="this.src='http://placehold.it/700x400'" alt="${n.name}" style="height: 300px; object-fit:contain">
 					</td>
 				</tr>
 				<tr>
@@ -46,7 +46,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th>수량</th>
+					<th>재고</th>
 					<td class="text-align-left text-indent text-strong text-orange"colspan="3">
 						${product.ea} <b>개</b>
 					</td>
@@ -56,6 +56,19 @@
 					<td class="text-align-left text-indent text-strong text-orange">
 						${product.size}
 					</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>
+					<c:choose>
+						<c:when test="${avgRate eq 0}">판매 기록 無</c:when>
+						<c:when test="${avgRate eq 1}">★☆☆☆☆</c:when>
+						<c:when test="${avgRate eq 2}">★★☆☆☆</c:when>
+						<c:when test="${avgRate eq 3}">★★★☆☆</c:when>
+						<c:when test="${avgRate eq 4}">★★★★☆</c:when>
+						<c:otherwise>★★★★★</c:otherwise>
+					</c:choose>
+					<td>
 				</tr>
 				<tr>
 					<th>설명</th>
@@ -79,7 +92,13 @@
 					<tr>
 						<td align="center">${eval.userName}</a></td>
 						<td align="center"><!-- 별점 출력 c:if로 해야할듯? -->
-							${eval.evalRate}
+							<c:choose>
+								<c:when test="${eval.evalRate eq 1}">★☆☆☆☆</c:when>
+								<c:when test="${eval.evalRate eq 2}">★★☆☆☆</c:when>
+								<c:when test="${eval.evalRate eq 3}">★★★☆☆</c:when>
+								<c:when test="${eval.evalRate eq 4}">★★★★☆</c:when>
+								<c:otherwise>★★★★★</c:otherwise>
+							</c:choose>
 						</td>
 						<td align="center">${eval.content}</td>
 					</tr>

@@ -1,5 +1,7 @@
 package com.leezu.web.controller.customer;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.leezu.web.eval.entity.Eval;
 import com.leezu.web.eval.service.IEvalService;
 import com.leezu.web.product.service.IProductService;
 
@@ -45,7 +48,17 @@ public class ProductController {
 	public String productDetail(Model model, String id) {
 		int ID = Integer.parseInt(id);
 		System.out.println("product ID : " + ID);
-		model.addAttribute("evalList", evalService.getEvalList(id));
+		List<Eval> evalList =  evalService.getEvalList(id);
+		int avgRate = 0;
+		if(!evalList.isEmpty()) {
+			int sum = 0;
+			for(int i=0; i<evalList.size(); i++) {
+				sum += evalList.get(i).getEvalRate();
+			}
+			avgRate = sum / evalList.size();
+		}
+		model.addAttribute("avgRate", avgRate);
+		model.addAttribute("evalList", evalList);
 		model.addAttribute("product", productService.get(ID));
 		return "customer.product.productDetail";
 	}

@@ -45,7 +45,7 @@
 									</form>
 								</c:when>
 								<c:otherwise>
-									<input type="button" value="평가완료">
+									<input type="button" onClick="location.href = '/customer/productDetail?id=${o.productID}'" value="평가완료">
 								</c:otherwise>
 							</c:choose>
 						</c:if>
