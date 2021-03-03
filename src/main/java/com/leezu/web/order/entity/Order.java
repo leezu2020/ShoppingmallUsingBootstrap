@@ -18,6 +18,7 @@ public class Order {
 	private String zipcode;
 	private String address;
 	private String state;
+	private String eval;
 	
 	public Order() {
 		// TODO Auto-generated constructor stub
@@ -45,6 +46,12 @@ public class Order {
 		this.price = price;
 	}
 
+	public String getEval() {
+		return eval;
+	}
+	public void setEval(String eval) {
+		this.eval = eval;
+	}
 
 
 	// 주문번호 
@@ -137,7 +144,7 @@ public class Order {
 	}
 
 	public Order(String orderID, int productID, String userID, int count, double total, Date regDate, Date dueDate,
-			String zipcode, String address, String state) {
+			String zipcode, String address, String state, String eval) {
 		super();
 		this.orderID = orderID;
 		this.productID = productID;
@@ -149,6 +156,7 @@ public class Order {
 		this.zipcode = zipcode;
 		this.address = address;
 		this.state = state;
+		this.eval = eval;
 	}
 	
 	

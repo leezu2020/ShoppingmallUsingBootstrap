@@ -362,7 +362,9 @@
 			o.state as state,
 			p.price as price,
 			o.count as count,
-			o.total as total
+			o.total as total,
+			o.eval as eval,
+			o.productID as productID
 		from orderlist o, product p
 		where o.userID = #{userID}
 			and p.productID = o.productID
@@ -398,4 +400,26 @@
 			set state = #{state}
 			where orderID = #{orderID}
 	</update>
+	
+	<update id="doEval" parameterType="String">
+		update orderlist
+			set eval = 'done'
+			where orderID = #{orderID}
+	</update>
+
+<!-- 평가 -->
+	<insert id="addEval" parameterType="Eval">
+		insert into eval (orderID, userID, productID, content, evalRate)
+			values (#{orderID}, #{userID}, #{productID}, #{content}, #{evalRate})
+	</insert>
+	
+	<select id="getEvalList" resultType="Eval">
+		select
+			u.userName as userName,
+			e.evalRate as evalRate,
+			e.content as content
+			from eval e, user u
+			where e.productID = #{productID}
+				and u.userID = e.userID
+	</select>
 </mapper>

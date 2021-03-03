@@ -14,5 +14,6 @@
 		<typeAlias alias="Paging" type="com.leezu.web.paging.DAO.PagingDAO"/>
 		<typeAlias alias="Basket" type="com.leezu.web.basket.entity.Basket"/>
 		<typeAlias alias="Order" type="com.leezu.web.order.entity.Order"/>
+		<typeAlias alias="Eval" type="com.leezu.web.eval.entity.Eval"/>
 	</typeAliases>
 </configuration>

@@ -18,4 +18,6 @@ public interface IOrderService {
 	public int getOrderNum(String userID);
 	
 	public void modOrder(HashMap<String, String> map);
+
+	public void doEval(String orderID);
 }

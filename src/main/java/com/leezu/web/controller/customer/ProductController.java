@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.leezu.web.eval.service.IEvalService;
 import com.leezu.web.product.service.IProductService;
 
 @Controller
@@ -15,7 +16,8 @@ public class ProductController {
 
 	@Autowired
 	private IProductService productService;
-	
+	@Autowired
+	private IEvalService evalService;
 	
 	@GetMapping("productList")
 	public String productlist(Model model,
@@ -43,6 +45,7 @@ public class ProductController {
 	public String productDetail(Model model, String id) {
 		int ID = Integer.parseInt(id);
 		System.out.println("product ID : " + ID);
+		model.addAttribute("evalList", evalService.getEvalList(id));
 		model.addAttribute("product", productService.get(ID));
 		return "customer.product.productDetail";
 	}

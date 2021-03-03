@@ -22,8 +22,6 @@ public class UserController {
 
 	@Autowired
 	private IUserService userService;
-	@Autowired
-	private IBasketService basketService;
 	
 	@RequestMapping("userInfo")
 	public String userInfo(HttpSession session, Model model) {

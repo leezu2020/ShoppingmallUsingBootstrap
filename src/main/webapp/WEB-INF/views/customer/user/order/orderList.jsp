@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
+
 <div class="notice margin-top" style="padding-top: 10px">
 	<h3 class="hidden">주문 목록</h3>
 	<table class="table">
@@ -29,8 +31,25 @@
 					<td align="center">${o.state}</td>
 				</tr>
 				<tr>
-					<td colspan="2" align="right"><b>주소</b></td>
+					<td align="right"><b>주소</b></td>
 					<td align="center" colspan="3">${o.address}</td>
+					<td align="center">
+						<c:if test="${o.state eq '배송 완료'}">
+							<c:choose>
+								<c:when test="${o.eval eq 'yet'}">
+									<form action="/customer/user/addEval" method="get">
+										<input type="hidden" name="orderID" value="${o.orderID}">
+										<input type="hidden" name="name" value="${o.name}">
+										<input type="hidden" name="productID" value="${o.productID}">
+										<input type="submit" value="평가하기">
+									</form>
+								</c:when>
+								<c:otherwise>
+									<input type="button" value="평가완료">
+								</c:otherwise>
+							</c:choose>
+						</c:if>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

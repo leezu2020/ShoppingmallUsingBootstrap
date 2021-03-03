@@ -52,5 +52,11 @@ public class OrderDAOImp implements IOrderDAO{
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace + ".modOrder", map);
 	}
+
+	@Override
+	public void doEval(String orderID) {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace + ".doEval", orderID);
+	}
 	
 }

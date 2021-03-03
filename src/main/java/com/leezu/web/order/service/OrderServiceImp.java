@@ -50,4 +50,10 @@ public class OrderServiceImp implements IOrderService{
 		// TODO Auto-generated method stub
 		orderDAO.modOrder(map);
 	}
+
+	@Override
+	public void doEval(String orderID) {
+		// TODO Auto-generated method stub
+		orderDAO.doEval(orderID);
+	}
 }

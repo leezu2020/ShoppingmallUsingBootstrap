@@ -22,4 +22,7 @@ public interface IOrderDAO {
 
 	// 주문 상태 변경
 	public void modOrder(HashMap<String, String> map);
+	
+	// 평가후 값 변환
+	public void doEval(String orderID);
 }
