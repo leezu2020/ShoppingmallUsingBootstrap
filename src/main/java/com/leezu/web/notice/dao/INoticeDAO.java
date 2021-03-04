@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.leezu.web.notice.entity.Notice;
 import com.leezu.web.notice.entity.NoticeView;
+import com.leezu.web.notice.entity.PrivateNotice;
 import com.leezu.web.notice.entity.preNotice;
 import com.leezu.web.paging.DAO.PagingDAO;
 
@@ -31,6 +32,9 @@ public interface INoticeDAO {
 	// 공지사항 삭제
 	public void delNoticeById(int id);
 	
-	// 개인 공지사항 가져오기
-	public List<String> getPrivateNotice(String userID);
+	// 개인 장바구니 공지사항 가져오기
+	public List<PrivateNotice> getPrivateNotice(String userID);
+	
+	// 개인 주문목록 공지사항 가져오기
+	public List<PrivateNotice> getPrivateOrderNotice(String userID);
 }

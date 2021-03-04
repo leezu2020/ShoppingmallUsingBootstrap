@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.leezu.web.basket.service.IBasketService;
 import com.leezu.web.exception.IDNoExist;
 import com.leezu.web.exception.IDPasswordNotMatchingException;
-import com.leezu.web.order.service.IOrderService;
 import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.UserRegReq;
 import com.leezu.web.user.service.IUserService;
@@ -30,12 +28,6 @@ public class LoginController {
 
 	@Autowired
 	private IUserService userService;
-	
-	@Autowired
-	private IBasketService basketService;
-	
-	@Autowired
-	private IOrderService orderService;
 
 	@GetMapping("userReg")
 	public String userReg(UserRegReq userRegReq){
@@ -95,16 +87,6 @@ public class LoginController {
 		} catch(IDNoExist e) {
 			bindingResult.rejectValue("userPassword", "noExist", "등록되지 않은 회원입니다.");
 			return "login.userLogin";
-		}
-		
-		AuthInfo userInfo = (AuthInfo) session.getAttribute("authInfo");
-		if(userInfo.getAuthority() == 0) {
-			session.setAttribute("basketNum", basketService.getBasketNum(userInfo.getUserID()));
-			session.setAttribute("orderNum", orderService.getOrderNum(userInfo.getUserID()));
-		} else if(userInfo.getAuthority() == 1) {
-
-			session.setAttribute("userNum", userService.getUserNum(null, null));
-			session.setAttribute("allOrderNum", orderService.getOrderAllList().size());
 		}
 		return "login.successLogin";
 	}

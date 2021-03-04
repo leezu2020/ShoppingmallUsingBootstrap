@@ -64,7 +64,6 @@ public class NoticeController {
 	@PostMapping("regNotice")
 	public String regNotice(preNotice notice, HttpSession session, RedirectAttributes rttr) throws Exception {
 		noticeService.regNotice(notice);
-		session.setAttribute("noticeNum", noticeService.getNoticeNum("", ""));
 		rttr.addFlashAttribute("result", "noticeRegSuccess");
 		return "redirect:noticeList";
 	}

@@ -3,7 +3,6 @@ package com.leezu.web.controller.admin;
 import java.io.File;
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.leezu.web.eval.entity.Eval;
+import com.leezu.web.eval.service.IEvalService;
 import com.leezu.web.product.entity.Product;
 import com.leezu.web.product.entity.preProduct;
 import com.leezu.web.product.service.IProductService;
@@ -26,25 +27,40 @@ public class ProductController {
 	@Autowired
 	private ServletContext ctx;
 	
-	@Inject
-	private IProductService prodService;
+	@Autowired
+	private IProductService productService;
 	
-	@RequestMapping("productList")
+	@Autowired
+	private IEvalService evalService;
+	
+	@GetMapping("productList")
 	public String productList(Model model,
 			@RequestParam(defaultValue = "all") String size,
 			@RequestParam(defaultValue = "") String keyword,
 			@RequestParam(defaultValue = "1") int minprice,
 			@RequestParam(defaultValue = "2147483647") int maxprice) throws Exception {
-		model.addAttribute("productList", prodService.getList(keyword, size, minprice, maxprice));
+		List<Product> list = productService.getList(keyword, size, minprice, maxprice);
+		
+		for(Product p : list) {
+			p.setEvalAvg(productService.calEvalRateById(p.getProductID()));
+		}
+		System.out.println(list.get(0).getEvalAvg());
+		model.addAttribute("productList", list);
 		System.out.println("productList 조회");
 		return "admin.product.productList";
 	}
 	
-	@RequestMapping("productDetail")
+	@GetMapping("productDetail")
 	public String productDetail(Model model, String id) {
 		int ID = Integer.parseInt(id);
-		System.out.println(ID);
-		model.addAttribute("product", prodService.get(ID));
+		System.out.println("product ID : " + ID);
+		List<Eval> evalList =  evalService.getEvalList(id);
+		int avgRate = productService.calEvalRateById(ID);
+		
+		model.addAttribute("cnt", evalService.getEvalCnt(ID));
+		model.addAttribute("avgRate", avgRate);
+		model.addAttribute("evalList", evalList);
+		model.addAttribute("product", productService.get(ID));
 		return "admin.product.productDetail";
 	}
 
@@ -77,7 +93,7 @@ public class ProductController {
 		
 		preProduct product = new preProduct(name, intprice, description, size, fileName, intea); 
 		
-		prodService.regProduct(product);
+		productService.regProduct(product);
 		
 		return "redirect:productList";
 	}
@@ -87,11 +103,17 @@ public class ProductController {
 			@RequestParam(required=false)List<Integer> productChecked) {
 		
 		if(id != null)
-			prodService.delProductById(id);
+			productService.delProductById(id);
 		
 		if(productChecked != null) {
 			for(Integer productId : productChecked) {
-				prodService.delProductById(productId);
+				// 해당상품 후기 삭제
+				int cnt = evalService.getEvalCnt(productId);
+				for(int i=0; i<cnt; i++) {
+					evalService.delEvalByProductId(productId);
+				}
+				// 해당상품 삭제
+				productService.delProductById(productId);
 			}
 		}
 		
@@ -101,7 +123,7 @@ public class ProductController {
 	@GetMapping("modProduct")
 	public String modProduct(String id, Model model) {
 		
-		model.addAttribute("product", prodService.get(Integer.parseInt(id)));
+		model.addAttribute("product", productService.get(Integer.parseInt(id)));
 		
 		return "admin.product.modProduct";
 	}
@@ -126,7 +148,7 @@ public class ProductController {
 			e.printStackTrace();
 		}
 		product.setImageUrl(fileName);
-		prodService.modProduct(product);
+		productService.modProduct(product);
 		
 		return "redirect:productDetail?id="+product.getProductID();
 	}

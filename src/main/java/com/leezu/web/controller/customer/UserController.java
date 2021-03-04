@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.leezu.web.basket.service.IBasketService;
 import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.User;
 import com.leezu.web.user.service.IUserService;

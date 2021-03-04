@@ -9,7 +9,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.leezu.web.user.entity.AuthInfo;
 
 public class AdminInterceptor extends HandlerInterceptorAdapter{
-	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -25,5 +24,4 @@ public class AdminInterceptor extends HandlerInterceptorAdapter{
 		
 		return true;
 	}
-
 }

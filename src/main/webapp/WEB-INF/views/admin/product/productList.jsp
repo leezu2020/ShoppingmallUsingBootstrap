@@ -47,28 +47,28 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="expand">선택</th>
-					<th class="expand">상품명</th>
-					<th class="w100">가격</th>
-					<th class="w130">설명</th>
-					<th class="w200">사이즈</th>
-					<th class="w200">등록날짜</th>
-					<th class="w200">좋아요 수</th>
+					<th class="expand" style="text-align: center">선택</th>
+					<th class="expand" style="text-align: center">상품명</th>
+					<th class="w30" style="text-align: center">가격</th>
+					<th class="w130" style="text-align: center">설명</th>
+					<th class="w50" style="text-align: center">사이즈</th>
+					<th class="w200" style="text-align: center">등록날짜</th>
+					<th class="w50" style="text-align: center">상품평</th>
 				</tr>
 			</thead>
 			<tbody>
 	
 				<c:forEach var="prod" items="${productList}">
 					<tr>
-						<td class="checkBox">
+						<td style="text-align: center" class="checkBox">
 							<input type="checkBox" name="productChecked" value="${prod.productID}" />
 						</td>
-						<td><a href="/admin/productDetail?id=${prod.productID}">${prod.name}</a></td>
-						<td>${prod.price}</td>
-						<td>${prod.description}</td>
-						<td>${prod.size}</td>
-						<td><fmt:formatDate value="${prod.regDate}" pattern="yyyy-MM-dd" /></td>
-						<td>${prod.like}</td>
+						<td style="text-align: center"><a href="/admin/productDetail?id=${prod.productID}">${prod.name}</a></td>
+						<td style="text-align: right; te"><fmt:formatNumber value="${prod.price}"/>원</td>
+						<td style="text-align: center">${prod.description}</td>
+						<td style="text-align: center">${prod.size}</td>
+						<td style="text-align: center"><fmt:formatDate value="${prod.regDate}" pattern="yyyy-MM-dd" /></td>
+						<td style="text-align: center">${prod.evalAvg}</td>
 					</tr>
 				</c:forEach>
 			

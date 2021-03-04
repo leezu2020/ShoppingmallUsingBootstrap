@@ -10,7 +10,7 @@
 		</c:when>
 	</c:choose>
 	<c:forEach var="n" items="${noticeList}">
-		<h5>상품 <b>"${n.content}"</b> 가 재고 및 기타이유로 삭제되었습니다.<fmt:formatNumber value="${n.regDate}" pattern="yy-mm-dd"/></h5>
+		<h5><fmt:formatNumber value="${n.regDate}" pattern="yy-MM-dd HH:mm"/>&nbsp; 상품 <b>"${n.content}"</b> 가 재고 및 기타이유로 삭제되었습니다.</h5>
 	</c:forEach>
 </div>
 

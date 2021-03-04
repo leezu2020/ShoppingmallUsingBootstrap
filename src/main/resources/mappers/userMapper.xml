@@ -162,9 +162,15 @@
 				<![CDATA[where noticeID = (select MAX(noticeID) from notice where noticeID < #{noticeID})]]>
 	</select>
 <!-- 개인 공지사항 -->
-	<select id="getPrivateNotice" resultType="hashmap">
-		select content
+	<select id="getPrivateNotice" resultType="PrivateNotice">
+		select content, regDate
 			from privateNotice
+			where userID = #{userID}
+	</select>
+	
+	<select id="getPrivateOrderNotice" resultType="PrivateNotice">
+		select content, regDate
+			from privateOrderNotice
 			where userID = #{userID}
 	</select>
 	
@@ -175,6 +181,16 @@
 				p.name as content
 				from basket b, product p
 				where b.productID = #{id}
+					and p.productID = #{id}
+	</insert>
+	
+	<!-- 상품 삭제시 주문한 유저에게 기록 -->
+	<insert id="alertDelProductForOrder" parameterType="int">
+		insert into privateOrderNotice (userID, content)
+			select o.userID as userID,
+				p.name as content
+				from orderlist o, product p
+				where o.productID = #{id}
 					and p.productID = #{id}
 	</insert>
 <!-- 상품 -->	
@@ -226,7 +242,7 @@
 
 	
 	<!-- 상품 아이디로 조회 -->
-	<select id="getProduct" parameterType="int" resultType="Product">
+	<select id="getProduct" resultType="Product">
 		select *
 		from product
 		where productID = #{id}
@@ -249,6 +265,21 @@
 			set ea = ea - #{count}
 			where productID = #{productID}
 	</update>	
+	
+	<!-- 상품 평가값 추가 -->
+	<update id="modLike" parameterType="Eval">
+		update product
+			set evalSum = evalSum + #{evalRate}
+			where productID = #{productID}
+	</update>
+	
+	<!-- 상품 like값 -->
+	<select id="getLike" resultType="int">
+		select evalSum
+			from product
+			where productID = #{id}
+	</select>	
+	
 <!-- 장바구니 -->	
 	<!-- 장바구니 등록 -->
 	<insert id="addBasket" parameterType="hashmap">
@@ -421,5 +452,17 @@
 			from eval e, user u
 			where e.productID = #{productID}
 				and u.userID = e.userID
+	</select>
+	
+	<delete id="delEvalByProductId" parameterType="int">
+		delete
+			from eval
+			where productID = #{productID} 
+	</delete>
+	
+	<select id="getEvalCnt" resultType="int">
+		select count(*)
+			from eval
+			where productID = #{id}
 	</select>
 </mapper>

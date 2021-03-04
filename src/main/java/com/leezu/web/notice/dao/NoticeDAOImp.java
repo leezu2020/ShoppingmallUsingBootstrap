@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.leezu.web.notice.entity.Notice;
 import com.leezu.web.notice.entity.NoticeView;
+import com.leezu.web.notice.entity.PrivateNotice;
 import com.leezu.web.notice.entity.preNotice;
 import com.leezu.web.paging.DAO.PagingDAO;
 
@@ -63,8 +64,13 @@ public class NoticeDAOImp implements INoticeDAO{
 		
 	}
 	@Override
-	public List<String> getPrivateNotice(String userID) {
+	public List<PrivateNotice> getPrivateNotice(String userID) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace + ".getPrivateNotice", userID);
+	}
+	@Override
+	public List<PrivateNotice> getPrivateOrderNotice(String userID) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace + ".getPrivateOrderNotice", userID);
 	}	
 }

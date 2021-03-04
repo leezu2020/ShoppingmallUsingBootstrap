@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.leezu.web.eval.entity.Eval;
 import com.leezu.web.product.entity.Product;
 import com.leezu.web.product.entity.preProduct;
 
@@ -50,6 +51,8 @@ public class ProductDAOImp implements IProductDAO{
 		// 해당 상품이 포함된 장바구니 제거
 		System.out.println("해당 상품 포함된 장바구니 제거");
 		sqlSession.delete(namespace + ".delBasketByAdmin", id);
+		// 해당 상품을 주문한 사용자에게 글 추가
+		sqlSession.insert(namespace + ".alertDelProductForOrder", id);
 		// 해당 상품 제거
 		System.out.println("해당 상품 제거");
 		sqlSession.delete(namespace + ".delProductById", id);
@@ -64,6 +67,18 @@ public class ProductDAOImp implements IProductDAO{
 	public void modProductCnt(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace + ".modProductCnt", map);
+	}
+	
+	@Override
+	public void modLike(Eval eval) {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace + ".modLike", eval);
+	}
+	
+	@Override
+	public int getLike(int id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".getLike", id);
 	}
 		
 }

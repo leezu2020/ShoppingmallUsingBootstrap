@@ -11,13 +11,24 @@ public class Product {
 	private String size;
 	private String imageUrl;
 	private Date regDate;
-	private int like;
+	private int evalSum;
+	private int evalAvg;
 	private int ea;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+	public int getEvalAvg() {
+		return evalAvg;
+	}
+
+	public void setEvalAvg(int evalAvg) {
+		this.evalAvg = evalAvg;
+	}
+
 	public int getProductID() {
 		return productID;
 	}
@@ -60,13 +71,12 @@ public class Product {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public int getLike() {
-		return like;
+	public int getEvalSum() {
+		return evalSum;
 	}
-	public void setLike(int like) {
-		this.like = like;
+	public void setEvalSum(int evalSum) {
+		this.evalSum = evalSum;
 	}
-
 	public int getEa() {
 		return ea;
 	}
@@ -76,7 +86,7 @@ public class Product {
 	}
 
 	public Product(int productID, String name, int price, String description, String size, String imageUrl,
-			Date regDate, int like, int ea) {
+			Date regDate, int evalSum, int evalAvg, int ea) {
 		super();
 		this.productID = productID;
 		this.name = name;
@@ -85,17 +95,9 @@ public class Product {
 		this.size = size;
 		this.imageUrl = imageUrl;
 		this.regDate = regDate;
-		this.like = like;
+		this.evalSum = evalSum;
+		this.evalAvg = evalAvg;
 		this.ea = ea;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [productID=" + productID + ", name=" + name + ", price=" + price + ", description="
-				+ description + ", size=" + size + ", imageUrl=" + imageUrl + ", regDate=" + regDate + ", like=" + like
-				+ ", ea=" + ea + "]";
-	}
-	
-	
-		
 }

@@ -28,4 +28,16 @@ public class EvalDAOImp implements IEvalDAO{
 		return sqlSession.selectList(namespace + ".getEvalList", id);
 	}
 
+
+	public void delEvalByProductId(Integer productId) {
+		// TODO Auto-generated method stub
+		sqlSession.delete(namespace + ".delEvalByProductId", productId);
+	}
+
+
+	public int getEvalCnt(int id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".getEvalCnt", id);
+	}
+
 }

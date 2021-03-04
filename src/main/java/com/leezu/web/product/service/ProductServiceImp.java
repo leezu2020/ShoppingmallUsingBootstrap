@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.leezu.web.eval.entity.Eval;
+import com.leezu.web.eval.service.IEvalService;
 import com.leezu.web.product.DAO.ProductDAOImp;
 import com.leezu.web.product.entity.Product;
 import com.leezu.web.product.entity.preProduct;
@@ -14,6 +16,9 @@ import com.leezu.web.product.entity.preProduct;
 public class ProductServiceImp implements IProductService{
 	@Autowired
 	private ProductDAOImp productDAO;
+	
+	@Autowired
+	private IEvalService evalService;
 
 	@Override
 	public void regProduct(preProduct product) {
@@ -49,7 +54,21 @@ public class ProductServiceImp implements IProductService{
 
 	@Override
 	public void modProductCnt(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
 		productDAO.modProductCnt(map);
+	}
+
+	@Override
+	public void modLike(Eval eval) {
+		productDAO.modLike(eval);
+	}
+
+	@Override
+	public int calEvalRateById(int id) {
+		int cnt = evalService.getEvalCnt(id);
+		if(cnt != 0) {
+			return productDAO.getLike(id) / cnt;
+		} else {
+			return 0;
+		}
 	}
 }

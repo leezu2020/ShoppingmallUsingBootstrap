@@ -26,4 +26,16 @@ public class EvalServiceImp implements IEvalService{
 		return evalDAO.getEvalList(id);
 	}
 
+	@Override
+	public void delEvalByProductId(Integer productId) {
+		// TODO Auto-generated method stub
+		evalDAO.delEvalByProductId(productId);
+	}
+
+	@Override
+	public int getEvalCnt(int id) {
+		// TODO Auto-generated method stub
+		return evalDAO.getEvalCnt(id);
+	}
+
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.leezu.web.basket.entity.Basket;
 import com.leezu.web.basket.service.IBasketService;
+import com.leezu.web.notice.entity.PrivateNotice;
 import com.leezu.web.notice.service.INoticeService;
 import com.leezu.web.product.service.IProductService;
 import com.leezu.web.user.entity.AuthInfo;
@@ -45,7 +46,7 @@ public class basketController {
 		
 		// 개인 공지사항 가져오기
 		String userID = user.getUserID();
-		List<String> notices = noticeService.getPrivateNotice(userID);
+		List<PrivateNotice> notices = noticeService.getPrivateNotice(userID);
 		model.addAttribute("noticeList", notices);
 		
 		return "customer.user.basket.basketList";
@@ -97,7 +98,6 @@ public class basketController {
 			map.put("basket", prebasket);
 			
 			basketService.addBasket(map);
-			session.setAttribute("basketNum", basketService.getBasketNum(user.getUserID()));
 			return "redirect:basketList";
 		}
 	}

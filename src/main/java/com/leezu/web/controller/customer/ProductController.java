@@ -44,19 +44,14 @@ public class ProductController {
 		return "customer.product.productList";
 	}
 	
-	@RequestMapping("productDetail")
+	@GetMapping("productDetail")
 	public String productDetail(Model model, String id) {
 		int ID = Integer.parseInt(id);
 		System.out.println("product ID : " + ID);
 		List<Eval> evalList =  evalService.getEvalList(id);
-		int avgRate = 0;
-		if(!evalList.isEmpty()) {
-			int sum = 0;
-			for(int i=0; i<evalList.size(); i++) {
-				sum += evalList.get(i).getEvalRate();
-			}
-			avgRate = sum / evalList.size();
-		}
+		int avgRate = productService.calEvalRateById(ID);
+		
+		model.addAttribute("cnt", evalService.getEvalCnt(ID));
 		model.addAttribute("avgRate", avgRate);
 		model.addAttribute("evalList", evalList);
 		model.addAttribute("product", productService.get(ID));

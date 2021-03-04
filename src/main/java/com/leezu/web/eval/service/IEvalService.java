@@ -9,5 +9,8 @@ public interface IEvalService {
 	public void addEval(Eval eval);
 
 	public List<Eval> getEvalList(String id);
+
+	public void delEvalByProductId(Integer productId);
 	
+	public int getEvalCnt(int id);
 }

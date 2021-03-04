@@ -13,6 +13,7 @@ import com.leezu.web.eval.entity.Eval;
 import com.leezu.web.eval.service.IEvalService;
 import com.leezu.web.order.entity.Order;
 import com.leezu.web.order.service.IOrderService;
+import com.leezu.web.product.service.IProductService;
 import com.leezu.web.user.entity.AuthInfo;
 
 @Controller
@@ -25,6 +26,9 @@ public class EvalController {
 	@Autowired
 	private IOrderService orderService;
 	
+	@Autowired
+	private IProductService productService;
+	
 	@PostMapping("addEval")
 	public String addEval(Model model, HttpSession session, Eval eval) {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
@@ -32,8 +36,10 @@ public class EvalController {
 		
 		// 평가 등록
 		evalService.addEval(eval);
-		// 주문 DB에 eval 값 변경
+		// 주문 DB에 eval 값 변경(평가 체크여부)
 		orderService.doEval((String)eval.getOrderID());
+		// 해당 상품 평가 변경
+		productService.modLike(eval);
 		
 		return "redirect:orderList";
 	}

@@ -3,6 +3,7 @@ package com.leezu.web.product.service;
 import java.util.HashMap;
 import java.util.List;
 
+import com.leezu.web.eval.entity.Eval;
 import com.leezu.web.product.entity.Product;
 import com.leezu.web.product.entity.preProduct;
 
@@ -25,5 +26,11 @@ public interface IProductService {
 
 	// 상품 재고 수량 수정
 	public void modProductCnt(HashMap<String, Object> map);
+
+	// 상품 평가 수정
+	public void modLike(Eval eval);
+
+	// 상품 평가 평균값 가져오기
+	public int calEvalRateById(int id);
 
 }

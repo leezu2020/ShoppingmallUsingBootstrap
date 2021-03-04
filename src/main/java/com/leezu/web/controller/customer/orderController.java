@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.leezu.web.basket.entity.Basket;
 import com.leezu.web.basket.service.IBasketService;
+import com.leezu.web.notice.entity.PrivateNotice;
+import com.leezu.web.notice.service.INoticeService;
 import com.leezu.web.order.entity.Order;
 import com.leezu.web.order.service.IOrderService;
 import com.leezu.web.product.service.IProductService;
@@ -35,6 +37,9 @@ public class OrderController {
 	@Autowired
 	private IBasketService basketService;
 	
+	@Autowired
+	private INoticeService noticeService;
+	
 	@RequestMapping("orderList")
 	public String orderList(Model model, HttpSession session) {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
@@ -44,6 +49,10 @@ public class OrderController {
 		for(Order o : orderList) {
 			totalPrice += o.getTotal();
 		}
+		// 개인 공지사항 가져오기
+		String userID = user.getUserID();
+		List<PrivateNotice> notices = noticeService.getPrivateOrderNotice(userID);
+		model.addAttribute("noticeList", notices);
 		
 		model.addAttribute("orderList", orderList);
 		model.addAttribute("totalPrice", totalPrice);
@@ -110,8 +119,6 @@ public class OrderController {
 		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
 		
 		model.addAttribute("orderList", orderService.getOrderList(user.getUserID()));
-		session.setAttribute("basketNum", basketService.getBasketNum(user.getUserID()));
-		session.setAttribute("orderNum", orderService.getOrderNum(user.getUserID()));
 		return "customer.user.order.orderList";
 	}
 }

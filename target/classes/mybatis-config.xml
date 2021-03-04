@@ -15,5 +15,6 @@
 		<typeAlias alias="Basket" type="com.leezu.web.basket.entity.Basket"/>
 		<typeAlias alias="Order" type="com.leezu.web.order.entity.Order"/>
 		<typeAlias alias="Eval" type="com.leezu.web.eval.entity.Eval"/>
+		<typeAlias alias="PrivateNotice" type="com.leezu.web.notice.entity.PrivateNotice"/>
 	</typeAliases>
 </configuration>

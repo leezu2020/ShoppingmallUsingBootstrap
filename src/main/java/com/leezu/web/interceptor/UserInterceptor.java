@@ -17,13 +17,10 @@ public class UserInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
 		
-		
 		if(user == null || user.getAuthority() != 0) {
 			response.sendRedirect("/");
 			return false;
 		}
-		
 		return true;
 	}
-
 }

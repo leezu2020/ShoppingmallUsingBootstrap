@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.leezu.web.notice.dao.NoticeDAOImp;
 import com.leezu.web.notice.entity.Notice;
 import com.leezu.web.notice.entity.NoticeView;
+import com.leezu.web.notice.entity.PrivateNotice;
 import com.leezu.web.notice.entity.preNotice;
 import com.leezu.web.paging.DAO.PagingDAO;
 
@@ -64,9 +65,15 @@ public class NoticeServiceImp implements INoticeService {
 	}
 
 	@Override
-	public List<String> getPrivateNotice(String userID) {
+	public List<PrivateNotice> getPrivateNotice(String userID) {
 		// TODO Auto-generated method stub
 		return noticeDAO.getPrivateNotice(userID);
+	}
+
+	@Override
+	public List<PrivateNotice> getPrivateOrderNotice(String userID) {
+		// TODO Auto-generated method stub
+		return noticeDAO.getPrivateOrderNotice(userID);
 	}
 
 }

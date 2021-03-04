@@ -68,6 +68,7 @@
 						<c:when test="${avgRate eq 4}">★★★★☆</c:when>
 						<c:otherwise>★★★★★</c:otherwise>
 					</c:choose>
+					<br/>( ${cnt} )
 					<td>
 				</tr>
 				<tr>
