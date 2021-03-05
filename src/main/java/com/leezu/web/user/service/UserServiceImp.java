@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.leezu.web.exception.IDNoExist;
 import com.leezu.web.exception.IDPasswordNotMatchingException;
 import com.leezu.web.paging.DAO.PagingDAO;
-import com.leezu.web.user.DAO.UserDAOImp;
+import com.leezu.web.repository.UserDAO;
 import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.User;
 import com.leezu.web.user.entity.UserRegReq;
@@ -20,7 +20,7 @@ import com.leezu.web.validator.UserLoginValidator;
 public class UserServiceImp implements IUserService{
 
 	@Inject
-	private UserDAOImp userDAO;
+	private UserDAO userDAO;
 	
 	// 회원가입
 	@Override

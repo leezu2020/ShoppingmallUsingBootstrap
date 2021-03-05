@@ -6,13 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.leezu.web.order.dao.OrderDAOImp;
 import com.leezu.web.order.entity.Order;
+import com.leezu.web.repository.OrderDAO;
 
 @Service
 public class OrderServiceImp implements IOrderService{
 	@Autowired
-	private OrderDAOImp orderDAO;
+	private OrderDAO orderDAO;
 
 	@Override
 	public void addOrder(Order order) {

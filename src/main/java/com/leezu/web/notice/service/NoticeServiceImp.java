@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.leezu.web.notice.dao.NoticeDAOImp;
 import com.leezu.web.notice.entity.Notice;
 import com.leezu.web.notice.entity.NoticeView;
 import com.leezu.web.notice.entity.PrivateNotice;
 import com.leezu.web.notice.entity.preNotice;
 import com.leezu.web.paging.DAO.PagingDAO;
+import com.leezu.web.repository.NoticeDAO;
 
 @Service
 public class NoticeServiceImp implements INoticeService {
 
 	@Autowired
-	private NoticeDAOImp noticeDAO;
+	private NoticeDAO noticeDAO;
 	
 	@Override
 	public List<NoticeView> getList(PagingDAO paging) throws Exception {

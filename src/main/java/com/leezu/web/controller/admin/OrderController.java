@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.leezu.web.order.dao.IOrderDAO;
 import com.leezu.web.order.entity.Order;
+import com.leezu.web.repository.OrderDAO;
 
 @Controller("adminOrderController")
 @RequestMapping("/admin/")
 public class OrderController {
 	
 	@Autowired
-	private IOrderDAO orderService;
+	private OrderDAO orderService;
 	
 	@GetMapping("orderList")
 	public String orderList(Model model) {
