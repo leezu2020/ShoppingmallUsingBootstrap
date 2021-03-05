@@ -13,7 +13,7 @@
         http://mybatis.rog/schema/mybatis-spring
         http://mybatis.org/schema/mybatis-spring-1.2.xsd">
    
-   <context:component-scan base-package="com.leezu.web.user" />
+   <context:component-scan base-package="com.leezu.web" />
     
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />

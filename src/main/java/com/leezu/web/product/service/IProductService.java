@@ -5,13 +5,12 @@ import java.util.List;
 
 import com.leezu.web.eval.entity.Eval;
 import com.leezu.web.product.entity.Product;
-import com.leezu.web.product.entity.preProduct;
 
 public interface IProductService {
 	// 상품 목록 출력
 	public List<Product> getList(String keyword, String size, int minprice, int maxprice) throws Exception;
 
-	public void regProduct(preProduct product);
+	public void regProduct(Product product);
 
 	public Product get(int id);
 

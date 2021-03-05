@@ -3,8 +3,7 @@ package com.leezu.web.user.service;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.leezu.web.exception.IDNoExist;
@@ -19,7 +18,7 @@ import com.leezu.web.validator.UserLoginValidator;
 @Service
 public class UserServiceImp implements IUserService{
 
-	@Inject
+	@Autowired
 	private UserDAO userDAO;
 	
 	// 회원가입

@@ -4,7 +4,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.leezu.web.product.entity.preProduct;
+import com.leezu.web.product.entity.Product;
 
 public class ProductRegValidator implements Validator {
 
@@ -18,7 +18,7 @@ public class ProductRegValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		System.out.println("상품 등록 유효성검사 시작");
 		// TODO Auto-generated method stub
-		preProduct product = (preProduct) target;
+		Product product = (Product) target;
 		
 		if(product.getPrice() > Integer.MAX_VALUE || product.getPrice() < 0) {
 			errors.rejectValue("productprice", "overflow", "올바른 금액을 입력해주세요.");

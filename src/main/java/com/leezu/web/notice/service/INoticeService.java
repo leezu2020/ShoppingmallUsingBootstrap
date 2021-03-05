@@ -5,7 +5,6 @@ import java.util.List;
 import com.leezu.web.notice.entity.Notice;
 import com.leezu.web.notice.entity.NoticeView;
 import com.leezu.web.notice.entity.PrivateNotice;
-import com.leezu.web.notice.entity.preNotice;
 import com.leezu.web.paging.DAO.PagingDAO;
 
 public interface INoticeService {
@@ -17,7 +16,7 @@ public interface INoticeService {
 	public Notice getNotice(int noticeID) throws Exception;
 
 	// 공지사항 등록
-	public void regNotice(preNotice notice) throws Exception;
+	public void regNotice(Notice notice) throws Exception;
 
 	// 공지사항 개수 가져오기
 	public int getNoticeNum(String condition, String keyword);

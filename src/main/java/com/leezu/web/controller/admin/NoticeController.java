@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.leezu.web.notice.entity.Notice;
-import com.leezu.web.notice.entity.preNotice;
 import com.leezu.web.notice.service.INoticeService;
 import com.leezu.web.paging.DAO.PagingDAO;
 
@@ -62,7 +61,7 @@ public class NoticeController {
 	}
 	
 	@PostMapping("regNotice")
-	public String regNotice(preNotice notice, HttpSession session, RedirectAttributes rttr) throws Exception {
+	public String regNotice(Notice notice, HttpSession session, RedirectAttributes rttr) throws Exception {
 		noticeService.regNotice(notice);
 		rttr.addFlashAttribute("result", "noticeRegSuccess");
 		return "redirect:noticeList";

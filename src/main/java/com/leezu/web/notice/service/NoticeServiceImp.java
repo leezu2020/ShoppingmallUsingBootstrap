@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.leezu.web.notice.entity.Notice;
 import com.leezu.web.notice.entity.NoticeView;
 import com.leezu.web.notice.entity.PrivateNotice;
-import com.leezu.web.notice.entity.preNotice;
 import com.leezu.web.paging.DAO.PagingDAO;
 import com.leezu.web.repository.NoticeDAO;
 
@@ -37,7 +36,7 @@ public class NoticeServiceImp implements INoticeService {
 	}
 
 	@Override
-	public void regNotice(preNotice notice) {
+	public void regNotice(Notice notice) {
 		System.out.println("공지사항 등록");
 		noticeDAO.regNotice(notice);
 	}

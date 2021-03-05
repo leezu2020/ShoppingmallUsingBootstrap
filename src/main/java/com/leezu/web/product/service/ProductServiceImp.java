@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.leezu.web.eval.entity.Eval;
 import com.leezu.web.eval.service.IEvalService;
 import com.leezu.web.product.entity.Product;
-import com.leezu.web.product.entity.preProduct;
 import com.leezu.web.repository.ProductDAO;
 
 @Service
@@ -21,7 +20,7 @@ public class ProductServiceImp implements IProductService{
 	private IEvalService evalService;
 
 	@Override
-	public void regProduct(preProduct product) {
+	public void regProduct(Product product) {
 		// TODO Auto-generated method stub
 		productDAO.regProduct(product);
 	}

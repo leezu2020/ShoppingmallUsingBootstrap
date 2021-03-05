@@ -1,6 +1,7 @@
 package com.leezu.web.controller.admin;
 
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -17,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.leezu.web.eval.entity.Eval;
 import com.leezu.web.eval.service.IEvalService;
 import com.leezu.web.product.entity.Product;
-import com.leezu.web.product.entity.preProduct;
 import com.leezu.web.product.service.IProductService;
 
 @Controller("adminProductController")
@@ -91,8 +91,8 @@ public class ProductController {
 		int intprice = Integer.parseInt(price);
 		int intea = Integer.parseInt(ea);
 		
-		preProduct product = new preProduct(name, intprice, description, size, fileName, intea); 
-		
+		Product product = new Product(0, name, intprice, description, size, fileName, new Date() , 0, 0, intea); 
+
 		productService.regProduct(product);
 		
 		return "redirect:productList";
