@@ -38,7 +38,6 @@
 					class="sr-only">Next</span>
 				</a>
 			</div>
-
 			<div class="row">
 				<c:forEach var="n" items="${productList}">
 				<!-- el 표기법(n.getID()) -->

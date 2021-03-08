@@ -18,7 +18,6 @@
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style-signup.css">
 
     <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -29,7 +28,7 @@
     	*는 필수 정보입니다.
     <div class="row">
         <div class="col-lg-6">
-            <form:form role="form" modelAttribute="userRegReq" action="/login/userReg" method="post">
+            <form:form modelAttribute="userRegReq" action="/login/userReg" method="post">
                 <div class="form-group input-group">
                     <span class="input-group-addon"><i class="fa fa-check">*</i></span>
                     <form:input type="text" class="form-control" placeholder="ID" path="userID"/>

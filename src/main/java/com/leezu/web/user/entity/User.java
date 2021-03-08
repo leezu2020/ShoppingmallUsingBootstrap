@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class User {
 	
-	private Long no;
 	private String userID;
 	private String userPassword;
 	private String userName;
@@ -14,13 +13,6 @@ public class User {
 	private Date regDate;
 	
 
-	
-	public Long getNo() {
-		return no;
-	}
-	public void setNo(Long no) {
-		this.no = no;
-	}
 	public String getUserID() {
 		return userID;
 	}

@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias alias="UserReg" type="com.leezu.web.user.entity.UserRegReq"/>
 		<typeAlias alias="User" type="com.leezu.web.user.entity.User"/>
+		
 		<typeAlias alias="Product" type="com.leezu.web.product.entity.Product"/>
 		<typeAlias alias="Notice" type="com.leezu.web.notice.entity.Notice"/>
 		<typeAlias alias="NoticeView" type="com.leezu.web.notice.entity.NoticeView"/>

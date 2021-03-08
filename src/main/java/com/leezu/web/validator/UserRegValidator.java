@@ -7,6 +7,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import com.leezu.web.user.dao.UserDAO;
+import com.leezu.web.user.entity.User;
 import com.leezu.web.user.entity.UserRegReq;
 
 public class UserRegValidator implements Validator{
@@ -22,7 +24,7 @@ public class UserRegValidator implements Validator{
 	@Override
 	public boolean supports(Class<?> clazz) {
 		// TODO Auto-generated method stub
-		return false;
+		return User.class.isAssignableFrom(clazz);
 	}
 
 	@Override
@@ -30,6 +32,7 @@ public class UserRegValidator implements Validator{
 		System.out.println("유효성검사 시작 UserRegValidator");
 		// TODO Auto-generated method stub
 		UserRegReq regReq = (UserRegReq) target;
+		
 		
 		if(regReq.getUserID() == null || regReq.getUserID().trim().isEmpty()) {
 			errors.rejectValue("userID", "required", "아이디를 입력해주세요.");
