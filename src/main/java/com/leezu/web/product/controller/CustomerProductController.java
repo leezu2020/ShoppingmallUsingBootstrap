@@ -1,4 +1,4 @@
-package com.leezu.web.controller.customer;
+package com.leezu.web.product.controller;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import com.leezu.web.product.service.IProductService;
 
 @Controller
 @RequestMapping("/customer/")
-public class ProductController {
+public class CustomerProductController {
 
 	@Autowired
 	private IProductService productService;

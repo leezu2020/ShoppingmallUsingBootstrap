@@ -1,4 +1,4 @@
-package com.leezu.web.controller.admin;
+package com.leezu.web.product.controller;
 
 import java.io.File;
 import java.util.Date;
@@ -20,9 +20,9 @@ import com.leezu.web.eval.service.IEvalService;
 import com.leezu.web.product.entity.Product;
 import com.leezu.web.product.service.IProductService;
 
-@Controller("adminProductController")
+@Controller
 @RequestMapping("/admin/")
-public class ProductController {
+public class AdminProductController {
 	
 	@Autowired
 	private ServletContext ctx;

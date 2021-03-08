@@ -1,4 +1,4 @@
-package com.leezu.web.controller.admin;
+package com.leezu.web.user.controller;
 
 import javax.inject.Inject;
 
@@ -13,7 +13,7 @@ import com.leezu.web.user.service.IUserService;
 
 @Controller("adminUserController")
 @RequestMapping("/admin/")
-public class UserController {
+public class AdminUserController {
 	
 	@Inject
 	private IUserService userService;

@@ -4,16 +4,23 @@ import java.util.Date;
 
 public class User {
 	
+	private Long no;
 	private String userID;
 	private String userPassword;
 	private String userName;
 	private String userEmail;
-	private int authority;
+	private String authority;
 	private boolean emailChecked;
 	private Date regDate;
 	
 
 	
+	public Long getNo() {
+		return no;
+	}
+	public void setNo(Long no) {
+		this.no = no;
+	}
 	public String getUserID() {
 		return userID;
 	}
@@ -38,10 +45,10 @@ public class User {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public int getAuthority() {
+	public String getAuthority() {
 		return authority;
 	}
-	public void setAuthority(int authority) {
+	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
 	public boolean isEmailChecked() {
@@ -60,7 +67,7 @@ public class User {
 		this.regDate = regDate;
 	}
 
-	public User(String userID, String userPassword, String userName, String userEmail, int authority,
+	public User(String userID, String userPassword, String userName, String userEmail, String authority,
 			boolean emailChecked, Date regDate) {
 		super();
 		this.userID = userID;

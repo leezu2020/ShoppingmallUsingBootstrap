@@ -1,4 +1,4 @@
-package com.leezu.web.controller.login;
+package com.leezu.web.user.controller;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;

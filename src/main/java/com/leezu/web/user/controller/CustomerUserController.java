@@ -1,4 +1,4 @@
-package com.leezu.web.controller.customer;
+package com.leezu.web.user.controller;
 
 import java.util.HashMap;
 
@@ -17,7 +17,7 @@ import com.leezu.web.user.service.IUserService;
 
 @Controller
 @RequestMapping("/customer/user/")
-public class UserController {
+public class CustomerUserController {
 
 	@Autowired
 	private IUserService userService;

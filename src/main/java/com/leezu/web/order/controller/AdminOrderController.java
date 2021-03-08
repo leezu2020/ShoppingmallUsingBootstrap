@@ -1,4 +1,4 @@
-package com.leezu.web.controller.admin;
+package com.leezu.web.order.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.leezu.web.order.entity.Order;
 import com.leezu.web.repository.OrderDAO;
 
-@Controller("adminOrderController")
+@Controller
 @RequestMapping("/admin/")
-public class OrderController {
+public class AdminOrderController {
 	
 	@Autowired
 	private OrderDAO orderService;
