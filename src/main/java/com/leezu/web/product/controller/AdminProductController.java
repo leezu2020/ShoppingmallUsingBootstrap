@@ -133,21 +133,29 @@ public class AdminProductController {
 		
 		String fileName = file.getOriginalFilename();
 		long fileSize = file.getSize();
-		System.out.printf("수정한 fileName : %s, fileSize : %d\n", fileName, fileSize);
 		
-		String webPath = "/resources/images";
-		String realPath = ctx.getRealPath(webPath);
-		System.out.printf("realPath : %s\n", realPath);
-		
-		try {
-			new File(realPath).mkdir();
-			realPath += File.separator + fileName;
-			File saveFile = new File(realPath);
-			file.transferTo(saveFile);
-		} catch(Exception e){
-			e.printStackTrace();
+		// 파일을 새로 추가했을경우
+		if(fileSize != 0) {
+			System.out.printf("수정한 fileName : %s, fileSize : %d\n", fileName, fileSize);
+			
+			String webPath = "/resources/images";
+			String realPath = ctx.getRealPath(webPath);
+			System.out.printf("realPath : %s\n", realPath);
+			
+			try {
+				new File(realPath).mkdir();
+				realPath += File.separator + fileName;
+				File saveFile = new File(realPath);
+				file.transferTo(saveFile);
+			} catch(Exception e){
+				e.printStackTrace();
+			}
+			product.setImageUrl(fileName);
+		} else {
+			// 파일을 새로 추가하지 않았을 경우, 기존 파일 유지
+			String originalUrl = productService.get(product.getProductID()).getImageUrl();
+			product.setImageUrl(originalUrl);
 		}
-		product.setImageUrl(fileName);
 		productService.modProduct(product);
 		
 		return "redirect:productDetail?id="+product.getProductID();

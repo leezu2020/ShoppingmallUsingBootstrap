@@ -1,5 +1,7 @@
 package com.leezu.web.eval.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +32,9 @@ public class EvalController {
 	private IProductService productService;
 	
 	@PostMapping("addEval")
-	public String addEval(Model model, HttpSession session, Eval eval) {
-		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
-		eval.setUserID(user.getUserID());
+	public String addEval(Model model, Principal user, Eval eval) {
+		String userID = user.getName();
+		eval.setUserID(userID);
 		
 		// 평가 등록
 		evalService.addEval(eval);

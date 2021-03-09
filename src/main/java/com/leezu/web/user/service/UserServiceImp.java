@@ -91,6 +91,7 @@ public class UserServiceImp implements IUserService, UserDetailsService{
 		
 		if(user != null) {
 			securityUser.setUserName(user.getUserName());
+			securityUser.setEmail(user.getUserEmail());
 			securityUser.setUsername(user.getUserID());
 			securityUser.setPassword(user.getUserPassword());
 			securityUser.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(user.getAuthority())));

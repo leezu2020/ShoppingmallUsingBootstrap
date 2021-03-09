@@ -39,7 +39,7 @@
 				</a>
 			</div>
 			<div class="row">
-				<c:forEach var="n" items="${productList}">
+				<c:forEach var="n" items="${productHomeList}">
 				<!-- el 표기법(n.getID()) -->
 				<div class="col-lg-4 col-md-6 mb-4">
 					<div class="card h-100">

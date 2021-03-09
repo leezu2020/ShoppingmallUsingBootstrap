@@ -24,6 +24,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     
 </head>
+
 <div class="panel-body">
     	*는 필수 정보입니다.
     <div class="row">
@@ -36,8 +37,13 @@
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope">*</i></span>
-                    <form:input type="text" class="form-control" placeholder="Email" path="userEmail"/>
+                    <form:input id="email" type="text" class="form-control" placeholder="Email" path="userEmail"/>
                     <form:errors path="userEmail"/>
+                </div>
+                <div class="form-group input-group">
+                    <input type="button" id="email-btn" onClick="fn_sendEmail()" value="이메일 인증">
+                    <input type="text" disabled="disabled" id="inputCode" placeholder="인증번호를 입력해주세요">
+                    <input type="button" id="code-btn" onClick="fn_checkCode()" value="인증번호 확인" disabled="disabled">
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -60,3 +66,31 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+	var code = '';
+	function fn_sendEmail(){
+		alert('이메일이 전송되었습니다.');
+		$.ajax({
+			url : "/checkEmail?email=" + $('#email').val(),
+			type : "get",
+			success : function(result){
+				$('#inputCode').attr("disabled",false);
+				$('#code-btn').attr("disabled",false);
+				code = result;
+				console.log(code);
+			}
+		});
+	};
+	
+	function fn_checkCode(){
+		var inputCode = $('#inputCode').val();
+		console.log(inputCode);
+		console.log(code);
+		if(inputCode == code){
+			alert('인증되었습니다.');
+		} else {
+			alert('인증번호를 다시 확인해주세요.');
+		}
+	}
+</script>

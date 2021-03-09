@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.leezu.web.eval.dao.EvalDAO;
 import com.leezu.web.eval.entity.Eval;
-import com.leezu.web.repository.EvalDAO;
 
 @Service
 public class EvalServiceImp implements IEvalService{

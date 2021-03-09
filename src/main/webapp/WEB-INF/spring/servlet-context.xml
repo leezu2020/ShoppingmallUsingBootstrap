@@ -42,6 +42,10 @@
 			<mvc:mapping path="/**" />
 			<bean class="com.leezu.web.interceptor.HomeInterceptor" />
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/customer/user/**" />
+			<bean class="com.leezu.web.interceptor.UserInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 	
     <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
