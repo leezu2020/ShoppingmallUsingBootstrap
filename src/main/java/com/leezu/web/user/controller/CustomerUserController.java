@@ -1,16 +1,19 @@
 package com.leezu.web.user.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.leezu.web.security.SecurityUser;
 import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.User;
 import com.leezu.web.user.service.IUserService;
@@ -23,10 +26,16 @@ public class CustomerUserController {
 	private IUserService userService;
 	
 	@RequestMapping("userInfo")
-	public String userInfo(HttpSession session, Model model) {
-		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
+	public String userInfo(Principal user, Model model) {
 		
-		User userInfo = userService.selectByID(user.getUserID());
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		SecurityUser userDetails = (SecurityUser) principal;
+		
+		User userInfo = new User();
+		
+		userInfo.setUserID(userDetails.getUserName());
+		userInfo.setUserEmail(userDetails.getEmail());
+		userInfo.setUserName(user.getName());
 		
 		model.addAttribute("user", userInfo);
 		return "customer.user.info.userInfo";

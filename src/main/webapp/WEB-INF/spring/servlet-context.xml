@@ -35,6 +35,14 @@
     	<!-- setting maximum upload size : 300mb -->
     	<property name="maxUploadSize" value="314572800" />	
     </bean>
+    
+	<!-- Interceptors -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.leezu.web.interceptor.HomeInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
     <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
     <mvc:annotation-driven> <!-- 맵핑하는작업 -->

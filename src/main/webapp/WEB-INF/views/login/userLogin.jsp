@@ -26,7 +26,7 @@
     
 </head>
 <div class="panel-body">
-   <form:form role="form" modelAttribute="userLoginValidator" action="/login/userLogin" method="post">
+   <form:form modelAttribute="userLoginValidator" action="/login/userLogin" method="post">
         <fieldset>
             <div class="form-group">
                 <form:input type="text" class="form-control" placeholder="ID" path="userID"/>

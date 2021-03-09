@@ -12,7 +12,7 @@
 				#{userPassword},
 				#{userName},
 				#{userEmail},
-				'role_user',
+				'ROLE_USER',
 				'1',
 				current_timestamp)
 	</insert>
