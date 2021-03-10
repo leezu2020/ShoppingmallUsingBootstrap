@@ -15,9 +15,9 @@
 
     <!-- 부가적인 테마 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css">
+   
+    <link rel="stylesheet" href="<c:url value="/resources/css/index.css" />" >
+    <link rel="stylesheet" href="<c:url value="/resources/css/style-signup.css" />" >
 
     <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -39,8 +39,6 @@
                     <span class="input-group-addon"><i class="fa fa-envelope">*</i></span>
                     <form:input id="email" type="text" class="form-control" placeholder="Email" path="userEmail"/>
                     <form:errors path="userEmail"/>
-                </div>
-                <div class="form-group input-group">
                     <input type="button" id="email-btn" onClick="fn_sendEmail()" value="이메일 인증">
                     <input type="text" disabled="disabled" id="inputCode" placeholder="인증번호를 입력해주세요">
                     <input type="button" id="code-btn" onClick="fn_checkCode()" value="인증번호 확인" disabled="disabled">
