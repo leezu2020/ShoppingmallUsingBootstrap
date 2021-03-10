@@ -42,10 +42,10 @@ public class CustomerUserController {
 	}
 	
 	@GetMapping("modUser")
-	public String modUser(HttpSession session, Model model) {
-		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
+	public String modUser(Principal user, Model model) {
+		String userID = user.getName();
 		
-		User userInfo = userService.selectByID(user.getUserID());
+		User userInfo = userService.selectByID(userID);
 		
 		model.addAttribute("userInfo", userInfo);		
 		
@@ -54,20 +54,24 @@ public class CustomerUserController {
 	}
 	
 	@PostMapping("modUser")
-	public String modUser(HttpSession session, String userName, String userEmail) throws Exception{
-		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
-		String ID = user.getUserID();
+	public String modUser(Principal user, String userName, String userEmail) throws Exception{
+		String userID = user.getName();
 		
 		User modUser = new User();
-		modUser.setUserID(ID);
+		modUser.setUserID(userID);
 		modUser.setUserName(userName);
 		modUser.setUserEmail(userEmail);
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("modUser", modUser);
 		
-		
 		userService.modUser(map);
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		SecurityUser userDetails = (SecurityUser) principal;
+		
+		userDetails.setUserName(userName);
+		
 		System.out.println("modUser 실행");
 		return "redirect:userInfo";
 	}

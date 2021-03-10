@@ -58,7 +58,7 @@
                     <form:password class="form-control" placeholder="Password Check" path="checkPassword"/>
                     <form:errors path="checkPassword"/>
                 </div>
-                <button type="submit" class="btn btn-default">가입하기</button>
+                <input type="button" id="submit-btn" class="btn btn-default" disabled="disabled" value="가입하기">
                 <button type="reset" class="btn btn-default">취소하기</button>
             </form:form>
         </div>
@@ -87,6 +87,7 @@
 		console.log(code);
 		if(inputCode == code){
 			alert('인증되었습니다.');
+			$('#submit-btn').attr("disabled",false);
 		} else {
 			alert('인증번호를 다시 확인해주세요.');
 		}
