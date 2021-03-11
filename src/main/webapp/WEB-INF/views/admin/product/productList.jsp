@@ -21,7 +21,7 @@
 
 </head>
 <!-- 상품 검색 기능 -->
-<form action="/admin/productList" method="get">
+<form action="/admin/products" method="get">
 	<div style="text-align: center; padding-top: 20px; padding-bottom: 30px">
 		<input type="text" name="keyword" id="keyword" style="text-align: center" placeholder="상품명" value="${keyword }"/>
 		<label for="size" ><b>사이즈</b></label>
@@ -40,10 +40,11 @@
 	</div>
 </form>
 
-<form action="/admin/delProduct" method="get">
+<form action="/admin/product" method="post">
+	<input type="hidden" name="_method" value="delete">
 	<div class="notice margin-top">
 		<h3 class="hidden">상품 목록</h3>
-		<button type="button" onclick="location.href='/admin/regProduct'" style="float:right;">상품 등록</button>
+		<button type="button" onclick="location.href='/admin/reg-product'" style="float:right;">상품 등록</button>
 		<table class="table">
 			<thead>
 				<tr>
@@ -63,7 +64,7 @@
 						<td style="text-align: center" class="checkBox">
 							<input type="checkBox" name="productChecked" value="${prod.productID}" />
 						</td>
-						<td style="text-align: center"><a href="/admin/productDetail?id=${prod.productID}">${prod.name}</a></td>
+						<td style="text-align: center"><a href="/admin/product/${prod.productID}">${prod.name}</a></td>
 						<td style="text-align: right; te"><fmt:formatNumber value="${prod.price}"/>원</td>
 						<td style="text-align: center">${prod.description}</td>
 						<td style="text-align: center">${prod.size}</td>

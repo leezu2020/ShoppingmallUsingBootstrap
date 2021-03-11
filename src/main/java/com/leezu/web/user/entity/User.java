@@ -9,7 +9,6 @@ public class User {
 	private String userName;
 	private String userEmail;
 	private String authority;
-	private boolean emailChecked;
 	private Date regDate;
 	
 
@@ -43,14 +42,7 @@ public class User {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-	public boolean isEmailChecked() {
-		return emailChecked;
-	}
-
-	public void setEmailChecked(boolean emailChecked) {
-		this.emailChecked = emailChecked;
-	}
-
+	
 	public Date getRegDate() {
 		return regDate;
 	}
@@ -60,14 +52,13 @@ public class User {
 	}
 
 	public User(String userID, String userPassword, String userName, String userEmail, String authority,
-			boolean emailChecked, Date regDate) {
+			Date regDate) {
 		super();
 		this.userID = userID;
 		this.userPassword = userPassword;
 		this.userName = userName;
 		this.userEmail = userEmail;
 		this.authority = authority;
-		this.emailChecked = emailChecked;
 		this.regDate = regDate;
 	}
 	public User() {

@@ -31,7 +31,6 @@
 				<th class="w60">아이디</th>
 				<th class="expand">이름</th>
 				<th class="w100">이메일</th>
-				<th class="w130">이메일 인증 여부</th>
 				<th class="w200">가입 날짜</th>
 			</tr>
 		</thead>
@@ -42,10 +41,6 @@
 					<td>${user.userID}</td>
 					<td>${user.userName}</td>
 					<td>${user.userEmail}</td>
-					<td><c:choose>
-							<c:when test="${user.emailChecked eq true}">이메일 인증 완료</c:when>
-							<c:otherwise>이메일 미인증</c:otherwise>
-						</c:choose></td>
 					<td><fmt:formatDate value="${user.regDate}" pattern="yyyy-MM-dd" /></td>
 				</tr>
 			</c:forEach>
@@ -56,7 +51,7 @@
 	
 	<div style="display: block; text-align: center;">		
 		<c:if test="${page.startPage != 1 }">
-			<a href="/admin/userList?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}&condition=${page.condition}&keyword=${page.keyword}">이전</a>
+			<a href="/admin/users?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}&condition=${page.condition}&keyword=${page.keyword}">이전</a>
 		</c:if>
 		<c:forEach begin="${page.startPage }" end="${page.endPage }" var="p">
 			<c:choose>
@@ -64,17 +59,17 @@
 					<b>${p }</b>
 				</c:when>
 				<c:when test="${p != page.nowPage }">
-					<a href="/admin/userList?nowPage=${p }&cntPerPage=${page.cntPerPage}&condition=${page.condition}&keyword=${page.keyword}">${p }</a>
+					<a href="/admin/users?nowPage=${p }&cntPerPage=${page.cntPerPage}&condition=${page.condition}&keyword=${page.keyword}">${p }</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 		<c:if test="${page.endPage != page.lastPage}">
-			<a href="/admin/userList?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}&condition=${page.condition}&keyword=${page.keyword}">다음</a>
+			<a href="/admin/users?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}&condition=${page.condition}&keyword=${page.keyword}">다음</a>
 		</c:if>
 	</div>
 </div>
 <!-- 유저 검색 기능 -->
-<form action="/admin/userList" method="get">
+<form action="/admin/users" method="get">
 	<div style="text-align: center;">
 		<label for="condition" >검색조건</label>
 		<select name="condition" id="condition">

@@ -3,7 +3,7 @@
     <main>
         <h2 class="main title">상품 등록</h2>
 
-        <form method="post" action="/admin/regProduct" enctype="multipart/form-data">
+        <form method="post" action="/admin/product" enctype="multipart/form-data">
             <div class="margin-top first">
                 <h3 class="hidden">상품 입력</h3>
                 <table class="table">
@@ -51,7 +51,7 @@
             </div>
             <div class="margin-top text-align-center">
                 <input class="btn-text btn-default" type="submit" value="등록" />
-                <a class="btn-text btn-cancel" href="/admin/productList">취소</a>
+                <a class="btn-text btn-cancel" href="/admin/products">취소</a>
             </div>
         </form>
 

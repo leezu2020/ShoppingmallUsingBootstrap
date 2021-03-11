@@ -2,8 +2,6 @@ package com.leezu.web.eval.controller;
 
 import java.security.Principal;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +14,6 @@ import com.leezu.web.eval.service.IEvalService;
 import com.leezu.web.order.entity.Order;
 import com.leezu.web.order.service.IOrderService;
 import com.leezu.web.product.service.IProductService;
-import com.leezu.web.user.entity.AuthInfo;
 
 @Controller
 @RequestMapping("/customer/user/")
@@ -31,7 +28,7 @@ public class EvalController {
 	@Autowired
 	private IProductService productService;
 	
-	@PostMapping("addEval")
+	@PostMapping("eval")
 	public String addEval(Model model, Principal user, Eval eval) {
 		String userID = user.getName();
 		eval.setUserID(userID);
@@ -43,10 +40,10 @@ public class EvalController {
 		// 해당 상품 평가 변경
 		productService.modLike(eval);
 		
-		return "redirect:orderList";
+		return "redirect:orders";
 	}
 	
-	@GetMapping("addEval")
+	@GetMapping("eval")
 	public String addEval(Model model, Order order) {
 		
 		model.addAttribute("order", order);

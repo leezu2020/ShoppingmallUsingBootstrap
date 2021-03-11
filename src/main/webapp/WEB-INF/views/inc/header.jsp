@@ -13,21 +13,20 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<form name='headForm' method="post" action="/user/userLogin">
 				<sec:authorize access="!isAuthenticated()">
 					<div class="collapse navbar-collapse" id="navbarResponsive">
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item"><a class="nav-link"
-								href="/login/userLogin">로그인 <span class="sr-only">(current)</span>
+								href="/login">로그인 <span class="sr-only">(current)</span>
 							</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="/login/userReg">회원가입</a></li>
+							<li class="nav-item">
+								<a class="nav-link"	href="/customer/user">회원가입</a>
+							</li>
 							<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
 						</ul>
 					</div>
 				</sec:authorize>
 
-			</form>
 
 			<sec:authorize access="isAuthenticated()">
 			<!-- 유저 로그인 -->
@@ -38,10 +37,10 @@
 							<sec:authentication property="principal.userName"/> 님,
 								환영합니다.</a><span class="sr-only">(current)</span></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/login/userLogout">로그아웃</a></li>
+							href="/logout">로그아웃</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/customer/user/userInfo">내 정보</a></li>
+							href="/customer/user/<sec:authentication property="principal.username"/>">내 정보</a></li>
 					</ul>
 				</div>
 				</sec:authorize>
@@ -52,10 +51,10 @@
 							<li class="nav-item"><a class="nav-link">관리자님 환영합니다.</a> <span
 								class="sr-only">(current)</span></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/login/userLogout">로그아웃</a></li>
+								href="/logout">로그아웃</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/admin/userList?page=1">관리자 페이지</a></li>
+								href="/admin/users?page=1">관리자 페이지</a></li>
 						</ul>
 					</div>
 				</sec:authorize>

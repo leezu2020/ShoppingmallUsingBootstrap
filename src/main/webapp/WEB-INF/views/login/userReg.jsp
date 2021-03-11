@@ -29,7 +29,7 @@
     	*는 필수 정보입니다.
     <div class="row">
         <div class="col-lg-6">
-            <form:form modelAttribute="userRegReq" action="/login/userReg" method="post">
+            <form:form modelAttribute="userRegReq" action="/customer/user" method="post">
                 <div class="form-group input-group">
                     <span class="input-group-addon"><i class="fa fa-check">*</i></span>
                     <form:input type="text" class="form-control" placeholder="ID" path="userID"/>
@@ -58,7 +58,7 @@
                     <form:password class="form-control" placeholder="Password Check" path="checkPassword"/>
                     <form:errors path="checkPassword"/>
                 </div>
-                <input type="button" id="submit-btn" class="btn btn-default" disabled="disabled" value="가입하기">
+                <input type="submit" id="submit-btn" class="btn btn-default" disabled="disabled" value="가입하기">
                 <button type="reset" class="btn btn-default">취소하기</button>
             </form:form>
         </div>
@@ -70,9 +70,10 @@
 	function fn_sendEmail(){
 		alert('이메일이 전송되었습니다.');
 		$.ajax({
-			url : "/checkEmail?email=" + $('#email').val(),
+			url : "/email/" + $('#email').val(),
 			type : "get",
 			success : function(result){
+				alert('email 값은 ' +$('#email').val());
 				$('#inputCode').attr("disabled",false);
 				$('#code-btn').attr("disabled",false);
 				code = result;

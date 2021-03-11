@@ -63,7 +63,7 @@
     </div>
     <div class="margin-top text-align-center">
         <input class="btn-text btn-default" type="submit" value="등록" />
-        <a class="btn-text btn-cancel" href="/customer/user/basketList">돌아가기</a>
+        <a class="btn-text btn-cancel" href="/customer/user/baskets">돌아가기</a>
     </div>
 </form>
 

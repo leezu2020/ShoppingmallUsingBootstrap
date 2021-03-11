@@ -60,10 +60,12 @@
 			</tbody>
 		</table>
 	</div>
-	            
-            <button type="button" class="delProduct" style="float:right;" onclick = "location.href = '/admin/delProduct?id=${product.productID}'">삭제하기</button>	
-			<button type="button" class="modProduct" style="float:right;" onclick = "location.href = '/admin/modProduct?id=${product.productID}'">수정하기</button>	
-  	<div class="margin-top">
+		<form action="/admin/product/${product.productID}"	method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input type="submit" value="삭제">
+		</form>   
+		<button type="button" style="float:right;" onclick = "location.href = '/admin/mod-product/${product.productID}'">수정하기</button>    
+	<div class="margin-top">
 		<h2>상품 후기</h2>
 		<table class="table" style="margin-bottom: 100px">
 			<thead>

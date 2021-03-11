@@ -3,7 +3,7 @@
     <main>
         <h2 class="main title">공지사항 등록</h2>
 
-        <form method="post" action="/admin/regNotice">
+        <form method="post" action="/admin/notice">
             <div class="margin-top first">
                 <h3 class="hidden">공지사항 입력</h3>
                 <table class="table">
@@ -29,7 +29,7 @@
             </div>
             <div class="margin-top text-align-center">
                 <input class="btn-text btn-default" type="submit" value="등록" />
-                <a class="btn-text btn-cancel" href="/admin/noticeList">취소</a>
+                <a class="btn-text btn-cancel" href="/admin/notices">취소</a>
             </div>
         </form>
 

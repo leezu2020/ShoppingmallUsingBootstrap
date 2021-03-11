@@ -9,11 +9,16 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.leezu.web.eval.entity.Eval;
 import com.leezu.web.eval.service.IEvalService;
@@ -33,7 +38,7 @@ public class AdminProductController {
 	@Autowired
 	private IEvalService evalService;
 	
-	@GetMapping("productList")
+	@GetMapping("products")
 	public String productList(Model model,
 			@RequestParam(defaultValue = "all") String size,
 			@RequestParam(defaultValue = "") String keyword,
@@ -44,32 +49,31 @@ public class AdminProductController {
 		for(Product p : list) {
 			p.setEvalAvg(productService.calEvalRateById(p.getProductID()));
 		}
-		System.out.println(list.get(0).getEvalAvg());
 		model.addAttribute("productList", list);
 		System.out.println("productList 조회");
 		return "admin.product.productList";
 	}
 	
-	@GetMapping("productDetail")
-	public String productDetail(Model model, String id) {
-		int ID = Integer.parseInt(id);
-		System.out.println("product ID : " + ID);
-		List<Eval> evalList =  evalService.getEvalList(id);
-		int avgRate = productService.calEvalRateById(ID);
+	@GetMapping("product/{id}")
+	public String productDetail(Model model, @PathVariable int id) {
+		String ID = Integer.toString(id);
+		System.out.println("product ID : " + id);
+		List<Eval> evalList =  evalService.getEvalList(ID);
+		int avgRate = productService.calEvalRateById(id);
 		
-		model.addAttribute("cnt", evalService.getEvalCnt(ID));
+		model.addAttribute("cnt", evalService.getEvalCnt(id));
 		model.addAttribute("avgRate", avgRate);
 		model.addAttribute("evalList", evalList);
-		model.addAttribute("product", productService.get(ID));
+		model.addAttribute("product", productService.get(id));
 		return "admin.product.productDetail";
 	}
 
-	@GetMapping("regProduct")
+	@GetMapping("reg-product")
 	public String regProduct() {
 		return "admin.product.regProduct";
 	}
 	
-	@PostMapping("regProduct")
+	@PostMapping("product")
 	public String regProduct(String name, String price, String description, String size, MultipartFile file, String ea){
 		
 		String fileName = file.getOriginalFilename();
@@ -95,10 +99,10 @@ public class AdminProductController {
 
 		productService.regProduct(product);
 		
-		return "redirect:productList";
+		return "redirect:products";
 	}
 	
-	@GetMapping("delProduct")
+	@DeleteMapping("product")
 	public String delProduct(@RequestParam(required=false)Integer id,
 			@RequestParam(required=false)List<Integer> productChecked) {
 		
@@ -117,19 +121,20 @@ public class AdminProductController {
 			}
 		}
 		
-		return "redirect:productList";
+		return "redirect:products";
 	}
 	
-	@GetMapping("modProduct")
-	public String modProduct(String id, Model model) {
+	@GetMapping("mod-product/{id}")
+	public String modProduct(@PathVariable String id, Model model) {
 		
 		model.addAttribute("product", productService.get(Integer.parseInt(id)));
 		
 		return "admin.product.modProduct";
 	}
 	
-	@PostMapping("modProduct")
-	public String modProduct(Product product, MultipartFile file) {
+	@PutMapping("product/{id}")
+	public ModelAndView modProduct(@PathVariable String id, Product product, MultipartFile file, ModelAndView mv) {
+		
 		
 		String fileName = file.getOriginalFilename();
 		long fileSize = file.getSize();
@@ -158,6 +163,12 @@ public class AdminProductController {
 		}
 		productService.modProduct(product);
 		
-		return "redirect:productDetail?id="+product.getProductID();
+		// redirect 시 parameter(interceptor에서 오는 aside의 number) 숨기기
+		RedirectView redirectView = new RedirectView();
+		redirectView.setUrl("redirect:product/"+product.getProductID());
+		redirectView.setExposeModelAttributes(false);
+		
+		mv.setView(redirectView);
+		return mv;
 	}
 }

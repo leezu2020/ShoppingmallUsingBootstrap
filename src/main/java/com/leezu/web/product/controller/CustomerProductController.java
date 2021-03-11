@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -23,7 +24,7 @@ public class CustomerProductController {
 	@Autowired
 	private IEvalService evalService;
 	
-	@GetMapping("productList")
+	@GetMapping("products")
 	public String productlist(Model model,
 			@RequestParam(defaultValue = "all") String size,
 			@RequestParam(defaultValue = "") String keyword,
@@ -48,8 +49,8 @@ public class CustomerProductController {
 		return "customer.product.productList";
 	}
 	
-	@GetMapping("productDetail")
-	public String productDetail(Model model, String id) {
+	@GetMapping("product/{id}")
+	public String productDetail(Model model, @PathVariable String id) {
 		int ID = Integer.parseInt(id);
 		System.out.println("product ID : " + ID);
 		List<Eval> evalList =  evalService.getEvalList(id);

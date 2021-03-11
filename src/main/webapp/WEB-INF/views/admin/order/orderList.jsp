@@ -60,7 +60,7 @@
 	
 		var newForm = document.createElement('form');
 		newForm.name = 'newForm';
-		newForm.method = 'post';
+		newForm.method = 'put';
 		newForm.action = '/admin/modOrder';
 		
  		var checkbox = $('input[id=checkBox]:checked');

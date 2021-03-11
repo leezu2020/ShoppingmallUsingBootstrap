@@ -6,7 +6,7 @@
 <main>
 	<h2 class="main title">상품 조회</h2>
 		<sec:authorize access="hasRole('ROLE_USER')">
-			<form action = "/customer/user/addBasket" method = "post">
+			<form action = "/customer/user/basket" method = "post">
 				<table class="basket">
 					<tr style="text-align: center;">
 						<td colspan="3" align="right">

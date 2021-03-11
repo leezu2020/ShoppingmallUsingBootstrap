@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<form action="/customer/user/modUser" method="post">
-<input type="hidden" name="userID" value="${userInfo.userID}"/>
+<form action="/customer/user/${userInfo.userID}" method="post">
+	<input type="hidden" name="_method" value="PUT"/>
     <main>
         <h2 class="main title">내 정보 수정</h2>
 	            <div class="margin-top first">
@@ -25,7 +25,7 @@
 	                        <tr>
 	                            <th>이메일</th>
 	                            <td class="text-align-left text-indent text-strong text-orange" colspan="2">
-	                               <input type="text" value="${userInfo.userEmail}" name="userEmail"/>
+	                               ${userInfo.userEmail}"
 	                            </td>
 	                        </tr>
 	                    </tbody>

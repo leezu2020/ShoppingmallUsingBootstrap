@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<form action="/admin/modProduct" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="productID" value="${product.productID}" />
+<form action="/admin/product/${product.productID}" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="_method" value="PUT" />
 	<div class="margin-top first">
 		<h3 class="hidden">상품 수정</h3>
 		<table class="table">

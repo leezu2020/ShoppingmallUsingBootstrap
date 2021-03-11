@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!-- 상품 검색 기능 -->
-<form action="/customer/productList" method="get">
+<form action="/customer/products" method="get">
 	<div style="text-align: center; padding-top: 20px; padding-bottom: 30px">
 		<input type="text" name="keyword" id="keyword" style="text-align: center" placeholder="상품명" value="${keyword}"/>
 		<label for="size" ><b>사이즈</b></label>
@@ -22,7 +22,7 @@
 		<button type="submit">검색</button>
 	</div>
 </form>
-<form action="/customer/productList" method="get">
+<form action="/customer/products" method="get">
 	<div style="text-align: right; padding-bottom: 10px">
 		<c:choose>
 			<c:when test="${view eq 'list'}">
@@ -67,7 +67,7 @@
 						<tr>
 							<td class="checkBox"><input type="checkBox"
 								name="productChecked" value="${n.productID}" /></td>
-							<td><a href="/admin/productDetail?id=${n.productID}">${n.name}</a></td>
+							<td><a href="/admin/product/${n.productID}">${n.name}</a></td>
 							<td>${n.price}</td>
 							<td>${n.description}</td>
 							<td>${n.size}</td>
@@ -89,13 +89,13 @@
 				<!-- el 표기법(n.getID()) -->
 				<div class="col-lg-4 col-md-6 mb-4">
 					<div class="card h-100">
-						<a href="/customer/productDetail?id=${n.productID}"><img class="card-img-top"
+						<a href="/customer/product/${n.productID}"><img class="card-img-top"
 							src="${pageContext.request.contextPath}/resources/images/${n.imageUrl}"
 							onerror="this.src='http://placehold.it/700x400'"
 							alt="${n.name}"></a>
 						<div class="card-body">
 							<h4 class="card-title" style="text-align: center">
-								<a href="/customer/productDetail?id=${n.productID}">${n.name}</a>
+								<a href="/customer/product/${n.productID}">${n.name}</a>
 							</h4>
 							<h5 style="text-align: right"><fmt:formatNumber value="${n.price}"/> 원</h5>
 							<p class="card-text">${n.description}</p>

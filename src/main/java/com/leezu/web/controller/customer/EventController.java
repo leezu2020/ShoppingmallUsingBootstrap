@@ -1,6 +1,7 @@
 package com.leezu.web.controller.customer;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -8,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EventController {
 
 
-	@RequestMapping("eventList")
+	@RequestMapping("events")
 	public String eventList() {
 		return "customer.event.eventList";
 	}
 	
-	@RequestMapping("eventDetail")
-	public String eventDetail() {
+	@RequestMapping("event/{id}")
+	public String eventDetail(@PathVariable int id) {
 		return "customer.event.eventDetail";
 	}
 }

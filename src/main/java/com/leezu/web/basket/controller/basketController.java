@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,7 +30,7 @@ public class basketController {
 	@Autowired
 	private INoticeService noticeService;
 	
-	@RequestMapping("basketList")
+	@GetMapping("baskets")
 	public String basketList(Model model, Principal user) {
 		// 유저 아이디 가져오기
 		String userID = user.getName();
@@ -50,7 +51,7 @@ public class basketController {
 		
 	}
 	
-	@PostMapping("addBasket")
+	@PostMapping("basket")
 	public String addBasket(Principal user, int cnt, String productID) {
 		System.out.println("cnt : " + cnt + " productID : " + productID);
 		
@@ -85,7 +86,7 @@ public class basketController {
 				map.put("basket", prebasket);
 				
 				basketService.modBasket(map);
-				return "redirect:basketList";
+				return "redirect:baskets";
 			}
 			
 		}
@@ -95,7 +96,7 @@ public class basketController {
 			map.put("basket", prebasket);
 			
 			basketService.addBasket(map);
-			return "redirect:basketList";
+			return "redirect:baskets";
 		}
 	}
 }

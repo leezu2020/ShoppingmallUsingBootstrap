@@ -19,7 +19,7 @@ public class AdminUserController {
 	private IUserService userService;
 	
 
-	@GetMapping("userList")
+	@GetMapping("users")
 	public String userList(Model model, PagingDAO paging,
 			
 			@RequestParam(defaultValue = "") String keyword,
@@ -41,7 +41,7 @@ public class AdminUserController {
 	}
 
 	
-	@GetMapping("eventList")
+	@GetMapping("events")
 	public String eventList() throws Exception {
 		return "admin.event.eventList";
 	}

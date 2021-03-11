@@ -16,15 +16,15 @@
 				</ol>
 				<div class="carousel-inner" role="listbox">
 					<div class="carousel-item active">
-						<a href="/customer/eventDetail?id=1"><img class="d-block img-fluid" src="http://placehold.it/900x350"
+						<a href="/customer/event/1"><img class="d-block img-fluid" src="http://placehold.it/900x350"
 							alt="First slide"></a>
 					</div>
 					<div class="carousel-item">
-						<a href="/customer/eventDetail?id=2"><img class="d-block img-fluid" src="http://placehold.it/900x350"
+						<a href="/customer/event/2"><img class="d-block img-fluid" src="http://placehold.it/900x350"
 							alt="Second slide"></a>
 					</div>
 					<div class="carousel-item">
-						<a href="/customer/eventDetail?id=3"><img class="d-block img-fluid" src="http://placehold.it/900x350"
+						<a href="/customer/event/3"><img class="d-block img-fluid" src="http://placehold.it/900x350"
 							alt="Third slide"></a>
 					</div>
 				</div>
@@ -38,12 +38,13 @@
 					class="sr-only">Next</span>
 				</a>
 			</div>
+			
 			<div class="row">
 				<c:forEach var="n" items="${productHomeList}">
 				<!-- el 표기법(n.getID()) -->
 				<div class="col-lg-4 col-md-6 mb-4">
 					<div class="card h-100">
-						<a href="/customer/productDetail?id=${n.productID}"><img class="card-img-top"
+						<a href="/customer/product/${n.productID}"><img class="card-img-top"
 							src="${pageContext.request.contextPath}/resources/images/${n.imageUrl}"
 							onerror="this.src='http://placehold.it/700x400'"
 							alt="${n.name}"></a>

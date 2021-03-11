@@ -7,13 +7,12 @@
 	<!-- 회원가입 -->
 	<insert id="userReg" parameterType="UserReg">
 	<!--  0은 authority(관리자 : 1) 1은 emailchecked(이메일인증 : 1) -->
-	insert into user(userID, userPassword, userName, userEmail, authority, emailChecked, regDate)
+	insert into user(userID, userPassword, userName, userEmail, authority, regDate)
 		values( #{userID},
 				#{userPassword},
 				#{userName},
 				#{userEmail},
 				'ROLE_USER',
-				'1',
 				current_timestamp)
 	</insert>
 	
@@ -69,9 +68,7 @@
 	<!-- 회원 정보 수정 -->
 	<update id="modUser" parameterType="hashmap">
 		update user
-			set userName = #{modUser.userName},
-				userEmail = #{modUser.userEmail},
-				modDate = current_timestamp
+			set userName = #{modUser.userName}
 			where userID = #{modUser.userID}
 	</update>
 	
