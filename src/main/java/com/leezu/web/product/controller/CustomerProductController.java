@@ -1,4 +1,4 @@
-package com.leezu.web.controller.customer;
+package com.leezu.web.product.controller;
 
 import java.util.List;
 
@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.leezu.web.eval.entity.Eval;
 import com.leezu.web.eval.service.IEvalService;
+import com.leezu.web.product.entity.Product;
 import com.leezu.web.product.service.IProductService;
 
 @Controller
 @RequestMapping("/customer/")
-public class ProductController {
+public class CustomerProductController {
 
 	@Autowired
 	private IProductService productService;
@@ -30,12 +31,15 @@ public class ProductController {
 			@RequestParam(defaultValue = "2147483647") int maxprice,
 			@RequestParam(defaultValue = "array") String view) throws Exception{
 		
-		model.addAttribute("productList", productService.getList(keyword, size, minprice, maxprice));
+		// 검색 조건 만족하는 Product 리스트
+		List<Product> productList = productService.getList(keyword, size, minprice, maxprice);
+		
+		model.addAttribute("productSearchList", productList);
 		System.out.println("keyword : " + keyword +
 				" size : " + size + 
 				" minprice : " + minprice + 
 				" maxprice : " + maxprice + 
-				" 상품 리스트 검색 갯수" + productService.getList(keyword, size, minprice, maxprice).size());
+				" 상품 리스트 검색 갯수" + productList.size());
 		model.addAttribute("size", size);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("minprice", minprice);

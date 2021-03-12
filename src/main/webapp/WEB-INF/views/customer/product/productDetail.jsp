@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <main>
 	<h2 class="main title">상품 조회</h2>
-	<c:choose>
-		<c:when test="${authInfo.authority eq 0}">
+		<sec:authorize access="hasRole('ROLE_USER')">
 			<form action = "/customer/user/addBasket" method = "post">
 				<table class="basket">
 					<tr style="text-align: center;">
@@ -19,8 +19,7 @@
 					</tr>
 				</table>
 			</form>
-		</c:when>
-	</c:choose>
+		</sec:authorize>
 
 
 	<div class="margin-top first">

@@ -1,4 +1,4 @@
-package com.leezu.web.controller.admin;
+package com.leezu.web.notice.controller;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import com.leezu.web.paging.DAO.PagingDAO;
 
 @Controller("adminNoticeController")
 @RequestMapping("/admin/")
-public class NoticeController {
+public class AdminNoticeController {
 	
 	@Autowired
 	private INoticeService noticeService;

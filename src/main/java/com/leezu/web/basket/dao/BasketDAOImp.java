@@ -1,4 +1,4 @@
-package com.leezu.web.repository;
+package com.leezu.web.basket.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +15,7 @@ public class BasketDAOImp{
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private static final String namespace = "com.leezu.mapper.userMapper";
+	private static final String namespace = "com.leezu.mapper.basketMapper";
 	
 
 	public void addBasket(HashMap<String, Object> map) {

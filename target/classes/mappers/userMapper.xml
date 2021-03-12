@@ -7,12 +7,12 @@
 	<!-- 회원가입 -->
 	<insert id="userReg" parameterType="UserReg">
 	<!--  0은 authority(관리자 : 1) 1은 emailchecked(이메일인증 : 1) -->
-	insert into user
+	insert into user(userID, userPassword, userName, userEmail, authority, emailChecked, regDate)
 		values( #{userID},
 				#{userPassword},
 				#{userName},
 				#{userEmail},
-				'0',
+				'ROLE_USER',
 				'1',
 				current_timestamp)
 	</insert>

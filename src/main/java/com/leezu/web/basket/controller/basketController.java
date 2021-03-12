@@ -1,9 +1,8 @@
-package com.leezu.web.controller.customer;
+package com.leezu.web.basket.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,6 @@ import com.leezu.web.basket.service.IBasketService;
 import com.leezu.web.notice.entity.PrivateNotice;
 import com.leezu.web.notice.service.INoticeService;
 import com.leezu.web.product.service.IProductService;
-import com.leezu.web.user.entity.AuthInfo;
 
 @Controller
 @RequestMapping("/customer/user/")
@@ -32,20 +30,19 @@ public class basketController {
 	private INoticeService noticeService;
 	
 	@RequestMapping("basketList")
-	public String basketList(Model model, HttpSession session) {
-		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
+	public String basketList(Model model, Principal user) {
+		// 유저 아이디 가져오기
+		String userID = user.getName();
 		
-
 		double sum = 0;
-		for(Basket b : basketService.basketList(user.getUserID())) {
+		for(Basket b : basketService.basketList(userID)) {
 			sum += b.getTotal();
 		}
 		
-		model.addAttribute("basketList", basketService.basketList(user.getUserID()));
+		model.addAttribute("basketList", basketService.basketList(userID));
 		model.addAttribute("sum", sum);
 		
 		// 개인 공지사항 가져오기
-		String userID = user.getUserID();
 		List<PrivateNotice> notices = noticeService.getPrivateNotice(userID);
 		model.addAttribute("noticeList", notices);
 		
@@ -54,7 +51,7 @@ public class basketController {
 	}
 	
 	@PostMapping("addBasket")
-	public String addBasket(HttpSession session, int cnt, String productID) {
+	public String addBasket(Principal user, int cnt, String productID) {
 		System.out.println("cnt : " + cnt + " productID : " + productID);
 		
 		// 로그인 정보와 입력받은 수량, 상품id 저장 
@@ -62,9 +59,9 @@ public class basketController {
 		int productid = Integer.parseInt(productID);
 		prebasket.setProductID(productid);
 		
-		
-		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
-		prebasket.setUserID(user.getUserID());
+		// 유저 아이디 가져오기
+		String userID = user.getName();
+		prebasket.setUserID(userID);
 		
 		prebasket.setCount(cnt);
 		
@@ -72,7 +69,7 @@ public class basketController {
 		// 장바구니에 이미 등록된 상품인지 확인
 		HashMap<String, String> check = new HashMap<String, String>();
 		check.put("productID", productID);
-		check.put("userID", user.getUserID());
+		check.put("userID", userID);
 		
 		Integer existcount = basketService.getBasketCount(check);
 		if( existcount != null) {

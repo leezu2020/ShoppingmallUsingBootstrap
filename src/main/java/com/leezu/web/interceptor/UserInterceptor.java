@@ -2,25 +2,35 @@ package com.leezu.web.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.leezu.web.user.entity.AuthInfo;
+import com.leezu.web.basket.service.IBasketService;
+import com.leezu.web.order.service.IOrderService;
+import com.leezu.web.security.SecurityUser;
 
 public class UserInterceptor extends HandlerInterceptorAdapter{
+
+	@Autowired
+	private IOrderService orderService;
+	
+	@Autowired
+	private IBasketService basketService;
 	
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-
-		HttpSession session = request.getSession();
-		AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+			ModelAndView modelAndView) throws Exception {
 		
-		if(user == null || user.getAuthority() != 0) {
-			response.sendRedirect("/");
-			return false;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		SecurityUser user = (SecurityUser) principal;
+		
+		if(modelAndView != null) {
+			modelAndView.addObject("orderNum", orderService.getOrderNum(user.getUsername()));
+			modelAndView.addObject("basketNum", basketService.getBasketNum(user.getUsername()));
 		}
-		return true;
+		super.postHandle(request, response, handler, modelAndView);
 	}
 }

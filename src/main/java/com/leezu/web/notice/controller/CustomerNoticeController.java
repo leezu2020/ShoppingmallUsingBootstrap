@@ -1,4 +1,4 @@
-package com.leezu.web.controller.customer;
+package com.leezu.web.notice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@ import com.leezu.web.paging.DAO.PagingDAO;
 
 @Controller
 @RequestMapping("/customer/")
-public class NoticeController {
+public class CustomerNoticeController {
 
 	@Autowired
 	private INoticeService noticeService;

@@ -58,7 +58,7 @@
 						<th class="w130">설명</th>
 						<th class="w200">사이즈</th>
 						<th class="w200">등록날짜</th>
-						<th class="w200">좋아요 수</th>
+						<th class="w200">상품평</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -73,7 +73,7 @@
 							<td>${n.size}</td>
 							<td><fmt:formatDate value="${n.regDate}"
 									pattern="yyyy-MM-dd" /></td>
-							<td>${n.like}</td>
+							<td>${n.evalSum}</td>
 						</tr>
 					</c:forEach>
 
@@ -85,7 +85,7 @@
 	<c:otherwise>
 		<div class="container">
 			<div class="row">
-				<c:forEach var="n" items="${productList}">
+				<c:forEach var="n" items="${productSearchList}">
 				<!-- el 표기법(n.getID()) -->
 				<div class="col-lg-4 col-md-6 mb-4">
 					<div class="card h-100">

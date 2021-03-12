@@ -4,12 +4,12 @@ package com.leezu.web.user.entity;
 public class AuthInfo {
 	private String userID;
 	private String userName;
-	private int authority;
+	private String authority;
 	
-	public AuthInfo(String userID, String userName, int i) {
+	public AuthInfo(String userID, String userName, String authority) {
 		this.userID = userID;
 		this.userName = userName;
-		this.authority = i;
+		this.authority = authority;
 	}
 	public String getUserID() {
 		return userID;
@@ -23,10 +23,10 @@ public class AuthInfo {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public int getAuthority() {
+	public String getAuthority() {
 		return authority;
 	}
-	public void setAuthority(char authority) {
+	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
 	

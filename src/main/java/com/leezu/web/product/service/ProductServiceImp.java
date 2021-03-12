@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.leezu.web.eval.entity.Eval;
 import com.leezu.web.eval.service.IEvalService;
+import com.leezu.web.product.dao.ProductDAO;
 import com.leezu.web.product.entity.Product;
-import com.leezu.web.repository.ProductDAO;
 
 @Service
 public class ProductServiceImp implements IProductService{
