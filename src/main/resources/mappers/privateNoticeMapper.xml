@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leezu.mapper.privateNoticeMapper">
+
+<!-- 개인 공지사항 -->
+	<select id="getPrivateNotice" resultType="PrivateNotice">
+		select content, regDate
+			from privateNotice
+			where userID = #{userID}
+	</select>
+	
+	<select id="getPrivateOrderNotice" resultType="PrivateNotice">
+		select content, regDate
+			from privateOrderNotice
+			where userID = #{userID}
+	</select>
+	
+	<!-- 상품 삭제시 유저에게 기록 -->
+	<insert id="alertDelProduct">
+		insert into privateNotice (userID, content)
+			select b.userID as userID,
+				p.name as content
+				from basket b, product p
+				where b.productID = #{id}
+					and p.productID = #{id}
+	</insert>
+	
+	<!-- 상품 삭제시 주문한 유저에게 기록 -->
+	<insert id="alertDelProductForOrder" parameterType="int">
+		insert into privateOrderNotice (userID, content)
+			select o.userID as userID,
+				p.name as content
+				from orderlist o, product p
+				where o.productID = #{id}
+					and p.productID = #{id}
+	</insert>
+
+</mapper>

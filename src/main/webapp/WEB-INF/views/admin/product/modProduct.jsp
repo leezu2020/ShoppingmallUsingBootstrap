@@ -101,8 +101,8 @@
 			data : formData,
 			processData : false,
 			contentType : false,
-			success : function(result){
-				alert('put 성공' + result);
+			success : function(id){
+				location.href = "/admin/products/" + id;
 			},
 			error : function(xhr, status, error) {
 				alert(error);

@@ -154,7 +154,7 @@ public class AdminProductController {
 		product.setDescription(productDto.getDescription());
 
 		// 파일을 새로 추가했을경우
-		if (productDto.getFile() != null) {
+		if (!productDto.getFile().isEmpty()) {
 			String fileName = productDto.getFile().getOriginalFilename();
 			long fileSize = productDto.getFile().getSize();
 			System.out.printf("수정한 fileName : %s, fileSize : %d\n", fileName, fileSize);
@@ -173,23 +173,16 @@ public class AdminProductController {
 			}
 			product.setImageUrl(fileName);
 
-		} else
-
-		{ // 파일을 새로 추가하지 않았을 경우, 기존 파일 유지
+		} else { // 파일을 새로 추가하지 않았을 경우, 기존 파일 유지
 			String originalUrl = productService.get(id).getImageUrl();
+			System.out.println("이미지 변경 안함 imgUrl " + originalUrl);
 			product.setImageUrl(originalUrl);
 		}
-
-		product.setProductID(id);
-
-		System.out.println("----product----");
-		System.out.println(product.getName());
-		System.out.println(product.getDescription());
 
 		productService.modProduct(product);
 		  
 		  
-		  System.out.println("modProduct 실행");
+		System.out.println("modProduct 실행");
 		 
 		return Integer.toString(id);
 	}
