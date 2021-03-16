@@ -15,7 +15,7 @@
 </div>
 
 
-<form action="/customer/user/order" method="Get">
+<form action="/customer/users/order" method="Get">
 	<div class="notice margin-top" style="padding-top: 10px">
 		<h3 class="hidden">장바구니 목록</h3>
 		<table class="table">
@@ -36,7 +36,7 @@
 						<td class="checkBox">
 							<input type="checkBox" name="basketChecked" value="${b.basketID}" />
 						</td>
-						<td align="center" onClick="location.href='/customer/productDetail?id=${b.productID}'">${b.productName}</td>
+						<td align="center" onClick="location.href='/customer/products/${b.productID}'">${b.productName}</td>
 						<td align="right"><fmt:formatNumber value="${b.productPrice}" pattern="###,###,###"/> 원</td>
 						<td align="center">${b.count}</td>
 						<td align="right"><fmt:formatNumber value="${b.total}" pattern="###,###,###"/> 원</td>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<form method="post" action="/customer/user/eval">
+<form method="post" action="/customer/users/eval">
 <input type="hidden" name="orderID" value="${order.orderID}">
 <input type="hidden" name="productID" value="${order.productID}">
 	<div class="margin-top first">
@@ -27,6 +27,6 @@
 	</div>
 	<div class="margin-top text-align-center">
 	    <input class="btn-text btn-default" type="submit" value="등록" />
-	    <a href="/customer/user/orders">취소</a>
+	    <a href="/customer/users/orders">취소</a>
 	</div>
 </form>

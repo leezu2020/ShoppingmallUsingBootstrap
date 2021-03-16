@@ -20,7 +20,7 @@
 								href="/login">로그인 <span class="sr-only">(current)</span>
 							</a></li>
 							<li class="nav-item">
-								<a class="nav-link"	href="/customer/user">회원가입</a>
+								<a class="nav-link"	href="/customer/users">회원가입</a>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
 						</ul>
@@ -40,7 +40,7 @@
 							href="/logout">로그아웃</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/customer/user/<sec:authentication property="principal.username"/>">내 정보</a></li>
+							href="/customer/users/<sec:authentication property="principal.username"/>">내 정보</a></li>
 					</ul>
 				</div>
 				</sec:authorize>

@@ -25,7 +25,7 @@ public class NoticeServiceImp implements INoticeService {
 	
 	@Override
 	public int getNoticeNum(String condition, String keyword) {
-		System.out.println("공지사항 수 가져오기");
+	//	System.out.println("공지사항 수 가져오기");
 		return noticeDAO.getNoticeNum(condition, keyword);
 	}
 

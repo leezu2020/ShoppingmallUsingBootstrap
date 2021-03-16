@@ -18,9 +18,9 @@
 		<sec:authorize access="hasRole('ROLE_USER')">
 			<h1 class="my-4">내 정보 관리</h1>
 			<div class="list-group">
-				<a href="/customer/user/<sec:authentication property="principal.username"/>" class="list-group-item">내 정보</a>
-				<a href="/customer/user/baskets" class="list-group-item">장바구니 &nbsp<span class="badge badge-pill badge-dark">${basketNum}</span></a>
-				<a href="/customer/user/orders"	class="list-group-item">주문내역 &nbsp<span class="badge badge-pill badge-dark">${orderNum}</span></a>
+				<a href="/customer/users/<sec:authentication property="principal.username"/>" class="list-group-item">내 정보</a>
+				<a href="/customer/users/baskets" class="list-group-item">장바구니 &nbsp<span class="badge badge-pill badge-dark">${basketNum}</span></a>
+				<a href="/customer/users/orders"	class="list-group-item">주문내역 &nbsp<span class="badge badge-pill badge-dark">${orderNum}</span></a>
 			</div>
 		</sec:authorize>
 			<!-- 관리자 로그인 -->	

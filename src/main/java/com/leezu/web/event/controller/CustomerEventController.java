@@ -1,4 +1,4 @@
-package com.leezu.web.controller.customer;
+package com.leezu.web.event.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/customer/")
-public class EventController {
+public class CustomerEventController {
 
 
 	@RequestMapping("events")

@@ -40,11 +40,11 @@
 	</div>
 </form>
 
-<form action="/admin/product" method="post">
+<form action="/admin/products" method="post">
 	<input type="hidden" name="_method" value="delete">
 	<div class="notice margin-top">
 		<h3 class="hidden">상품 목록</h3>
-		<button type="button" onclick="location.href='/admin/reg-product'" style="float:right;">상품 등록</button>
+		<button type="button" onclick="location.href='/admin/products/form'" style="float:right;">상품 등록</button>
 		<table class="table">
 			<thead>
 				<tr>
@@ -64,7 +64,7 @@
 						<td style="text-align: center" class="checkBox">
 							<input type="checkBox" name="productChecked" value="${prod.productID}" />
 						</td>
-						<td style="text-align: center"><a href="/admin/product/${prod.productID}">${prod.name}</a></td>
+						<td style="text-align: center"><a href="/admin/products/${prod.productID}">${prod.name}</a></td>
 						<td style="text-align: right; te"><fmt:formatNumber value="${prod.price}"/>원</td>
 						<td style="text-align: center">${prod.description}</td>
 						<td style="text-align: center">${prod.size}</td>

@@ -1,6 +1,5 @@
 package com.leezu.web.user.controller;
 
-import java.security.Principal;
 import java.util.HashMap;
 
 import javax.validation.Valid;
@@ -26,7 +25,7 @@ import com.leezu.web.user.service.IUserService;
 import com.leezu.web.validator.UserRegValidator;
 
 @Controller
-@RequestMapping("/customer/user")
+@RequestMapping("/customer/users")
 public class CustomerUserController {
 
 	@Autowired
@@ -66,10 +65,8 @@ public class CustomerUserController {
 	}
 	
 	// 정보 수정 페이지
-	@GetMapping("mod-user")
-	public String modUser(Principal user, Model model) {
-		String userID = user.getName();
-
+	@GetMapping("/{userID}/form")
+	public String modUser(@PathVariable("userID") String userID, Model model) {
 		User userInfo = userService.selectByID(userID);
 
 		model.addAttribute("userInfo", userInfo);
@@ -98,7 +95,7 @@ public class CustomerUserController {
 		
 		// redirect 시 parameter(interceptor에서 오는 aside의 number) 숨기기
 		RedirectView redirectView = new RedirectView();
-		redirectView.setUrl("/customer/user/"+userID);
+		redirectView.setUrl("/customer/users/"+userID);
 		redirectView.setExposeModelAttributes(false);
 		
 		mv.setView(redirectView);

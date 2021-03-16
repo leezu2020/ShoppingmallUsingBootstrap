@@ -28,5 +28,5 @@
 	                </table>
 	            </div>
 	            
-	            <button type="button" class="ModerateUserBtn" style="float:right;" onclick = "location.href = '/customer/user/mod-user'">정보 수정</button>		
+	            <button type="button" class="ModerateUserBtn" style="float:right;" onclick = "location.href = '/customer/users/${user.userID}/form'">정보 수정</button>		
     </main>

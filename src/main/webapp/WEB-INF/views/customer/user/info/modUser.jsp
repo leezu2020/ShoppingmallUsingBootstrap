@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<form action="/customer/user/${userInfo.userID}" method="post">
+<form action="/customer/users/${userInfo.userID}" method="post">
 	<input type="hidden" name="_method" value="PUT"/>
     <main>
         <h2 class="main title">내 정보 수정</h2>

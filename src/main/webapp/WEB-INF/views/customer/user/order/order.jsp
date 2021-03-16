@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<form method="post" action="/customer/user/order">
+<form method="post" action="/customer/users/order">
 	<div class="notice margin-top" style="padding-top: 10px">
 		<h3 class="hidden" style="padding-bottom: 30px">주문 진행</h3>
 		<table class="table">
@@ -63,7 +63,7 @@
     </div>
     <div class="margin-top text-align-center">
         <input class="btn-text btn-default" type="submit" value="등록" />
-        <a class="btn-text btn-cancel" href="/customer/user/baskets">돌아가기</a>
+        <a class="btn-text btn-cancel" href="/customer/users/baskets">돌아가기</a>
     </div>
 </form>
 

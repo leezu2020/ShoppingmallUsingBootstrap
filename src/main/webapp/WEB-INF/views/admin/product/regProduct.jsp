@@ -3,7 +3,7 @@
     <main>
         <h2 class="main title">상품 등록</h2>
 
-        <form method="post" action="/admin/product" enctype="multipart/form-data">
+        <form method="post" action="/admin/products" enctype="multipart/form-data">
             <div class="margin-top first">
                 <h3 class="hidden">상품 입력</h3>
                 <table class="table">

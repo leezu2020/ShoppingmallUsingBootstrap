@@ -47,7 +47,7 @@
 						<c:if test="${o.state eq '배송 완료'}">
 							<c:choose>
 								<c:when test="${o.eval eq 'yet'}">
-									<form action="/customer/user/eval" method="post">
+									<form action="/customer/users/eval" method="post">
 										<input type="hidden" name="orderID" value="${o.orderID}">
 										<input type="hidden" name="name" value="${o.name}">
 										<input type="hidden" name="productID" value="${o.productID}">
@@ -55,7 +55,7 @@
 									</form>
 								</c:when>
 								<c:otherwise>
-									<input type="button" onClick="location.href = '/customer/product/${o.productID}'" value="평가완료">
+									<input type="button" onClick="location.href = '/customer/products/${o.productID}'" value="평가완료">
 								</c:otherwise>
 							</c:choose>
 						</c:if>
