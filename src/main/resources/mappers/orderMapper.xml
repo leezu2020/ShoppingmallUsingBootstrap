@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leezu.mapper.orderMapper">
+
+<!-- 주문 -->	
+	<insert id="addOrder" parameterType="Order">
+
+		insert into orderlist (orderID, productID, userID, dueDate, zipcode, address, state, count, total)
+			values (#{orderID}, #{productID}, #{userID},
+				date_add(now(), interval 4 day), #{zipcode}, #{address}, '주문 준비중', #{count}, #{total})
+	</insert>
+	
+	<select id="getOrderCount" resultType="int">
+		select count(*)
+			from orderlist
+	</select>
+	
+	<select id="getOrderList" resultType="Order">
+		select 
+			o.orderID as orderID,
+			p.name as name,
+			o.regDate as regDate,
+			o.dueDate as dueDate,
+			o.zipcode as zipcode,
+			o.address as address,
+			o.state as state,
+			p.price as price,
+			o.count as count,
+			o.total as total,
+			o.eval as eval,
+			o.productID as productID
+		from orderlist o, product p
+		where o.userID = #{userID}
+			and p.productID = o.productID
+	</select>
+	
+	<select id="getOrderAllList" resultType="Order">
+		select 
+			o.orderID as orderID,
+			p.name as name,
+			u.userName as userName,
+			o.regDate as regDate,
+			o.dueDate as dueDate,
+			o.zipcode as zipcode,
+			o.address as address,
+			o.state as state,
+			p.price as price,
+			o.count as count,
+			o.total as total
+		from orderlist o, product p, user u
+		where p.productID = o.productID
+			and u.userID = o.userID 
+		order by orderID DESC
+	</select>
+	
+	<select id="getOrderNum" resultType="int">
+		select count(*)
+			from orderlist
+			where userID = #{userID}
+	</select>
+	
+	<update id="modOrder" parameterType="hashmap">
+		update orderlist
+			set state = #{state}
+			where orderID = #{orderID}
+	</update>
+	
+	<update id="doEval" parameterType="String">
+		update orderlist
+			set eval = 'done'
+			where orderID = #{orderID}
+	</update>
+</mapper>

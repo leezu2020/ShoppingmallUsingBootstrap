@@ -10,11 +10,11 @@ import org.springframework.stereotype.Repository;
 import com.leezu.web.eval.entity.Eval;
 
 @Repository
-public class EvalDAOImp implements IEvalDAO{
+public class EvalDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static final String namespace = "com.leezu.mapper.userMapper";
+	private static final String namespace = "com.leezu.mapper.evalMapper";
 
 
 	public void addEval(Eval eval) {

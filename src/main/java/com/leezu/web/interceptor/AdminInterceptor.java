@@ -17,7 +17,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter{
 		AuthInfo user = (AuthInfo)session.getAttribute("authInfo");
 		
 		
-		if(user == null || user.getAuthority() != 1) {
+		if(user == null || user.getAuthority() != "ROLE_ADMIN") {
 			response.sendRedirect("/");
 			return false;
 		}

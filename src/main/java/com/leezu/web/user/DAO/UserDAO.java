@@ -13,7 +13,7 @@ import com.leezu.web.user.entity.User;
 import com.leezu.web.user.entity.UserRegReq;
 
 @Repository
-public class UserDAOImp implements IUserDAO{
+public class UserDAO{
 
 	// SqlSession 객체를 스프링에서 생성해서 주입시켜준다.IoC
 	// try catch문, finally문, 객체를 close할 필요가 사라짐
@@ -24,7 +24,6 @@ public class UserDAOImp implements IUserDAO{
 	
 	
 	// 회원가입
-	@Override
 	public void userReg(UserRegReq userRegReq){
 		// TODO Auto-generated method stub
 		System.out.println("회원가입 dao 시작");
@@ -33,7 +32,6 @@ public class UserDAOImp implements IUserDAO{
 	}
 	
 	// 로그인
-	@Override
 	public User userLogin(User dto) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace + ".userLogin", dto);
@@ -45,12 +43,10 @@ public class UserDAOImp implements IUserDAO{
 	}
 
 	// 회원 조회
-	@Override
 	public List<User> userList(PagingDAO paging) throws Exception {
 		return sqlSession.selectList(namespace + ".userList", paging);
 	}
 
-	@Override
 	public int getUserNum(String condition, String keyword) {
 		HashMap<String, String> key = new HashMap<String, String>();
 		key.put("condition", condition);
@@ -59,7 +55,6 @@ public class UserDAOImp implements IUserDAO{
 	}
 
 	// 회원 정보 수정
-	@Override
 	public void modUser(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace + ".modUser", map);

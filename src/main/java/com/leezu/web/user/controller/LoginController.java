@@ -51,7 +51,7 @@ public class LoginController {
 	}
 	
 	// 로그인
-	@GetMapping("userLogin")
+	@RequestMapping("userLogin")
 	public String userlogin(UserLoginValidator loginVal, @CookieValue(value="REMEMBER", required=false) Cookie rememberCookie) throws Exception {
 		
 		// 쿠키가 있으면

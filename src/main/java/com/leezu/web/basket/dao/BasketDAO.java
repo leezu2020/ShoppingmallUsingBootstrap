@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.leezu.web.basket.entity.Basket;
 
 @Repository
-public class BasketDAOImp{
+public class BasketDAO{
 	
 	@Autowired
 	private SqlSession sqlSession;

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leezu.mapper.productMapper">
+	
+<!-- 상품 -->	
+	<!-- 상품 목록 조회 -->
+	<select id="productList" resultType="Product">
+		select *
+		from product
+		<include refid="searchProduct" />
+		order by productID DESC
+	</select>
+	
+	<sql id="searchProduct">
+		<choose>
+			<when test="size != 'all'">
+				where size like #{size}
+					and name like concat('%',#{keyword},'%')
+					and price between #{minprice} and #{maxprice}
+			</when>
+			<otherwise>
+				where name like concat('%',#{keyword},'%')
+					and price between #{minprice} and #{maxprice}
+			</otherwise>
+		</choose>
+	</sql>	
+	
+	<!-- 상품 갯수 -->
+	<select id="getProductNum" resultType="int">
+		select count(*)
+		from product
+	</select>
+	
+	<!-- 상품 등록 -->
+	<insert id="regProduct" parameterType="Product">
+		insert into product(name, price, description, size, imageUrl, ea)
+			values(	#{name},
+					#{price},
+					#{description},
+					#{size},
+					#{imageUrl},
+					#{ea})
+	</insert>
+	
+	<!-- 상품 삭제 -->
+	<delete id="delProductById" parameterType="int">
+		delete
+			from product
+			where productID = #{id}
+	</delete>
+
+	
+	<!-- 상품 아이디로 조회 -->
+	<select id="getProduct" resultType="Product">
+		select *
+		from product
+		where productID = #{id}
+	</select>
+	
+	<!-- 상품 변경 -->
+	<update id="modProduct" parameterType="Product">
+		update product
+			set price = #{price},
+				description = #{description},
+				size = #{size},
+				imageUrl = #{imageUrl},
+				ea = #{ea}
+			where productID = #{productID}
+	</update>
+	
+	<!-- 상품 재고수량 수정 -->
+	<update id="modProductCnt" parameterType="hashmap">
+		update product
+			set ea = ea - #{count}
+			where productID = #{productID}
+	</update>	
+	
+	<!-- 상품 평가값 추가 -->
+	<update id="modLike" parameterType="Eval">
+		update product
+			set evalSum = evalSum + #{evalRate}
+			where productID = #{productID}
+	</update>
+	
+	<!-- 상품 like값 -->
+	<select id="getLike" resultType="int">
+		select evalSum
+			from product
+			where productID = #{id}
+	</select>	
+
+</mapper>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leezu.mapper.basketMapper">
+
+<!-- 장바구니 -->	
+	<!-- 장바구니 등록 -->
+	<insert id="addBasket" parameterType="hashmap">
+		insert into basket(userID, productID, count)
+			values( #{basket.userID},
+					#{basket.productID},
+					#{basket.count})
+	</insert>
+	
+	<!-- 장바구니 목록 -->
+	<select id="basketList" resultType="Basket">
+		select 
+			b.basketID as basketID,
+			b.userID as userID,
+			p.productID as productID,
+			u.userName as userName,
+			p.Name as productName,
+			p.price as productPrice,
+			b.count as count,
+			(price * count) as total,
+			b.regDate as regDate,
+			b.modDate as modDate
+		from 
+			basket b, user u, product p
+		where b.userID = #{userID}
+			and p.productID = b.productID
+			and u.userID = b.userID
+		order by
+			modDate DESC
+	</select>
+	
+	<!-- 장바구니 확인 -->
+	<select id="getBasketCount" resultType="Integer">
+		select count as ea
+			from basket
+			where userID = #{userID}
+				and productID = #{productID}
+	</select>
+	
+	<!-- 장바구니 갯수 -->
+	<select id="getBasketNum" resultType="int">
+		select count(*)
+			from basket
+			where userID = #{userID}
+	</select>
+	<!-- 장바구니 갱신 -->
+	<update id="modBasket" parameterType="hashmap">
+		update basket
+			set count = count + #{basket.count},
+				modDate = current_timestamp
+			where userID = #{basket.userID}
+				and productID = #{basket.productID}
+	</update>
+	
+	<!-- 장바구니 삭제_관리자 -->
+	<delete id="delBasketByAdmin">
+		delete 
+			from basket
+			where productID = #{id}
+	</delete>
+	
+	<!-- 장바구니 아이디로 조회 -->
+	<select id="getBasketByIds" resultType="Basket">
+		select 
+			b.basketID as basketID,
+			b.userID as userID,
+			p.productID as productID,
+			u.userName as userName,
+			p.Name as productName,
+			p.price as productPrice,
+			b.count as count,
+			(price * count) as total
+		from basket b, user u, product p
+		where b.basketID in
+		<foreach collection="array" item="item" open='(' close=')' separator=",">
+			#{item}
+		</foreach>
+			and p.productID = b.productID
+			and u.userID = b.userID
+		order by basketID DESC
+	</select>
+
+	<!-- 장바구니 아이디로 삭제 -->
+	<delete id="delBasketById" parameterType="int">
+		delete
+			from basket
+			where basketID = #{basketID}
+	</delete>
+
+</mapper>

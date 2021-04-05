@@ -1,4 +1,4 @@
-package com.leezu.web.controller.customer;
+package com.leezu.web.order.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +26,11 @@ import com.leezu.web.order.entity.Order;
 import com.leezu.web.order.service.IOrderService;
 import com.leezu.web.product.service.IProductService;
 import com.leezu.web.user.entity.AuthInfo;
+import com.leezu.web.user.entity.SecurityUser;
 
 @Controller
 @RequestMapping("/customer/user/")
-public class OrderController {
+public class CustomerOrderController {
 	@Autowired
 	private IProductService productService;
 	
@@ -41,16 +44,18 @@ public class OrderController {
 	private INoticeService noticeService;
 	
 	@RequestMapping("orderList")
-	public String orderList(Model model, HttpSession session) {
-		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
+	public String orderList(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
 		
-		List<Order> orderList = orderService.getOrderList(user.getUserID());
+		List<Order> orderList = orderService.getOrderList(user.getUsername());
 		double totalPrice = 0;
 		for(Order o : orderList) {
 			totalPrice += o.getTotal();
 		}
 		// 개인 공지사항 가져오기
-		String userID = user.getUserID();
+		String userID = user.getUsername();
 		List<PrivateNotice> notices = noticeService.getPrivateOrderNotice(userID);
 		model.addAttribute("noticeList", notices);
 		

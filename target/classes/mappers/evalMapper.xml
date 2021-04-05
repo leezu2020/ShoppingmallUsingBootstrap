@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leezu.mapper.evalMapper">
+
+<!-- 평가 -->
+	<insert id="addEval" parameterType="Eval">
+		insert into eval (orderID, userID, productID, content, evalRate)
+			values (#{orderID}, #{userID}, #{productID}, #{content}, #{evalRate})
+	</insert>
+	
+	<select id="getEvalList" resultType="Eval">
+		select
+			u.userName as userName,
+			e.evalRate as evalRate,
+			e.content as content
+			from eval e, user u
+			where e.productID = #{productID}
+				and u.userID = e.userID
+	</select>
+	
+	<delete id="delEvalByProductId" parameterType="int">
+		delete
+			from eval
+			where productID = #{productID} 
+	</delete>
+	
+	<select id="getEvalCnt" resultType="int">
+		select count(*)
+			from eval
+			where productID = #{id}
+	</select>
+
+</mapper>

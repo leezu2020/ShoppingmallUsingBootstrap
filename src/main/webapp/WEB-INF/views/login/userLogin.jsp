@@ -25,22 +25,15 @@
     
 </head>
 <div class="panel-body">
-   <form:form modelAttribute="userLoginValidator" action="/login/userLogin" method="post">
+   <form action="/login" method="post">
         <fieldset>
             <div class="form-group">
-                <form:input type="text" class="form-control" placeholder="ID" path="userID"/>
-                <form:errors path="userID" />
+                <input type="text" class="form-control" placeholder="ID" name="username"/>
             </div>
             <div class="form-group">
-                 <form:password class="form-control" placeholder="Password" path="userPassword"/>
-                 <form:errors path="userPassword" />
+                 <input type="password" class="form-control" placeholder="Password" name="password"/>
             </div>
-            <div class="checkbox">
-                <label>
-                    <form:checkbox path="rememberID"/>아이디 기억
-                </label>
-            </div>
-                <button type="submit" class="btn btn-lg btn-success btn-block">로그인</button>
+            <button type="submit" class="btn btn-lg btn-success btn-block">로그인</button>
         </fieldset>
-    </form:form>
+    </form>
 </div>

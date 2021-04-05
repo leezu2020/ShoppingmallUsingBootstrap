@@ -10,7 +10,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.leezu.web.basket.service.IBasketService;
 import com.leezu.web.order.service.IOrderService;
-import com.leezu.web.security.SecurityUser;
+import com.leezu.web.user.entity.SecurityUser;
 
 public class UserInterceptor extends HandlerInterceptorAdapter{
 

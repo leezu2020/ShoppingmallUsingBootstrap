@@ -58,7 +58,7 @@
                     <form:password class="form-control" placeholder="Password Check" path="checkPassword"/>
                     <form:errors path="checkPassword"/>
                 </div>
-                <input type="button" id="submit-btn" class="btn btn-default" disabled="disabled" value="가입하기">
+                <input type="submit" id="submit-btn" class="btn btn-default" disabled="disabled" value="가입하기">
                 <button type="reset" class="btn btn-default">취소하기</button>
             </form:form>
         </div>
@@ -70,7 +70,7 @@
 	function fn_sendEmail(){
 		alert('이메일이 전송되었습니다.');
 		$.ajax({
-			url : "/checkEmail?email=" + $('#email').val(),
+			url : "/email/" + $('#email').val(),
 			type : "get",
 			success : function(result){
 				$('#inputCode').attr("disabled",false);

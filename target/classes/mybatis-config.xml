@@ -10,7 +10,6 @@
 		<typeAlias alias="Product" type="com.leezu.web.product.entity.Product"/>
 		<typeAlias alias="Notice" type="com.leezu.web.notice.entity.Notice"/>
 		<typeAlias alias="NoticeView" type="com.leezu.web.notice.entity.NoticeView"/>
-		<typeAlias alias="preNotice" type="com.leezu.web.notice.entity.preNotice"/>
 		<typeAlias alias="Paging" type="com.leezu.web.paging.DAO.PagingDAO"/>
 		<typeAlias alias="Basket" type="com.leezu.web.basket.entity.Basket"/>
 		<typeAlias alias="Order" type="com.leezu.web.order.entity.Order"/>

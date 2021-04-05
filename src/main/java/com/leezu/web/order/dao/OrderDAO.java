@@ -11,49 +11,42 @@ import org.springframework.stereotype.Repository;
 import com.leezu.web.order.entity.Order;
 
 @Repository
-public class OrderDAOImp implements IOrderDAO{
+public class OrderDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static final String namespace = "com.leezu.mapper.userMapper";
+	private static final String namespace = "com.leezu.mapper.orderMapper";
 
-	@Override
 	public void addOrder(Order order) {
 		// TODO Auto-generated method stub
 		sqlSession.insert(namespace + ".addOrder", order);
 	}
 
-	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace + ".getOrderCount");
 	}
 
-	@Override
 	public List<Order> getOrderList(String userID) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace + ".getOrderList", userID);
 	}
 
-	@Override
 	public List<Order> getOrderAllList() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace + ".getOrderAllList");
 	}
 
-	@Override
 	public int getOrderNum(String userID) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace + ".getOrderNum", userID);
 	}
 
-	@Override
 	public void modOrder(HashMap<String, String> map) {
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace + ".modOrder", map);
 	}
 
-	@Override
 	public void doEval(String orderID) {
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace + ".doEval", orderID);

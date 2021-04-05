@@ -38,7 +38,7 @@
 							<sec:authentication property="principal.userName"/> 님,
 								환영합니다.</a><span class="sr-only">(current)</span></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/login/userLogout">로그아웃</a></li>
+							href="/logout">로그아웃</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/customer/user/userInfo">내 정보</a></li>
@@ -52,7 +52,7 @@
 							<li class="nav-item"><a class="nav-link">관리자님 환영합니다.</a> <span
 								class="sr-only">(current)</span></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/login/userLogout">로그아웃</a></li>
+								href="/logout">로그아웃</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="/admin/userList?page=1">관리자 페이지</a></li>

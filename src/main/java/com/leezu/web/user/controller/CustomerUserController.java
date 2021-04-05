@@ -3,8 +3,6 @@ package com.leezu.web.user.controller;
 import java.security.Principal;
 import java.util.HashMap;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -13,8 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.leezu.web.security.SecurityUser;
-import com.leezu.web.user.entity.AuthInfo;
+import com.leezu.web.user.entity.SecurityUser;
 import com.leezu.web.user.entity.User;
 import com.leezu.web.user.service.IUserService;
 

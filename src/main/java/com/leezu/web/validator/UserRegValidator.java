@@ -7,7 +7,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.leezu.web.user.dao.UserDAO;
 import com.leezu.web.user.entity.User;
 import com.leezu.web.user.entity.UserRegReq;
 

@@ -6,13 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.leezu.web.basket.dao.BasketDAOImp;
+import com.leezu.web.basket.dao.BasketDAO;
 import com.leezu.web.basket.entity.Basket;
 
 @Service
 public class BasketServiceImp implements IBasketService{
 	@Autowired
-	private BasketDAOImp basketDAO;
+	private BasketDAO basketDAO;
 
 	@Override
 	public void addBasket(HashMap<String, Object> map) {
