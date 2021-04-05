@@ -1,6 +1,8 @@
 package com.leezu.web.product.controller;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Date;
 import java.util.List;
 
@@ -130,17 +132,29 @@ public class AdminProductController {
 	
 	@PostMapping("modProduct")
 	public String modProduct(Product product, MultipartFile file) {
-		
+		// 기존파일
+		String originalFileName = productService.get(product.getProductID()).getImageUrl();
 		String fileName = file.getOriginalFilename();
 		long fileSize = file.getSize();
 		
 		// 파일을 새로 추가했을경우
 		if(fileSize != 0) {
-			System.out.printf("수정한 fileName : %s, fileSize : %d\n", fileName, fileSize);
-			
 			String webPath = "/resources/images";
 			String realPath = ctx.getRealPath(webPath);
 			System.out.printf("realPath : %s\n", realPath);
+			
+			// 기존 파일 삭제
+			File originFile = new File(realPath + "\\" + originalFileName);
+			Boolean checkDeleteOriginFile = originFile.delete();
+			if(checkDeleteOriginFile) {
+				System.out.println("기존 파일 삭제 : " + realPath + "\\" + originalFileName);
+			} else {
+				System.out.println("기존 파일 삭제 실패 : " + realPath + "\\" + originalFileName);
+			}
+			
+			System.out.printf("수정한 fileName : %s, fileSize : %d\n", fileName, fileSize);
+			
+
 			
 			try {
 				new File(realPath).mkdir();
@@ -153,8 +167,7 @@ public class AdminProductController {
 			product.setImageUrl(fileName);
 		} else {
 			// 파일을 새로 추가하지 않았을 경우, 기존 파일 유지
-			String originalUrl = productService.get(product.getProductID()).getImageUrl();
-			product.setImageUrl(originalUrl);
+			product.setImageUrl(originalFileName);
 		}
 		productService.modProduct(product);
 		

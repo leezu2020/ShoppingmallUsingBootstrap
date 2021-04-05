@@ -68,15 +68,18 @@
 <script type="text/javascript">
 	var code = '';
 	function fn_sendEmail(){
-		alert('이메일이 전송되었습니다.');
 		$.ajax({
 			url : "/email/" + $('#email').val(),
 			type : "get",
 			success : function(result){
+				alert('이메일이 전송되었습니다.');
 				$('#inputCode').attr("disabled",false);
 				$('#code-btn').attr("disabled",false);
 				code = result;
 				console.log(code);
+			},
+			error : function(e){
+				console.log(e);
 			}
 		});
 	};

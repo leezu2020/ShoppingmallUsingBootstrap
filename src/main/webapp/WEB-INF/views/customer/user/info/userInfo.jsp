@@ -24,17 +24,6 @@
 	                               ${user.userEmail}
 	                            </td>
 	                        </tr>
-	                        <tr>
-	                            <th>이메일 인증 여부</th>
-	                            <td class="text-align-left text-indent text-strong text-orange" colspan="3">
-	                               <c:if test="${user.emailChecked}">
-	                            		<c:out value="인증 완료" />
-	                               </c:if>
-	                               <c:if test="${!user.emailChecked}">
-	                            		<c:out value="미인증" />
-	                               </c:if>
-	                            </td>
-	                        </tr>
 	                    </tbody>
 	                </table>
 	            </div>

@@ -1,13 +1,11 @@
 package com.leezu.web.user.controller;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.leezu.web.exception.IDNoExist;
-import com.leezu.web.exception.IDPasswordNotMatchingException;
-import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.UserRegReq;
 import com.leezu.web.user.service.IUserService;
 import com.leezu.web.validator.UserLoginValidator;

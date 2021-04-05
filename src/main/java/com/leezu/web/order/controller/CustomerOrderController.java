@@ -25,7 +25,6 @@ import com.leezu.web.notice.service.INoticeService;
 import com.leezu.web.order.entity.Order;
 import com.leezu.web.order.service.IOrderService;
 import com.leezu.web.product.service.IProductService;
-import com.leezu.web.user.entity.AuthInfo;
 import com.leezu.web.user.entity.SecurityUser;
 
 @Controller
@@ -121,9 +120,10 @@ public class CustomerOrderController {
 			productService.modProductCnt(map);
 		}
 		
-		AuthInfo user = (AuthInfo) session.getAttribute("authInfo");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		SecurityUser user = (SecurityUser) authentication.getPrincipal();
 		
-		model.addAttribute("orderList", orderService.getOrderList(user.getUserID()));
+		model.addAttribute("orderList", orderService.getOrderList(user.getUsername()));
 		return "customer.user.order.orderList";
 	}
 }

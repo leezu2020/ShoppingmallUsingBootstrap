@@ -10,7 +10,6 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd">
    
-   <!-- <context:annotation-config /> -->
    <context:component-scan base-package="com.leezu.web" />
 	<bean
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">

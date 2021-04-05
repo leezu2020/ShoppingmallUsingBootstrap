@@ -10,43 +10,41 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.leezu.web.mail.service.EmailService;
 
 @Controller
 @EnableAsync
-@RequestMapping("/")
 public class EmailController {
 
 	@Autowired
 	private EmailService mailService;
 	
-	@GetMapping("email/{email:.+}")
+	@GetMapping("/email/{email:.+}")
 	@ResponseBody
 	public String checkEmail(@PathVariable String email) {
-			System.out.println("checkEmail 진입 email : " + email);
-			
-			// 이메일 중복 체크후 코드 전송 진행
-	
-			Random random = new Random();
-			int num = random.nextInt(888888) + 111111;
-	
-			String setFrom = "shop@shop.com";
-			String toMail = email;
-			String title = "회원가입 인증 이메일 입니다.";
-			String content = "인증 번호는 " + num + "입니다.";
-	
-			try {
-				mailService.sendMessage(setFrom, toMail, title, content);
-				System.out.println("인증 메일 발송");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-	
-			return Integer.toString(num);
+		System.out.println("email 전송 시작 to " + email);
+		
+		// 이메일 중복 체크후 코드 전송 진행
+
+		Random random = new Random();
+		int num = random.nextInt(888888) + 111111;
+
+		String setFrom = "쇼핑몰 <shoppingmall@naver.com>";
+		String toMail = email;
+		String title = "쇼핑몰 회원가입 인증 이메일 입니다.";
+		String content = "인증 번호는 " + num + "입니다.";
+
+		try {
+			mailService.sendMessage(setFrom, toMail, title, content);
+			System.out.println("인증 메일 발송");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
+		return Integer.toString(num);
+	}
 
 	
 	@Bean

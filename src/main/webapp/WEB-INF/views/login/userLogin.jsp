@@ -33,6 +33,13 @@
             <div class="form-group">
                  <input type="password" class="form-control" placeholder="Password" name="password"/>
             </div>
+			<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+			    <font color="red">
+					아이디나 비밀번호를 확인해주세요.
+			        <c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session"/>
+			    </font>
+			</c:if>
+      
             <button type="submit" class="btn btn-lg btn-success btn-block">로그인</button>
         </fieldset>
     </form>

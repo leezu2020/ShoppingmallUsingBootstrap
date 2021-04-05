@@ -37,9 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		// /admin/** 은 admin의 role을 가질 경우만 접근 가능
 		// 위의 두 role이 없으면 formLogin		
 		http.authorizeRequests()
-		// 테스트위한 임시로 모두 허용
-			.antMatchers("/**","/").permitAll()
 			.antMatchers("/customer/user/**").access("hasRole('ROLE_USER')")
+			.antMatchers("/", "/login/**", "/customer/**", "/email/**").permitAll()
 			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.anyRequest().authenticated()
 			
@@ -50,7 +49,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.loginPage("/login/userLogin")
 			.loginProcessingUrl("/login")
 			.defaultSuccessUrl("/")
-		//	.failureUrl("/login?error=true")
 			
 		//	로그아웃 설정	
 			.and()

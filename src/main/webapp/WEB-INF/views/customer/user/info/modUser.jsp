@@ -25,7 +25,7 @@
 	                        <tr>
 	                            <th>이메일</th>
 	                            <td class="text-align-left text-indent text-strong text-orange" colspan="2">
-	                               <input type="text" value="${userInfo.userEmail}" name="userEmail"/>
+	                               ${userInfo.userEmail}
 	                            </td>
 	                        </tr>
 	                    </tbody>
